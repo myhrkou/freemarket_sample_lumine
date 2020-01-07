@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: freemarket_sample_lumine_production
-  username: freemarket_sample_lumine
-  password: <%= ENV['FREEMARKET_SAMPLE_LUMINE_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
