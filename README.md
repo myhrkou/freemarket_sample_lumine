@@ -1,5 +1,4 @@
 # freemarket_sample_lumine
-
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -15,8 +14,8 @@
 |phone_number|integer||
 |building_name|string||
 ### Association
-- has_many :cards
-- has_many :items
+- has_many :cards
+- has_many :items
 
 ## cardsテーブル
 |Column|Type|Options|
@@ -26,7 +25,7 @@
 |security_number|integer|null: false|
 |user_id|integer|null: false|
 ### Association
-- belongs_to :user
+- belongs_to :user
 
 ## itemsテーブル
 |Column|Type|Options|
@@ -42,10 +41,10 @@
 |evalution_id|integer|null: false|
 |item_detail_category_id|integer|null: false|
 ### Association
-- belongs_to :user
-- belongs_to :evalution
-- belongs_to :category
-- has_many :items_images
+- belongs_to :user
+- belongs_to :evalution
+- belongs_to :category
+- has_many :items_images
 
 ## items_imagesテーブル
 |Column|Type|Options|
@@ -53,7 +52,7 @@
 |image_url|string|null: false|
 |item_id|integer|null: false|
 ### Association
-- belongs_to :item
+- belongs_to :item
 
 ## evalutionテーブル
 |Column|Type|Options|
@@ -62,11 +61,11 @@
 |normal|string||
 |bad|string||
 ### Association
-- belongs_to :item
+- belongs_to :item
 
 ## categorysテーブル
 |Column|Type|Options|
 |------|----|-------|
 |category|string|null: false|
 ### Association
-- belongs_to :item
+- belongs_to :item
