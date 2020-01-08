@@ -2,8 +2,8 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false|
-|mail_address|string|null: false|
+|nickname|string|null: false, unique: true|
+|mail_address|string|null: false, unique: true|
 |password|string|null: false|
 |name|string|null: false|
 |birth_time|integer|null: false|
@@ -20,7 +20,7 @@
 ## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|number|string|null: false|
+|number|string|null: false, unique: true|
 |expiration_date|integer|null: false|
 |security_number|integer|null: false|
 |user_id|integer|null: false,foreign_key: true|
