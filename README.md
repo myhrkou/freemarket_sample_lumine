@@ -23,7 +23,7 @@
 |number|string|null: false|
 |expiration_date|integer|null: false|
 |security_number|integer|null: false|
-|user_id|integer|null: false|
+|user_id|integer|null: false,foreign_key: true|
 ### Association
 - belongs_to :user
 
@@ -37,9 +37,9 @@
 |delivery_origin|string|null: false|
 |delivery_date|string|null: false|
 |price|integer|null: false|
-|user_id|integer|null: false|
-|evalution_id|integer|null: false|
-|item_detail_category_id|integer|null: false|
+|user_id|integer|null: false,foreign_key: true|
+|evalution_id|integer|null: false,foreign_key: true|
+|item_detail_category_id|integer|null: false,foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :evalution
@@ -50,7 +50,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |image_url|string|null: false|
-|item_id|integer|null: false|
+|item_id|integer|null: false,foreign_key: true|
 ### Association
 - belongs_to :item
 
