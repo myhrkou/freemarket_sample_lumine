@@ -5,12 +5,13 @@
 |nickname|string|null: false, unique: true|
 |mail_address|string|null: false, unique: true|
 |password|string|null: false|
-|name|string|null: false|
-|birth_time|integer|null: false|
-|live_number_address|string|null: false|
-|live_prefecture|string|null: false|
-|live_municipalities|string|null: false|
-|live_address|string|null: false|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|birth_day|integer|null: false|
+|address_zip|string|null: false|
+|address_prefecture|string|null: false|
+|adderess_city|string|null: false|
+|address_number|string|null: false|
 |phone_number|integer||
 |building_name|string||
 ### Association
@@ -32,17 +33,17 @@
 |------|----|-------|
 |name|string|null: false|
 |description|text|null: false|
-|item_detail_status|string|null: false|
+|item_condition|string|null: false|
 |delivery_charge_detail|string|null: false|
 |delivery_origin|string|null: false|
 |delivery_date|string|null: false|
 |price|integer|null: false|
 |user_id|integer|null: false,foreign_key: true|
-|evalution_id|integer|null: false,foreign_key: true|
+|evaluation_id|integer|null: false,foreign_key: true|
 |item_detail_category_id|integer|null: false,foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :evalution
+- belongs_to :evaluation
 - belongs_to :category
 - has_many :items_images
 
@@ -54,18 +55,16 @@
 ### Association
 - belongs_to :item
 
-## evalutionテーブル
+## evaluationテーブル
 |Column|Type|Options|
 |------|----|-------|
-|good|string||
-|normal|string||
-|bad|string||
+|name|string||
 ### Association
 - belongs_to :item
 
 ## categorysテーブル
 |Column|Type|Options|
 |------|----|-------|
-|category|string|null: false|
+|name|string||
 ### Association
 - belongs_to :item
