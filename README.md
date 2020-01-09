@@ -7,13 +7,15 @@
 |password|string|null: false|
 |first_name|string|null: false|
 |last_name|string|null: false|
+|birth_year|integer|null: false|
+|birth_month|integer|null: false|
 |birth_day|integer|null: false|
 |address_zip|string|null: false|
 |address_prefecture|string|null: false|
 |adderess_city|string|null: false|
 |address_number|string|null: false|
+|address_name|string||
 |phone_number|integer||
-|building_name|string||
 ### Association
 - has_many :cards
 - has_many :items
