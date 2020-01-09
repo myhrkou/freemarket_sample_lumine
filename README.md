@@ -3,7 +3,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false, unique: true|
-|email_address|string|null: false, unique: true|
+|email|string|null: false, unique: true|
 |password|string|null: false|
 |first_name|string|null: false|
 |last_name|string|null: false|
@@ -13,8 +13,8 @@
 |address_zip|string|null: false|
 |address_prefecture|string|null: false|
 |adderess_city|string|null: false|
-|address_number|string|null: false|
-|address_name|string||
+|adddress_number|string|null: false|
+|adddress_building|string||
 |phone_number|integer||
 ### Association
 - has_many :cards
