@@ -15,7 +15,7 @@
 ### Association
 - has_many :cards
 - has_many :items
-- belongs_to :address
+- has_one :address
 
 ## addressテーブル
 |Column|Type|Options|
@@ -53,8 +53,6 @@
 |category_id|integer|null: false,foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :evaluation
-- belongs_to :status
 - belongs_to :category
 - has_many :items_images
 
@@ -63,20 +61,6 @@
 |------|----|-------|
 |image_url|string|null: false|
 |item_id|integer|null: false,foreign_key: true|
-### Association
-- belongs_to :item
-
-## evaluationテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string||
-### Association
-- belongs_to :item
-
-## statusテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string||
 ### Association
 - belongs_to :item
 
