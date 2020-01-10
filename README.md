@@ -23,9 +23,8 @@
 ## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|number|string|null: false, unique: true|
-|expiration_date|integer|null: false|
-|security_number|integer|null: false|
+|customer_id|string|null: false|
+|card_id|integer|null: false|
 |user_id|integer|null: false,foreign_key: true|
 ### Association
 - belongs_to :user
@@ -42,6 +41,7 @@
 |price|integer|null: false|
 |user_id|integer|null: false,foreign_key: true|
 |evaluation_id|integer|null: false,foreign_key: true|
+|status_id|integer|null:false,foreign_key: true|
 |category_id|integer|null: false,foreign_key: true|
 ### Association
 - belongs_to :user
@@ -62,6 +62,12 @@
 |------|----|-------|
 |name|string||
 ### Association
+- belongs_to :item
+
+## statusテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string||
 - belongs_to :item
 
 ## categorysテーブル
