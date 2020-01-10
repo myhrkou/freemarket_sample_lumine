@@ -10,15 +10,23 @@
 |birth_year|integer|null: false|
 |birth_month|integer|null: false|
 |birth_day|integer|null: false|
-|address_zip|string|null: false|
-|address_prefecture|string|null: false|
-|adderess_city|string|null: false|
-|adddress_number|string|null: false|
-|adddress_building|string||
+|address_id|integer|null: false|
 |phone_number|integer||
 ### Association
 - has_many :cards
 - has_many :items
+- belongs_to :address
+
+## addressテーブル
+|Column|Type|Options|
+|------|----|-------|
+|zip|string|null: false|
+|prefecture|string|null: false|
+|city|string|null: false|
+|number|string|null: false|
+|building|string||
+### Association
+- belongs_to :user
 
 ## cardsテーブル
 |Column|Type|Options|
@@ -34,7 +42,7 @@
 |------|----|-------|
 |name|string|null: false|
 |description|text|null: false|
-|item_condition|string|null: false|
+|condition|string|null: false|
 |delivery_charge_detail|string|null: false|
 |delivery_origin|string|null: false|
 |delivery_date|string|null: false|
@@ -77,4 +85,4 @@
 |------|----|-------|
 |name|string||
 ### Association
-- belongs_to :item
+- has_many :items
