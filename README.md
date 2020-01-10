@@ -69,6 +69,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
+### Association
 - belongs_to :item
 
 ## categorysテーブル
