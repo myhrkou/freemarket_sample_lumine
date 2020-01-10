@@ -46,6 +46,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :evaluation
+- belongs_to :status
 - belongs_to :category
 - has_many :items_images
 
