@@ -49,8 +49,6 @@
 |delivery_date|string|null: false|
 |price|integer|null: false|
 |user_id|integer|null: false,foreign_key: true|
-|evaluation_id|integer|null: false,foreign_key: true|
-|status_id|integer|null:false,foreign_key: true|
 |category_id|integer|null: false,foreign_key: true|
 ### Association
 - belongs_to :user
