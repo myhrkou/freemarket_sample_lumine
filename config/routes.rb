@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'tests#index'
+  root 'users#index'
   resources :users
   resources :user_steps, only: [:create]
   resources :user_steps do
