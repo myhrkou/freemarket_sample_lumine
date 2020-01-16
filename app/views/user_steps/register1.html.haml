@@ -1,4 +1,4 @@
-= form_for @user, url: step2_user_steps_path, method: :get do |f|
+= form_for @user, url: register2_user_steps_path, method: :get do |f|
   = f.text_field :nickname, placeholder: '例) メルカリ太郎'
   = f.email_field :email, placeholder: 'PC・携帯どちらでも可'
   = f.password_field :password, placeholder: '7文字以上'

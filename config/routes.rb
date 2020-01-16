@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   resources :user_steps, only: [:create]
   resources :user_steps do
     collection do
-      get "step1"
-      get "step2"
-      get "step3"
-      get "step4"
+      get "register1"
+      get "register2"
+      get "register3"
+      get "register4"
       get "done"
     end
   end

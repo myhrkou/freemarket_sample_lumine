@@ -1,9 +1,9 @@
 class UserStepsController < ApplicationController
-  def step1
+  def register1
     @user = User.new
   end
 
-  def step2
+  def register2
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
@@ -16,7 +16,7 @@ class UserStepsController < ApplicationController
     @user = User.new
   end
 
-  def step3
+  def register3
     session[:phone_number] = user_params[:phone_number]
     @user = User.new
     @user.build_address
@@ -27,7 +27,7 @@ class UserStepsController < ApplicationController
     @user.phone_number=session[:phone_number]
   end
 
-  def step4
+  def register4
     session[:last_name] = user_params[:last_name]
     session[:first_name] = user_params[:first_name]
     session[:yomi_last_name] = user_params[:yomi_last_name]
@@ -60,11 +60,11 @@ class UserStepsController < ApplicationController
     if @user.save!
       sign_in User.find(@user.id) unless user_signed_in?
     else
-      render step3_user_steps_path
+      render register3_user_steps_path
     end
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params["payjp-token"].blank?
-      render "user_steps/step4"
+      render "user_steps/register4"
     else
       customer = Payjp::Customer.create(
         description: "test",
@@ -81,7 +81,7 @@ class UserStepsController < ApplicationController
       if @card.save
         redirect_to done_user_steps_path
       else
-        redirect_to step4_user_steps_path
+        redirect_to register4_user_steps_path
       end
     end
   end

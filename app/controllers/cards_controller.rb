@@ -27,7 +27,7 @@ class CardsController < ApplicationController
   end
 
   def delete #PayjpとCardデータベースを削除します
-    card = Card.where(user_id: current_user.id).first
+    card = set_card
     if card.blank?
       redirect_to new_card_path
     else
@@ -40,7 +40,7 @@ class CardsController < ApplicationController
   end
 
   def show #Cardのデータpayjpに送り情報を取り出します
-    card = Card.where(user_id: current_user.id).first
+    card = set_card
     if card.blank?
       redirect_to new_card_path
     else
@@ -48,6 +48,12 @@ class CardsController < ApplicationController
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
+  end
+
+  private
+
+  def set_card
+    card = Card.where(user_id: current_user.id).first
   end
 end
 end
