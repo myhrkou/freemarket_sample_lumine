@@ -4,9 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         has_one :address
-         has_many :cards
-         accepts_nested_attributes_for :address
+  has_one :address
+  has_many :cards
+  accepts_nested_attributes_for :address
+  
   validates :nickname, presence: true,uniqueness: true
   validates :email,presence:true,uniqueness:true,length:{minimum:7}
   validates :password,presence:true
