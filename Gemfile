@@ -70,6 +70,7 @@ end
 
 gem 'haml-rails'
 
+
 gem 'font-awesome-rails'
 
 gem 'pry-rails'
@@ -81,3 +82,9 @@ gem 'rufo'
 gem 'payjp'
 
 gem 'dotenv-rails'
+
+gem 'carrierwave'
+
+gem 'mini_magick'
+
+gem 'fog-aws'
