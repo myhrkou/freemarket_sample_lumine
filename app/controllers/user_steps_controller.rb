@@ -81,7 +81,7 @@ class UserStepsController < ApplicationController
       if @card.save
         redirect_to done_user_steps_path
       else
-        redirect_to action: "create"
+        redirect_to step4_user_steps_path
       end
     end
   end
