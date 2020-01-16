@@ -1,0 +1,7 @@
+-if user_signed_in?
+  =current_user.nickname
+  がログイン中
+  =link_to "logout",destroy_user_session_path,method: :delete
+-else
+  =link_to "新規登録",step1_user_steps_path
+  =link_to "login",user_session_path
