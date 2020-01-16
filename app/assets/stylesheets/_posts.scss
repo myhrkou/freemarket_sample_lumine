@@ -145,7 +145,8 @@
 
       &__item {
         width: 20%;
-        padding: 10px;
+        margin: 10px;
+        box-shadow: 0 4px 5px rgba(0,0,0,.18);
 
  
         &__image {
@@ -155,7 +156,6 @@
           position: relative;
           padding:0 0 100%;
           z-index:0;
-          box-shadow: 0 2px 4px rgba(0,0,0,.18);
 
           &__price {
             width: 70px;
@@ -167,9 +167,7 @@
             position: absolute;
             color: white;
             // z-index:2;
-            box-shadow: 0 2px 4px rgba(0,0,0,.18);
             font-size:17px;
-
           }
         }
         &__name {
