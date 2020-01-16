@@ -70,9 +70,6 @@ end
 
 gem 'haml-rails'
 
-
-gem 'font-awesome-rails'
-
 gem 'pry-rails'
 
 gem 'devise'
@@ -88,3 +85,5 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'fog-aws'
+
+gem "font-awesome-sass"
