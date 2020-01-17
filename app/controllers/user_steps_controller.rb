@@ -57,7 +57,7 @@ class UserStepsController < ApplicationController
       session[:address]
 
     )
-    if @user.save!
+    if @user.save
       sign_in User.find(@user.id) unless user_signed_in?
     else
       render register3_user_steps_path
