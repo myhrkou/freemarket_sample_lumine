@@ -62,7 +62,7 @@ class UserStepsController < ApplicationController
     else
       render register3_user_steps_path
     end
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = Rails.application.secrets.payjp_private_key
     if params["payjp-token"].blank?
       render "user_steps/register4"
     else
@@ -78,7 +78,7 @@ class UserStepsController < ApplicationController
         card_id: customer.default_card,
       )
 
-      if @card.save!
+      if @card.save
         redirect_to done_user_steps_path
       else
         redirect_to register4_user_steps_path
