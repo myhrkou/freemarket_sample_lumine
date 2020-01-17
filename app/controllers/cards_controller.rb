@@ -55,4 +55,4 @@ class CardsController < ApplicationController
     @card = Card.where(user_id: current_user.id).first
   end
 end
-end
+
