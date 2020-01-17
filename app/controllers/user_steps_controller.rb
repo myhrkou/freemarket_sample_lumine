@@ -78,7 +78,7 @@ class UserStepsController < ApplicationController
         card_id: customer.default_card,
       )
 
-      if @card.save
+      if @card.save!
         redirect_to done_user_steps_path
       else
         redirect_to register4_user_steps_path
