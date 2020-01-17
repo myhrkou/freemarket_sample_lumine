@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :address
-  has_many :cards
   accepts_nested_attributes_for :address
+  has_many :cards
   
   validates :nickname, presence: true,uniqueness: true
   validates :email,presence:true,uniqueness:true,length:{minimum:7}
