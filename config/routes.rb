@@ -1,7 +1,8 @@
+Rails.application.routes.draw do
   devise_for :users, controllers: {
-            omniauth_callbacks: "users/omniauth_callbacks",
-            registrations: "users/registrations",
-          }
+                       omniauth_callbacks: "users/omniauth_callbacks",
+                       registrations: "users/registrations",
+                     }
   root "tests#index"
   resources :users
   resources :user_steps, only: [:create]
@@ -23,8 +24,8 @@
   end
 
   resources :tests
-    resources :tests do
-    collection do 
+  resources :tests do
+    collection do
       get :mypage
     end
   end
