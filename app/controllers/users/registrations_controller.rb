@@ -10,13 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    if params[:sns_auth] == "true"
-      pass = Devise.friendly_token
-      params[:user][:password] = pass
-    end
-    render template: "user_steps/create"
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit
