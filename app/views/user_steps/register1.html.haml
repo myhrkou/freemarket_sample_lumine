@@ -1,7 +1,10 @@
 = form_for @user, url: register2_user_steps_path, method: :get do |f|
   = f.text_field :nickname, placeholder: '例) メルカリ太郎'
   = f.email_field :email, placeholder: 'PC・携帯どちらでも可'
-  = f.password_field :password, placeholder: '7文字以上'
+  - if @sns_id.present?
+    = hidden_field_tag :sns_auth, true
+  - else
+    = f.password_field :password, placeholder: '7文字以上',autocomplete: "new-password"
   = f.text_field :last_name, placeholder: '例) 山田'
   = f.text_field :first_name, placeholder: '例) 彩'
   = f.text_field :yomi_last_name, placeholder: '例) ヤマダ'

@@ -20,11 +20,11 @@ class UserStepsController < ApplicationController
     session[:phone_number] = user_params[:phone_number]
     @user = User.new
     @user.build_address
-    @user.last_name=session[:last_name]
-    @user.first_name=session[:first_name]
-    @user.yomi_last_name=session[:yomi_last_name]
-    @user.yomi_first_name=session[:yomi_first_name]
-    @user.phone_number=session[:phone_number]
+    @user.last_name = session[:last_name]
+    @user.first_name = session[:first_name]
+    @user.yomi_last_name = session[:yomi_last_name]
+    @user.yomi_first_name = session[:yomi_first_name]
+    @user.phone_number = session[:phone_number]
   end
 
   def register4
@@ -37,11 +37,15 @@ class UserStepsController < ApplicationController
     session[:city] = user_params[address: [:city]]
     session[:number] = user_params[address: [:number]]
     session[:building] = user_params[address: [:building]]
-    session[:address]=user_params[:address_attributes]
+    session[:address] = user_params[:address_attributes]
     @user = User.new
   end
 
   def create
+    pass = Devise.friendly_token
+    if pass.present?
+      session[:password] = pass
+    end
     @user = User.new(
       nickname: session[:nickname],
       email: session[:email],
@@ -51,16 +55,16 @@ class UserStepsController < ApplicationController
       yomi_last_name: session[:yomi_last_name],
       yomi_first_name: session[:yomi_first_name],
       phone_number: session[:phone_number],
-      birth_day: session[:birth_day]
+      birth_day: session[:birth_day],
     )
     @user.build_address(
       session[:address]
-
     )
+
     if @user.save
       sign_in User.find(@user.id) unless user_signed_in?
     else
-      render register3_user_steps_path
+      render "user_steps/register4"
     end
     Payjp.api_key = Rails.application.secrets.payjp_private_key
     if params["payjp-token"].blank?
