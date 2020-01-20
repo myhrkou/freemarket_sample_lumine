@@ -1,9 +1,9 @@
 -if user_signed_in?
-  =current_user.nickname
+  = current_user.nickname
   がログイン中
-  =link_to "logout",destroy_user_session_path,method: :delete
+  = link_to "logout",destroy_user_session_path,method: :delete
 -else
-  =link_to "新規登録",register1_user_steps_path
-  =link_to "メールアドレスでログイン",user_session_path
+  = link_to "新規登録",register1_user_steps_path
+  = link_to "メールアドレスでログイン",user_session_path
   = link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, method: :post
   = link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post
