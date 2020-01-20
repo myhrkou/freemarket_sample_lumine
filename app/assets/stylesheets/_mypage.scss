@@ -17,149 +17,208 @@
   width: 100%;
   background-color: rgb(239,239,239);
   padding-bottom: 40px;
+  &__left{
+    width:280px;
+    height:100%;
+    margin: 40px 40px 0px 80px;
+    &__lists{
+      &__mypagelist{
+        &__tag{
+          display: flex;
+          justify-content: space-between;
+          border-top: 1px solid #eee;
+          background-color: #fff;
+        }
+        &__title{
+          margin-top: 40px;
+          font-size:16px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  &__right{
+    width:990px;
+    margin: 40px 80px 0px 0px;
+    &__top{
+      &__user{
+        margin: 0 auto;
+        text-align: center;
+        background-image: url(https://www.sozailab.jp/db_img/sozai/35761/35c2d1776eacd7d07cc111a87a4acd68.jpg);
+        padding: 20px;
+        &__name{
+          margin-top: 8px;
+          font-size: 14px;
+          font-weight: 600;
+        }
 
-}
+        &__count{
+          display: flex;
+          justify-content: space-around;
+          margin-top:8px;
+        }
+      }
+    }
+    &__middle{
+      background-color: white;
+      font-size: 16px;
+      &__tablist{
+        &__tab{
+          display: flex;
+          justify-content:space-between;
+          &__info{
+            width: 50%;
+            background-color: white;
+            font-size: 22px;
+            text-align: center;
+          }
+          &__todo{
+            width: 50%;
+            background-color: #c0c0c0;
+            font-size: 22px;
+            text-align: center;
+          }
+        }
 
-.contents-mypage__left{
-  width:280px;
-  height:100%;
-  margin: 40px 40px 0px 80px;
-}
+        &__list{
+          &__tag{
+            display: flex;
+            justify-content: flex-start;
+            border-bottom: 1px solid #eee;
+            list-style: none;
+            padding: 16px;
+            position: relative;
+            &__logo{
+              width:48px;
+              height:48px;
+            }
+            &__text{
+              margin: 0 40px 0 68px;
+              display: flex;
+              justify-content: flex-start;
+            }
+            &__sentense{
+              &__time{
+                display: flex;
+                justify-content: flex-start;
+                &__icon{
+                  margin-right: 8px;
+                  color:gray;
+                  font-size: 14px;
+                }
+                &__text{
+                  margin-right: 8px;
+                  color:gray;
+                  font-size: 14px;
+                }
+              }
+              &__text{
+                font-size: 14px;
+              }
+            }
+            &__icon{
+              position: absolute;
+              top:50%;
+              right:16px;
+            }
+          }
+          &__watch{
+            border-bottom: 1px solid #eee;
+            list-style: none;
+            padding: 16px;
+            &__text{
+              background-color: lightgray;
+              height:56px;
+              text-align: center;
+              line-height: 56px;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+     
+    }
+    &__bottom{
+      margin-top: 40px;
+      background-color: white;
+      font-size: 16px;
+      &__title{
+        height:72px;
+        line-height: 72px;
+        background-color:#dddddd;
+      }
+      &__tab{
+        display: flex;
+        justify-content:space-between;
+        &__left{
+          width: 50%;
+          background-color: white;
+          font-size: 22px;
+          text-align: center;
+        }
+        &__right{
+          width: 50%;
+          font-size: 22px;
+          text-align: center;
+          background-color: #c0c0c0;
+        }
+      }
+      &__lists{
+        &__tag{
+          &__list{
+            border-bottom: 1px solid #eee;
+            list-style: none;
+            padding: 16px;
+            &__watch{
+              background-color: lightgray;
+              height:56px;
+              text-align: center;
+              line-height: 56px;
+              font-size: 14px;
+            }
+          }
+          &__item{
+            display: flex;
+            justify-content: flex-start;
+            border-bottom: 1px solid #eee;
+            list-style: none;
+            padding: 16px;
+            position: relative;
+            &__icon{
+              position: absolute;
+              top:50%;
+              right:16px;
+            }
+            &__sentense{
+              &__text{
+                font-size: 14px;
+              }
+              &__time{
+                display: flex;
+                justify-content: flex-start;
+                &__icon{
+                  margin-right: 8px;
+                  color:gray;
+                  font-size: 14px;
+                }
+                &__text{
+                  margin-right: 8px;
+                  color:gray;
+                  font-size: 14px;
+                }
+              }
+            }
 
-.contents-mypage__left__lists__mypagelist__tag{
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid #eee;
-  background-color: #fff;
-}
-
-.contents-mypage__left__lists__mypagelist__title{
-  margin-top: 40px;
-  font-size:16px;
-  font-weight: bold;
-}
-
-
-.contents-mypage__right{
-  width:990px;
-  margin: 40px 80px 0px 0px;
-}
-
-
-.contents-mypage__right__top__user{
-  margin: 0 auto;
-  text-align: center;
-  background-image: url(https://www.sozailab.jp/db_img/sozai/35761/35c2d1776eacd7d07cc111a87a4acd68.jpg);
-  padding: 20px;
-}
-
-.contents-mypage__right__top__user__name{
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.contents-mypage__right__top__user__count{
-  display: flex;
-  justify-content: space-around;
-  margin-top:8px;
-}
-
-.contents-mypage__right__middle__tablist__tab,.contents-mypage__right__bottom__tab{
-  display: flex;
-  justify-content:space-between;
-}
-
-.contents-mypage__right__middle__tablist__tab__info,.contents-mypage__right__bottom__tab__left{
-  width: 50%;
-  background-color: white;
-  font-size: 22px;
-  text-align: center;
-}
-
-.contents-mypage__right__middle__tablist__tab__todo,.contents-mypage__right__bottom__tab__right{
-  width: 50%;
-  font-size: 22px;
-  text-align: center;
-  background-color: #c0c0c0;
-}
-
-
-
-.contents-mypage__right__middle__tablist__list__tag,.contents-mypage__right__bottom__lists__tag__item{
-  display: flex;
-  justify-content: flex-start;
-  border-bottom: 1px solid #eee;
-  list-style: none;
-  padding: 16px;
-  position: relative;
-}
-
-.contents-mypage__right__middle__tablist__list__tag__logo,.contents-mypage__right__bottom__lists__tag__item__logo{
-  width:48px;
-  height:48px;
-}
-
-.contents-mypage__right__middle__tablist__list__tag__text{
-  margin: 0 40px 0 68px;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.contents-mypage__right__middle__tablist__list__tag__sentense__time,.contents-mypage__right__bottom__lists__tag__item__sentense__time{
-  display: flex;
-  justify-content: flex-start;
-}
-
-.contents-mypage__right__middle__tablist__list__tag__sentense__time__icon,.contents-mypage__right__bottom__lists__tag__item__sentense__time__icon,.contents-mypage__right__middle__tablist__list__tag__sentense__time__text,.contents-mypage__right__bottom__lists__tag__item__sentense__time__text{
-  margin-right: 8px;
-  color:gray;
-  font-size: 14px;
-}
-
-.contents-mypage__right__middle__tablist__list__watch__text,.contents-mypage__right__bottom__lists__tag__list__watch{
-  background-color: lightgray;
-  height:56px;
-  text-align: center;
-  line-height: 56px;
-  font-size: 14px;
-}
-
-
-
-.contents-mypage__right__middle__tablist__list__tag__sentense__text,.contents-mypage__right__bottom__lists__tag__item__sentense__text{
-    font-size: 14px;
-}
-
-.contents-mypage__right__middle__tablist__list__tag__icon,.contents-mypage__right__bottom__lists__tag__item__icon{
-    position: absolute;
-    top:50%;
-    right:16px;
-}
-
-
-.contents-mypage__right__bottom{
-  margin-top: 40px;
-  background-color: white;
-  font-size: 16px;
-}
-
-.contents-mypage__right__middle{
-  background-color: white;
-  font-size: 16px;
-
-}
-
-.contents-mypage__right__bottom__title{
-  height:72px;
-  line-height: 72px;
-  background-color:#dddddd;
-}
-
-.contents-mypage__right__bottom__lists__tag__list,.contents-mypage__right__middle__tablist__list__watch{
-  border-bottom: 1px solid #eee;
-  list-style: none;
-  padding: 16px;
+            &__logo{
+              width:48px;
+              height:48px;
+            }
+          }
+        }
+        
+      }
+    }
+  }
 }
 
   .pan{
@@ -175,14 +234,10 @@
     font-size: 60px;
   }
   
-  
   .heart,.bell,.check,.user{
     line-height: 36px;
     color: gray;
   }
-
-
-
 
   .content,.content2{
     display: none;

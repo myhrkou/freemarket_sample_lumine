@@ -1,0 +1,73 @@
+.header__top
+  .header__top__logo
+    = image_tag src="/assets/fmarket_logo_red.svg",class: 'mercari'
+  .header__top__search
+    .header__top__search__text
+      %input{name: "content", type:"text",class: "input",placeholder: '何かお探しですか？'}
+      //検索実装時にフォームに変更してください。
+    .header__top__search__icon
+      = icon('fas', 'search')
+.header__bottom
+  .header__bottom__left
+    .header__bottom__left__category
+      = icon('fas', 'list-ul',class:"list-ul")
+      カテゴリーから探す
+      .category__all
+        %li.category__li
+          .category__title1.category-list
+            カテゴリー１
+          .category__item
+            %ul.sub
+              %li.category__sub1.category-list
+                カテゴリー１.１
+                %ul.subsub
+                  %li.category__subsub1.category-list
+                    カテゴリー１.１.1
+                  %li.category__subsub2
+                    カテゴリー１.1.2
+              %li.category__sub2
+                カテゴリー１.2
+
+        %li.category__li
+          .category__title2
+            カテゴリー2
+          -# .category__item
+          -#   %ul.category__li
+          -#     %li.category__sub
+          -#       カテゴリー2.１
+          -#     %li.category__sub
+          -#       カテゴリー2.2
+
+    .header__bottom__left__brand
+      = icon('fas', 'tag',class:"tag")
+      ブランドから探す
+      %ul.brand__all
+        %li.brand
+          brand1
+        %li.brand
+          brand2
+    
+  .header__bottom__right
+    .header__bottom__right__good
+      .header__bottom__right__good__icon
+      = icon('fas', 'heart',class:"heart")
+      .header__bottom__right__good__text
+        いいね
+    .header__bottom__right__info
+      .header__bottom__right__info__icon
+      = icon('fas', 'bell',class:"bell")
+      .header__bottom__right__info__text
+        お知らせ
+    .header__bottom__right__todo
+      .header__bottom__right__todo__icon
+      = icon('fas', 'check',class:"check")
+      .header__bottom__right__todo__text
+        やることリスト
+    .header__bottom__right__my
+      .header__bottom__right__my__icon
+      = icon('fas', 'user',class:"user")
+      .header__bottom__right__my__text
+        マイページ
+
+
+        
