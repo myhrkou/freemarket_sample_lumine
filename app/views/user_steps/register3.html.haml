@@ -1,0 +1,13 @@
+= form_for @user, url: register4_user_steps_path, method: :get do |f|
+  = f.text_field :last_name, placeholder: '例) 山田'
+  = f.text_field :first_name, placeholder: '例) 彩'
+  = f.text_field :yomi_last_name, placeholder: '例) ヤマダ'
+  = f.text_field :yomi_first_name, placeholder: '例) アヤ'
+  =f.fields_for :address do |fi|
+    =fi.text_field :zip, placeholder: '000-0000'
+    =fi.text_field :prefecture, placeholder: '千葉県'
+    =fi.text_field :city, placeholder: '〇〇市'
+    =fi.text_field :number, placeholder: '0-0-0'
+    =fi.text_field :building, placeholder: '〇〇マンション'
+  =f.text_field :phone_number, placeholder: '000-0000-0000'
+  =f.submit "next"

@@ -1,0 +1,36 @@
+%h2 Sign up
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = render "devise/shared/error_messages", resource: resource
+  .field
+    = f.label :nickname
+    %br/
+    = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
+  .field
+    = f.label :email
+    %br/
+    = f.email_field :email, autofocus: true
+  .field
+    = f.label :password
+    %em
+      (7 characters minimum)
+    %br/
+    = f.password_field :password, autocomplete: "new-password"
+  .field
+    name
+    %br/
+    = f.text_field :last_name, autofocus: true
+    = f.text_field :first_name, autofocus: true
+    %br/
+  .field
+    yomi-name
+    %br/
+    = f.text_field :yomi_last_name, autofocus: true
+    = f.text_field :yomi_first_name, autofocus: true
+    %br/
+  .field
+    birthday
+    %br/
+    =f.text_field :birth_day,autofocus: true
+
+    %br/
+  =f.submit "next"

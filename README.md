@@ -9,11 +9,8 @@
 |last_name|string|null: false|
 |yomi_first_name|string|null: false|
 |yomi_last_name|string|null: false|
-|birth_year|integer|null: false|
-|birth_month|integer|null: false|
-|birth_day|integer|null: false|
-|address_id|integer|null: false|
-|phone_number|integer||
+|birth_day|date|null: false|
+|phone_number|string||
 ### Association
 - has_many :cards
 - has_many :items
@@ -35,8 +32,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |customer_id|string|null: false|
-|card_id|integer|null: false|
-|user_id|integer|null: false,foreign_key: true|
+|card_id|string|null: false|
+|user_id|string|null: false,foreign_key: true|
 ### Association
 - belongs_to :user
 

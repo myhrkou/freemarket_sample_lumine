@@ -43,6 +43,13 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+end
+
+group :test do
+  gem 'faker',"~>2.8"
 end
 
 group :development do
@@ -51,7 +58,7 @@ group :development do
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen', '~> 2.0.0'  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -65,6 +72,14 @@ gem 'haml-rails'
 
 gem 'pry-rails'
 
+gem 'devise'
+
+gem 'rufo'
+
+gem 'payjp'
+
+gem 'dotenv-rails'
+
 gem 'carrierwave'
 
 gem 'mini_magick'
@@ -72,3 +87,9 @@ gem 'mini_magick'
 gem 'fog-aws'
 
 gem "font-awesome-sass"
+
+gem 'omniauth-facebook'
+
+gem 'omniauth-google-oauth2'
+
+gem 'omniauth-rails_csrf_protection'
