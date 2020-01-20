@@ -1,0 +1,457 @@
+.html
+  .hader
+    .header__top
+      .header__top__logo
+        = image_tag src="/assets/fmarket_logo_red.svg",class: 'mercari'
+      .header__top__search
+        .header__top__search__text
+          %input{name: "content", type:"text",class: "input",placeholder: '何かお探しですか？'}
+          //検索実装時にフォームに変更してください。
+        .header__top__search__icon
+          = icon('fas', 'search')
+    .header__bottom
+      .header__bottom__left
+        .header__bottom__left__category
+          = icon('fas', 'list-ul',class:"list-ul")
+          カテゴリーから探す
+          .category__all
+            %li.category__li
+              .category__title1.category-list
+                カテゴリー１
+              .category__item
+                %ul.sub
+                  %li.category__sub1.category-list
+                    カテゴリー１.１
+                    %ul.subsub
+                      %li.category__subsub1.category-list
+                        カテゴリー１.１.1
+                      %li.category__subsub2
+                        カテゴリー１.1.2
+                  %li.category__sub2
+                    カテゴリー１.2
+
+            %li.category__li
+              .category__title2
+                カテゴリー2
+              -# .category__item
+              -#   %ul.category__li
+              -#     %li.category__sub
+              -#       カテゴリー2.１
+              -#     %li.category__sub
+              -#       カテゴリー2.2
+
+        .header__bottom__left__brand
+          = icon('fas', 'tag',class:"tag")
+          ブランドから探す
+          %ul.brand__all
+            %li.brand
+              brand1
+            %li.brand
+              brand2
+      .header__bottom__right
+        .header__bottom__right__good
+          .header__bottom__right__good__icon
+          = icon('fas', 'heart',class:"heart")
+          .header__bottom__right__good__text
+            いいね
+        .header__bottom__right__info
+          .header__bottom__right__info__icon
+          = icon('fas', 'bell',class:"bell")
+          .header__bottom__right__info__text
+            お知らせ
+        .header__bottom__right__todo
+          .header__bottom__right__todo__icon
+          = icon('fas', 'check',class:"check")
+          .header__bottom__right__todo__text
+            やることリスト
+        .header__bottom__right__my
+          .header__bottom__right__my__icon
+          = icon('fas', 'user',class:"user")
+          .header__bottom__right__my__text
+            マイページ
+
+
+        
+  .sell
+    .sell__text
+      出品
+    .sell__img
+      = icon('fas', 'camera',class:"camera")
+  .pan
+    メルカリ＞マイページ
+  .contents-mypage
+    .contents-mypage__left
+      .contents-mypage__left__lists
+        %ul.contents-mypage__left__lists__mypagelist
+
+          %li.contents-mypage__left__lists__mypagelist__tag.mypagetitle
+            .contents-mypage__left__lists__mypagelist__tag__text
+              マイページ
+            .contents-mypage__left__lists__mypagelist__tag__icon
+              = icon('fas', 'angle-right',class:"angle")
+          %li.contents-mypage__left__lists__mypagelist__tag
+            .contents-mypage__left__lists__mypagelist__tag__text
+              お知らせ
+            .contents-mypage__left__lists__mypagelist__tag__icon
+              = icon('fas', 'angle-right',class:"angle")
+          %li.contents-mypage__left__lists__mypagelist__tag
+            .contents-mypage__left__lists__mypagelist__tag__text
+              やることリスト
+            .contents-mypage__left__lists__mypagelist__tag__icon
+              = icon('fas', 'angle-right',class:"angle")
+          %li.contents-mypage__left__lists__mypagelist__tag
+            .contents-mypage__left__lists__mypagelist__tag__text
+              いいね
+            .contents-mypage__left__lists__mypagelist__tag__icon
+              = icon('fas', 'angle-right',class:"angle")
+          %li.contents-mypage__left__lists__mypagelist__tag
+            .contents-mypage__left__lists__mypagelist__tag__text
+              出品する
+            .contents-mypage__left__lists__mypagelist__tag__icon
+              = icon('fas', 'angle-right',class:"angle")
+          .contents-mypage__left__lists__mypagelist__title
+            メルペイ
+
+        %ul.contents-mypage__left__lists__mypagelist
+          %li.contents-mypage__left__lists__mypagelist__tag
+            .contents-mypage__left__lists__mypagelist__tag__text
+              売り上げ・振込申請
+            .contents-mypage__left__lists__mypagelist__tag__icon
+              = icon('fas', 'angle-right',class:"angle")
+          %li.contents-mypage__left__lists__mypagelist__tag
+            .contents-mypage__left__lists__mypagelist__tag__text
+              ポイント
+            .contents-mypage__left__lists__mypagelist__tag__icon
+              = icon('fas', 'angle-right',class:"angle")
+          .contents-mypage__left__lists__mypagelist__title
+            設定
+        %ul.contents-mypage__left__lists__mypagelist
+          %li.contents-mypage__left__lists__mypagelist__tag
+            .contents-mypage__left__lists__mypagelist__tag__text
+              プロフィール
+            .contents-mypage__left__lists__mypagelist__tag__icon
+              = icon('fas', 'angle-right',class:"angle")
+          %li.contents-mypage__left__lists__mypagelist__tag
+            .contents-mypage__left__lists__mypagelist__tag__text
+              支払い方法
+            .contents-mypage__left__lists__mypagelist__tag__icon
+              = icon('fas', 'angle-right',class:"angle")
+          %li.contents-mypage__left__lists__mypagelist__tag
+            .contents-mypage__left__lists__mypagelist__tag__text
+              ログアウト
+            .contents-mypage__left__lists__mypagelist__tag__icon
+              = icon('fas', 'angle-right',class:"angle")
+
+       
+    .contents-mypage__right
+      .contents-mypage__right__top
+        .contents-mypage__right__top__user
+          .contents-mypage__right__top__user__face
+            = icon('fas', 'user',class:"userface")
+          .contents-mypage__right__top__user__name
+            名前
+          .contents-mypage__right__top__user__count
+            .contents-mypage__right__top__user__count__value
+              評価数  0
+            .contents-mypage__right__top__user__count__sell
+              出品数  0
+      .contents-mypage__right__middle
+        .contents-mypage__right__middle__tablist
+          .contents-mypage__right__middle__tablist__tab
+            .contents-mypage__right__middle__tablist__tab__info.menu_item1.active
+              お知らせ
+            .contents-mypage__right__middle__tablist__tab__todo.menu_item1
+              することリスト
+          .contents-mypage__right__middle__tablist__info-list.content.show
+            %li.contents-mypage__right__middle__tablist__list__tag
+              .contents-mypage__right__middle__tablist__list__tag__logo
+                = image_tag src="/assets/logo_red.svg"
+              .contents-mypage__right__middle__tablist__list__tag__sentense
+                .contents-mypage__right__middle__tablist__list__tag__sentense__text
+                  事務局から「ログイン通知」
+                .contents-mypage__right__middle__tablist__list__tag__sentense__time
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__icon
+                    = icon('fas', 'clock')
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__text
+                    1時間前
+              .contents-mypage__right__middle__tablist__list__tag__icon
+                = icon('fas', 'angle-right')
+            %li.contents-mypage__right__middle__tablist__list__tag
+              .contents-mypage__right__middle__tablist__list__tag__logo
+                = image_tag src="/assets/logo_red.svg"
+              .contents-mypage__right__middle__tablist__list__tag__sentense
+                .contents-mypage__right__middle__tablist__list__tag__sentense__text
+                  クーポンについて
+                .contents-mypage__right__middle__tablist__list__tag__sentense__time
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__icon
+                    = icon('fas', 'clock')
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__text
+                    1時間前
+              .contents-mypage__right__middle__tablist__list__tag__icon
+                = icon('fas', 'angle-right')
+            %li.contents-mypage__right__middle__tablist__list__tag
+              .contents-mypage__right__middle__tablist__list__tag__logo
+                = image_tag src="/assets/logo_red.svg"
+              .contents-mypage__right__middle__tablist__list__tag__sentense
+                .contents-mypage__right__middle__tablist__list__tag__sentense__text
+                  クーポンについて
+                .contents-mypage__right__middle__tablist__list__tag__sentense__time
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__icon
+                    = icon('fas', 'clock')
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__text
+                    1時間前
+              .contents-mypage__right__middle__tablist__list__tag__icon
+                = icon('fas', 'angle-right')
+            %li.contents-mypage__right__middle__tablist__list__tag
+              .contents-mypage__right__middle__tablist__list__tag__logo
+                = image_tag src="/assets/logo_red.svg"
+              .contents-mypage__right__middle__tablist__list__tag__sentense
+                .contents-mypage__right__middle__tablist__list__tag__sentense__text
+                  クーポンについて
+                .contents-mypage__right__middle__tablist__list__tag__sentense__time
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__icon
+                    = icon('fas', 'clock')
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__text
+                    1時間前
+              .contents-mypage__right__middle__tablist__list__tag__icon
+                = icon('fas', 'angle-right')
+            %li.contents-mypage__right__middle__tablist__list__watch
+              .contents-mypage__right__middle__tablist__list__watch__text
+                一覧を見る
+          .contents-mypage__right__middle__tablist__todo-list.content
+            %li.contents-mypage__right__middle__tablist__list__tag
+              .contents-mypage__right__middle__tablist__list__tag__logo
+                = image_tag src="/assets/logo_red.svg"
+              .contents-mypage__right__middle__tablist__list__tag__sentense
+                .contents-mypage__right__middle__tablist__list__tag__sentense__text
+                  事務局から「ログイン通知」すること
+                .contents-mypage__right__middle__tablist__list__tag__sentense__time
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__icon
+                    = icon('fas', 'clock')
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__text
+                    1時間前
+              .contents-mypage__right__middle__tablist__list__tag__icon
+                = icon('fas', 'angle-right')
+            %li.contents-mypage__right__middle__tablist__list__tag
+              .contents-mypage__right__middle__tablist__list__tag__logo
+                = image_tag src="/assets/logo_red.svg"
+              .contents-mypage__right__middle__tablist__list__tag__sentense
+                .contents-mypage__right__middle__tablist__list__tag__sentense__text
+                  クーポンについてすること
+                .contents-mypage__right__middle__tablist__list__tag__sentense__time
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__icon
+                    = icon('fas', 'clock')
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__text
+                    1時間前
+              .contents-mypage__right__middle__tablist__list__tag__icon
+                = icon('fas', 'angle-right')
+            %li.contents-mypage__right__middle__tablist__list__tag
+              .contents-mypage__right__middle__tablist__list__tag__logo
+                = image_tag src="/assets/logo_red.svg"
+              .contents-mypage__right__middle__tablist__list__tag__sentense
+                .contents-mypage__right__middle__tablist__list__tag__sentense__text
+                  クーポンについてすること
+                .contents-mypage__right__middle__tablist__list__tag__sentense__time
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__icon
+                    = icon('fas', 'clock')
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__text
+                    1時間前
+              .contents-mypage__right__middle__tablist__list__tag__icon
+                = icon('fas', 'angle-right')
+            %li.contents-mypage__right__middle__tablist__list__tag
+              .contents-mypage__right__middle__tablist__list__tag__logo
+                = image_tag src="/assets/logo_red.svg"
+              .contents-mypage__right__middle__tablist__list__tag__sentense
+                .contents-mypage__right__middle__tablist__list__tag__sentense__text
+                  クーポンについてすること
+                .contents-mypage__right__middle__tablist__list__tag__sentense__time
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__icon
+                    = icon('fas', 'clock')
+                  .contents-mypage__right__middle__tablist__list__tag__sentense__time__text
+                    1時間前
+              .contents-mypage__right__middle__tablist__list__tag__icon
+                = icon('fas', 'angle-right')
+            %li.contents-mypage__right__middle__tablist__list__watch
+              .contents-mypage__right__middle__tablist__list__watch__text
+                一覧を見る
+      .contents-mypage__right__bottom
+        .contents-mypage__right__bottom__title
+          購入した商品
+        .contents-mypage__right__bottom__tab
+          .contents-mypage__right__bottom__tab__left.menu_item2.active
+            取引中
+          .contents-mypage__right__bottom__tab__right.menu_item2
+            過去の取引
+        .contents-mypage__right__bottom__lists-left.content2.show2
+          .contents-mypage__right__bottom__lists__tag
+            %li.contents-mypage__right__bottom__lists__tag__item
+              .contents-mypage__right__bottom__lists__tag__item__logo
+                = image_tag src="/assets/logo_red.svg"
+              .contents-mypage__right__bottom__lists__tag__item__sentense
+                .contents-mypage__right__bottom__lists__tag__item__sentense__text
+                  事務局から「ログイン通知」
+                .contents-mypage__right__bottom__lists__tag__item__sentense__time
+                  .contents-mypage__right__bottom__lists__tag__item__sentense__time__icon
+                    = icon('fas', 'clock')
+                  .contents-mypage__right__bottom__lists__tag__item__sentense__time__text
+                    1時間前
+              .contents-mypage__right__bottom__lists__tag__item__icon
+                = icon('fas', 'angle-right')
+            %li.contents-mypage__right__bottom__lists__tag__item
+              .contents-mypage__right__bottom__lists__tag__item__logo
+                = image_tag src="/assets/logo_red.svg"
+              .contents-mypage__right__bottom__lists__tag__item__sentense
+                .contents-mypage__right__bottom__lists__tag__item__sentense__text
+                  事務局から「ログイン通知」
+                .contents-mypage__right__bottom__lists__tag__item__sentense__time
+                  .contents-mypage__right__bottom__lists__tag__item__sentense__time__icon
+                    = icon('fas', 'clock')
+                  .contents-mypage__right__bottom__lists__tag__item__sentense__time__text
+                    1時間前
+              .contents-mypage__right__bottom__lists__tag__item__icon
+                = icon('fas', 'angle-right')
+            
+            %li.contents-mypage__right__bottom__lists__tag__item
+              .contents-mypage__right__bottom__lists__tag__item__logo
+                = image_tag src="/assets/logo_red.svg"
+              .contents-mypage__right__bottom__lists__tag__item__sentense
+                .contents-mypage__right__bottom__lists__tag__item__sentense__text
+                  事務局から「ログイン通知」
+                .contents-mypage__right__bottom__lists__tag__item__sentense__time
+                  .contents-mypage__right__bottom__lists__tag__item__sentense__time__icon
+                    = icon('fas', 'clock')
+                  .contents-mypage__right__bottom__lists__tag__item__sentense__time__text
+                    1時間前
+              .contents-mypage__right__bottom__lists__tag__item__icon
+                = icon('fas', 'angle-right')
+            %li.li.contents-mypage__right__bottom__lists__tag__list
+              .li.contents-mypage__right__bottom__lists__tag__list__watch
+                一覧を見る
+        .contents-mypage__right__bottom__lists-right.content2
+          .contents-mypage__right__bottom__lists__tag
+            %li.contents-mypage__right__bottom__lists__tag__item
+              .contents-mypage__right__bottom__lists__tag__item__logo
+                = image_tag src="/assets/logo_red.svg"
+              .contents-mypage__right__bottom__lists__tag__item__sentense
+                .contents-mypage__right__bottom__lists__tag__item__sentense__text
+                  事務局から「ログイン通知」過去
+                .contents-mypage__right__bottom__lists__tag__item__sentense__time
+                  .contents-mypage__right__bottom__lists__tag__item__sentense__time__icon
+                    = icon('fas', 'clock')
+                  .contents-mypage__right__bottom__lists__tag__item__sentense__time__text
+                    1時間前
+              .contents-mypage__right__bottom__lists__tag__item__icon
+                = icon('fas', 'angle-right')
+            %li.contents-mypage__right__bottom__lists__tag__item
+              .contents-mypage__right__bottom__lists__tag__item__logo
+                = image_tag src="/assets/logo_red.svg"
+              .contents-mypage__right__bottom__lists__tag__item__sentense
+                .contents-mypage__right__bottom__lists__tag__item__sentense__text
+                  事務局から「ログイン通知」過去
+                .contents-mypage__right__bottom__lists__tag__item__sentense__time
+                  .contents-mypage__right__bottom__lists__tag__item__sentense__time__icon
+                    = icon('fas', 'clock')
+                  .contents-mypage__right__bottom__lists__tag__item__sentense__time__text
+                    1時間前
+              .contents-mypage__right__bottom__lists__tag__item__icon
+                = icon('fas', 'angle-right')
+            
+            %li.contents-mypage__right__bottom__lists__tag__item
+              .contents-mypage__right__bottom__lists__tag__item__logo
+                = image_tag src="/assets/logo_red.svg"
+              .contents-mypage__right__bottom__lists__tag__item__sentense
+                .contents-mypage__right__bottom__lists__tag__item__sentense__text
+                  事務局から「ログイン通知」過去
+                .contents-mypage__right__bottom__lists__tag__item__sentense__time
+                  .contents-mypage__right__bottom__lists__tag__item__sentense__time__icon
+                    = icon('fas', 'clock')
+                  .contents-mypage__right__bottom__lists__tag__item__sentense__time__text
+                    1時間前
+              .contents-mypage__right__bottom__lists__tag__item__icon
+                = icon('fas', 'angle-right')
+            %li.li.contents-mypage__right__bottom__lists__tag__list
+              .li.contents-mypage__right__bottom__lists__tag__list__watch
+                一覧を見る
+
+
+  .footer
+    .footer__top
+      = image_tag src="/assets/publicdomainq-0030438waljrv.png",class: 'market'
+      .footer__top__smartphone
+        .footer__top__smartphone__left
+          .footer__top__smartphone__left__text
+            .footer__top__smartphone__left__text__text1
+              スマホでかんたんフリマアプリ
+            .footer__top__smartphone__left__text__text2
+              いますぐ無料ダウンロード！
+          .footer__top__smartphone__left__app
+            .footer__top__smartphone__left__app__logo
+              = image_tag src="/assets/logo_red.svg",class: 'app_logo'
+            .footer__top__smartphone__left__app__ios
+              =image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg"
+            .footer__top__smartphone__left__app__android
+              =image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg" 
+        .footer__top__smartphone__right
+          = image_tag src="/assets/ダウンロード.png",class: 'smartphone'
+    .footer__bottom
+      .footer__bottom__link
+        .footer__bottom__link__about
+          .footer__bottom__link__about__title
+            メルカリについて
+          %ul.footer__bottom__link__about__title__bullet
+            %li.footer__bottom__link__about__title__bullet__item
+              会社概要
+          %ul.footer__bottom__link__about__title__bullet
+            %li.footer__bottom__link__about__title__bullet__item
+              採用情報
+          %ul.footer__bottom__link__about__title__bullet
+            %li.footer__bottom__link__about__title__bullet__item
+              プレリリース
+          .footer__bottom__link__about__sns
+            .footer__bottom__link__about__sns__twitter
+              = icon('fab', 'twitter')
+            .footer__bottom__link__about__sns__facebook
+              = icon('fab', 'facebook-square')
+           
+        .footer__bottom__link__help
+          .footer__bottom__link__help__title
+            ヘルプ＆ガイド
+          %ul.footer__bottom__link__help__title__bullet
+            %li.footer__bottom__link__help__title__bullet__item
+              ガイド
+          %ul.footer__bottom__link__help__title__bullet
+            %li.footer__bottom__link__help__title__bullet__item
+              ゆう便
+          %ul.footer__bottom__link__help__title__bullet
+            %li.footer__bottom__link__help__title__bullet__item
+              安全について
+        .footer__bottom__link__privacy
+          .footer__bottom__link__privacy__title
+            プライバシーと利用規約
+          %ul.footer__bottom__link__privacy__title__bullet
+            %li.footer__bottom__link__privacy__title__bullet__item
+              プライバシーとポリシー
+          %ul.footer__bottom__link__privacy__title__bullet
+            %li.footer__bottom__link__privacy__title__bullet__item
+              利用規約
+        .footer__bottom__link__rule
+          %ul.footer__bottom__link__rule__bullet
+            %li.footer__bottom__link__rule__bullet__item
+              個人データについて
+          %ul.footer__bottom__link__rule__bullet
+            %li.footer__bottom__link__rule__bullet__item
+              特定商取引について
+        .footer__bottom__link__country
+          .footer__bottom__link__country__title
+            国
+          %ul.footer__bottom__link__country__title__bullet
+            %li.footer__bottom__link__country__title__bullet__item
+              日本
+            %li.footer__bottom__link__country__title__bullet__item
+              United States
+      .footer__bottom__copyright
+        .footer__bottom__copyright__logo
+          = image_tag src="/assets/fmarket_logo_white.svg",class: 'logowhite'
+        .footer__bottom__copyright__text
+          ©️ルミネ
+
