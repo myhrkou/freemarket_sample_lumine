@@ -7,68 +7,7 @@
     メルカリ＞マイページ
   .contents-mypage
     .contents-mypage__left
-      .contents-mypage__left__lists
-        %ul.contents-mypage__left__lists__mypagelist
-
-          %li.contents-mypage__left__lists__mypagelist__tag.mypagetitle
-            .contents-mypage__left__lists__mypagelist__tag__text
-              マイページ
-            .contents-mypage__left__lists__mypagelist__tag__icon
-              = icon('fas', 'angle-right',class:"angle")
-          %li.contents-mypage__left__lists__mypagelist__tag
-            .contents-mypage__left__lists__mypagelist__tag__text
-              お知らせ
-            .contents-mypage__left__lists__mypagelist__tag__icon
-              = icon('fas', 'angle-right',class:"angle")
-          %li.contents-mypage__left__lists__mypagelist__tag
-            .contents-mypage__left__lists__mypagelist__tag__text
-              やることリスト
-            .contents-mypage__left__lists__mypagelist__tag__icon
-              = icon('fas', 'angle-right',class:"angle")
-          %li.contents-mypage__left__lists__mypagelist__tag
-            .contents-mypage__left__lists__mypagelist__tag__text
-              いいね
-            .contents-mypage__left__lists__mypagelist__tag__icon
-              = icon('fas', 'angle-right',class:"angle")
-          %li.contents-mypage__left__lists__mypagelist__tag
-            .contents-mypage__left__lists__mypagelist__tag__text
-              出品する
-            .contents-mypage__left__lists__mypagelist__tag__icon
-              = icon('fas', 'angle-right',class:"angle")
-          .contents-mypage__left__lists__mypagelist__title
-            メルペイ
-
-        %ul.contents-mypage__left__lists__mypagelist
-          %li.contents-mypage__left__lists__mypagelist__tag
-            .contents-mypage__left__lists__mypagelist__tag__text
-              売り上げ・振込申請
-            .contents-mypage__left__lists__mypagelist__tag__icon
-              = icon('fas', 'angle-right',class:"angle")
-          %li.contents-mypage__left__lists__mypagelist__tag
-            .contents-mypage__left__lists__mypagelist__tag__text
-              ポイント
-            .contents-mypage__left__lists__mypagelist__tag__icon
-              = icon('fas', 'angle-right',class:"angle")
-          .contents-mypage__left__lists__mypagelist__title
-            設定
-        %ul.contents-mypage__left__lists__mypagelist
-          %li.contents-mypage__left__lists__mypagelist__tag
-            .contents-mypage__left__lists__mypagelist__tag__text
-              プロフィール
-            .contents-mypage__left__lists__mypagelist__tag__icon
-              = icon('fas', 'angle-right',class:"angle")
-          %li.contents-mypage__left__lists__mypagelist__tag
-            .contents-mypage__left__lists__mypagelist__tag__text
-              支払い方法
-            .contents-mypage__left__lists__mypagelist__tag__icon
-              = icon('fas', 'angle-right',class:"angle")
-          %li.contents-mypage__left__lists__mypagelist__tag
-            .contents-mypage__left__lists__mypagelist__tag__text
-              ログアウト
-            .contents-mypage__left__lists__mypagelist__tag__icon
-              = icon('fas', 'angle-right',class:"angle")
-
-       
+      = render "mypageleft"
     .contents-mypage__right
       .contents-mypage__right__top
         .contents-mypage__right__top__user

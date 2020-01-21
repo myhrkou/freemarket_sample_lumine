@@ -4,4 +4,7 @@ class TestsController < ApplicationController
 
   def mypage
   end
+
+  def mypagelogout
+  end
 end
