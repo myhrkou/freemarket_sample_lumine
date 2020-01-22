@@ -1,10 +1,10 @@
 .html{
   margin: 0 auto;
   width: 100%;
-  // z-index:0; 
   .header {
     width:100%;
     height:100px;
+    z-index:1;
     &__top {
       display: flex;
       justify-content: flex-start;
@@ -108,6 +108,7 @@
     width:160px;
     background-color: rgb(234,53,45);
     border-radius: 50%;
+    z-index:2;
     &__text{
       text-align: center;
       padding-top: 32px;
@@ -127,8 +128,12 @@
     width: 100%;
     height: 100％;
     background-color: rgb(239,239,239);
+    z-index:1;
 
     &__carousel {
+      background-image: url(https://www.illust-box.jp/db_img/sozai/00010/105441/watermark.jpg);
+      width:100%;
+      height:290px;
     }
     &__title {
       width: 100%;
@@ -142,6 +147,7 @@
       height: calc(100% - 100px);
       padding: 50px;
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
       margin:0px auto;
 
@@ -155,9 +161,8 @@
           height: 0;
           background-color: white;
           position: relative;
-          padding:0 0 100%;
-          z-index:0;
-
+          padding:0 0 100%;    
+          box-shadow: 0 2px 4px rgba(0,0,0,.18);
           &__price {
             width: 70px;
             height: 28px;
@@ -166,8 +171,8 @@
             bottom: 8px;
             left: 0px;
             position: absolute;
-            color: white;
-            // z-index:2;
+            color: white;         
+            box-shadow: 0 2px 4px rgba(0,0,0,.18);
             font-size:17px;
           }
         }
@@ -183,6 +188,7 @@
     }
   }
   .footer{
+    z-index:1;
     &__top{
       position: relative;
       width: 100%;
@@ -193,6 +199,7 @@
         width: 100%;
         margin:0px auto;
         top:0;
+       
 
         &__left{
           
@@ -250,9 +257,8 @@
         width:100%;
         margin:0px auto; 
         &__about{
-          width:auto;
+          width:20%;
           margin-top: 18px;
-          padding-right:40px;
           &__title{
             font-size: 16px;
             &__bullet{
@@ -284,9 +290,8 @@
           }
         }
         &__help{
-          width:auto;
+          width:20%;
           margin-top: 18px;
-          padding-right:40px;
           &__title{
             font-size: 16px;
             &__bullet{
@@ -298,9 +303,8 @@
           }
         }
         &__privacy{
-          width:21%;
+          width:20%;
           margin-top: 18px;
-          padding-right:10px;
           &__title{
             &__bullet{
 
@@ -314,9 +318,8 @@
           }
         }
         &__rule{
-          width:21%;
+          width:20%;
           margin-top: 42px;
-          padding-left:10px;
           &__bullet{
             margin:16px 0px 0px;
             &__item{
@@ -327,9 +330,8 @@
           }
         }
         &__country{
-          width:auto;
+          width:20%;
           margin-top: 18px;
-          padding-right:40px;
           &__title{
             &__bullet{
 
@@ -345,9 +347,12 @@
       }
       &__copyright{
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         width:100%;
         margin:30px auto 20px; 
+        &__logo{
+          
+        }
         &__text{
           text-align: center;
           padding-left: 15px;
@@ -376,7 +381,6 @@
 }
 
 .logowhite{
-
 }
 
 .input{
@@ -435,7 +439,7 @@
   font-size:60px;
   line-height: 60px;
   font-stretch: 100%;
-  z-index: 3;
+ 
 }
 
 
