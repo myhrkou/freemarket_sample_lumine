@@ -1,3 +1,36 @@
-= form_for @user, url: register3_user_steps_path, method: :get do |f|
-  =f.text_field :phone_number,placeholder: "000-0000-000"
-  =f.submit "next"
+.register2
+  .register2__header
+    .register2__header__logo
+      = image_tag src="/images/fmarket_logo_red.svg",class: 'mercari'
+    .register2__header__bar
+    .single-header
+      %nav.progress-bar2
+        %ol.clearfix
+          %li.progress-bar2__active
+            会員情報
+            .progress-bar2__active__status
+          %li.progress-bar2__active__phone-number
+            電話番号認証
+            .progress-bar2__active__status__phone-number
+          %li.progress-bar2__active__address
+            お届け先住所入力
+            .progress-bar2__active__status__address
+          %li.progress-bar2__active__payment
+            支払い方法
+            .progress-bar2__active__status__payment
+          %li.progress-bar2__active__complete
+            完了
+            .progress-bar2__active__status__complete
+  .register2__main
+    .register2__main__title
+      電話番号の確認
+    .register2__main__form
+      = form_for @user, url: register3_user_steps_path, method: :get do |f|
+        .register2__main__form__tel
+          %b.label
+            携帯電話の番号
+          .form
+            =f.text_field :phone_number,placeholder: "携帯電話の番号を入力",class:"login_textfield"
+        .register2__main__form__submit
+          =f.submit "次へ進む",class:"login_button"
+  =render "users/footer"

@@ -50,8 +50,13 @@
             %li.brand
               brand2
       .header__bottom__right
-        =link_to '新規会員登録',new_user_path,class:"header__bottom__right__register"
-        =link_to 'ログイン',users_path,class:"header__bottom__right__login"
+        -if user_signed_in?
+          = current_user.nickname
+          がログイン中
+          = link_to "logout",destroy_user_session_path,method: :delete
+        -else
+          =link_to '新規会員登録',new_user_path,class:"header__bottom__right__register"
+          =link_to 'ログイン',user_session_path,class:"header__bottom__right__login"
   .sell
     .sell__text
       出品
@@ -203,4 +208,4 @@
         .footer__bottom__copyright__logo
           = image_tag src="/images/fmarket_logo_white.svg",class: 'logowhite'
         .footer__bottom__copyright__text
-          ©️ルミネ
+          %small &copy; lumine Co.,Ltd.
