@@ -68,6 +68,6 @@
       = icon('fas', 'user',class:"user")
       .header__bottom__right__my__text
         マイページ
-
-
-        
+=current_user.nickname
+がログイン中
+= link_to "logout",destroy_user_session_path,method: :delete
