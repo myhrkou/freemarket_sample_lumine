@@ -43,7 +43,7 @@ class UserStepsController < ApplicationController
 
   def create
     pass = Devise.friendly_token
-    if pass.present?
+    if params["payjp-token"].blank?
       session[:password] = pass
     end
     @user = User.new(
