@@ -47,5 +47,10 @@
         %li.brand
           brand2
   .header__bottom__right
-    =link_to '新規会員登録',new_user_path,class:"header__bottom__right__register"
-    =link_to 'ログイン',users_path,class:"header__bottom__right__login"
+    - if current_user.present?
+      =current_user.nickname
+      がログイン中
+      = link_to "logout",destroy_user_session_path,method: :delete
+    - else
+      =link_to '新規会員登録',new_user_path,class:"header__bottom__right__register"
+      =link_to 'ログイン',new_user_session_path,class:"header__bottom__right__login"
