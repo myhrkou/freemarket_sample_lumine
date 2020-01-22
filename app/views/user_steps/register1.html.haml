@@ -1,13 +1,80 @@
-= form_for @user, url: register2_user_steps_path, method: :get do |f|
-  = f.text_field :nickname, placeholder: '例) メルカリ太郎'
-  = f.email_field :email, placeholder: 'PC・携帯どちらでも可'
-  - if @sns_id.present?
-    = hidden_field_tag :sns_auth, true
-  - else
-    = f.password_field :password, placeholder: '7文字以上',autocomplete: "new-password"
-  = f.text_field :last_name, placeholder: '例) 山田'
-  = f.text_field :first_name, placeholder: '例) 彩'
-  = f.text_field :yomi_last_name, placeholder: '例) ヤマダ'
-  = f.text_field :yomi_first_name, placeholder: '例) アヤ'
-  =f.date_select :birth_day,start_year: 1940, end_year: Time.current.year, use_month_numbers: true
-  =f.submit "next"
+.register1
+  .register1__header
+    .register1__header__logo
+      = image_tag src="/images/fmarket_logo_red.svg",class: 'mercari'
+    .register1__header__bar
+      .single-header
+        %nav.progress-bar
+          %ol.clearfix
+            %li.progress-bar__active
+              会員情報
+              .progress-bar__active__status
+            %li.progress-bar__active__phone-number
+              電話番号認証
+              .progress-bar__active__status__phone-number
+            %li.progress-bar__active__address
+              お届け先住所入力
+              .progress-bar__active__status__address
+            %li.progress-bar__active__payment
+              支払い方法
+              .progress-bar__active__status__payment
+            %li.progress-bar__active__complete
+              完了
+              .progress-bar__active__status__complete
+  .register1__main
+    .register1__main__title
+      会員情報入力
+    .register1__main__form
+      = form_for @user, url: register2_user_steps_path, method: :get do |f|
+        .register1__main__form__nickname
+          %b.label
+            ニックネーム
+            .required
+              必須
+          .form
+            = f.text_field :nickname, placeholder: '例) メルカリ太郎',class:"login_textfield"
+        .register1__main__form__email
+          %b.label
+            メールアドレス
+            .required
+              必須
+          .form
+            = f.email_field :email, placeholder: 'PC・携帯どちらでも可',class:"login_textfield"
+        .register1__main__form__password
+          %b.label
+            パスワード
+            .required
+              必須
+          .form
+            - if @sns_id.present?
+              = hidden_field_tag :sns_auth, true
+            - else
+              = f.password_field :password, placeholder: '7文字以上',autocomplete: "new-password",class:"login_textfield",id:"pfield"
+              .checkbox
+                %input{type:"checkbox",class:"checkbox_box"}　パスワードを表示する
+        .register1__main__form__name
+          %b.label
+            お名前(全角)
+            .required
+              必須
+          .form
+            = f.text_field :last_name, placeholder: '例) 山田',class:"name_textfield"
+            = f.text_field :first_name, placeholder: '例) 彩',class:"name_textfield"
+        .register1__main__form__yomi
+          %b.label
+            お名前カナ(全角)
+            .required
+              必須
+          .form
+            = f.text_field :yomi_last_name, placeholder: '例) ヤマダ',class:"name_textfield"
+            = f.text_field :yomi_first_name, placeholder: '例) アヤ',class:"name_textfield"
+        .register1__main__form__birthday
+          %b.label
+            生年月日
+            .required
+              必須
+          .form
+            = f.date_select :birth_day,start_year: 1940, end_year: Time.current.year, use_month_numbers: true,class:"date_form"
+        .register1__main__form__submit
+          = f.submit "次へ進む",class:"login_button"
+  =render 'users/footer'

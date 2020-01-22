@@ -1,6 +1,9 @@
 .html
   .header
-    = render "logouttop"
+    -if current_user.present?
+      =render 'logintop'
+    -else
+      = render "logouttop"
   .sell
     = render "sell"
   .contents

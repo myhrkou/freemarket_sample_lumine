@@ -64,11 +64,11 @@ class UserStepsController < ApplicationController
     if @user.save
       sign_in User.find(@user.id) unless user_signed_in?
     else
-      render "user_steps/register4"
+      render "user_steps/fail"
     end
     Payjp.api_key = Rails.application.secrets.payjp_private_key
     if params["payjp-token"].blank?
-      render "user_steps/register4"
+      render "user_steps/fail"
     else
       customer = Payjp::Customer.create(
         description: "test",

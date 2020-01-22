@@ -1,10 +1,20 @@
 .register
-  .register__header
-    = image_tag src="/images/fmarket_logo_red.svg",class: 'mercari'
-    = image_tag src="s3://freemarket2020/uploads/images/fmarket_logo_red.svg",class: 'mercari'
-
-
-
-= link_to "メールアドレスで登録",register1_user_steps_path
-= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, method: :post
-= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post
+  =render 'header'
+  .register__main
+    .register__main__center
+      .register__main__center__title
+        新規会員登録
+      .register__main__center__all
+        =link_to register1_user_steps_path,class:"link" do
+          .register__main__center__all__email 
+            =icon 'far','envelope',class:'logo'
+            メールアドレスで登録する　　
+        =link_to user_facebook_omniauth_authorize_path, method: :post,class:"link" do
+          .register__main__center__all__fb
+            =icon 'fab','facebook-square',class:'logo'
+            Facebookで登録する　　
+        =link_to user_google_oauth2_omniauth_authorize_path, method: :post,class:"link_google" do
+          .register__main__center__all__google
+            =icon 'fab','google',class:'logo__g'
+            Googleで登録する　　
+  =render 'footer'

@@ -1,2 +1,33 @@
-finished!
-=link_to "戻る" ,root_path
+.done
+  .done__header
+    .done__header__logo
+      = image_tag src="/images/fmarket_logo_red.svg",class: 'mercari'
+    .done__header__bar
+      %nav.progress-bar5
+        %ol.clearfix
+          %li.progress-bar5__active
+            会員情報
+            .progress-bar5__active__status
+          %li.progress-bar5__active__phone-number
+            電話番号認証
+            .progress-bar5__active__status__phone-number
+          %li.progress-bar5__active__address
+            お届け先住所入力
+            .progress-bar5__active__status__address
+          %li.progress-bar5__active__payment
+            支払い方法
+            .progress-bar5__active__status__payment
+          %li.progress-bar5__active__complete
+            完了
+            .progress-bar5__active__status__complete
+  .done__main
+    .done__main__title
+      会員登録完了
+    .done__main__form
+      ありがとうございます。
+      %br 会員登録が完了しました。
+      .done__main__form__button
+        =link_to root_path,class:"link" do
+          .login_button
+            メルカリを始める
+  =render 'users/footer'
