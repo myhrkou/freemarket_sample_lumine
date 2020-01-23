@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   has_one :address
   accepts_nested_attributes_for :address
-  has_many :cards
+  belongs_to :card
   has_many :sns_credentials
 
   validates :nickname, presence: true, uniqueness: true
