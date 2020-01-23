@@ -46,12 +46,21 @@
         プロフィール
       .contents-mypage__left__lists__mypagelist__tag__icon
         = icon('fas', 'angle-right',class:"angle")
-    %li.contents-mypage__left__lists__mypagelist__tag
-      .contents-mypage__left__lists__mypagelist__tag__text
-        支払い方法
-      .contents-mypage__left__lists__mypagelist__tag__icon
-        = icon('fas', 'angle-right',class:"angle")
-    =link_to mypagelogout_tests_path(current_user.id) do
+    -if @card.present?
+      =link_to card_path(@card.id) do
+        %li.contents-mypage__left__lists__mypagelist__tag
+          .contents-mypage__left__lists__mypagelist__tag__text
+            支払い方法
+          .contents-mypage__left__lists__mypagelist__tag__icon
+            = icon('fas', 'angle-right',class:"angle")
+    -else
+      =link_to card_mypages_path do
+        %li.contents-mypage__left__lists__mypagelist__tag
+          .contents-mypage__left__lists__mypagelist__tag__text
+            支払い方法
+          .contents-mypage__left__lists__mypagelist__tag__icon
+            = icon('fas', 'angle-right',class:"angle")
+    =link_to mypagelogout_mypages_path(current_user.id) do
       %li.contents-mypage__left__lists__mypagelist__tag
         .contents-mypage__left__lists__mypagelist__tag__text
           ログアウト

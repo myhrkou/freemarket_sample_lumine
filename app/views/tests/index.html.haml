@@ -1,11 +1,11 @@
 .html
   .header
     -if current_user.present?
-      =render 'logintop'
+      =render 'shared/logintop'
     -else
-      = render "logouttop"
+      = render "shared/logouttop"
   .sell
-    = render "sell"
+    = render "shared/sell"
   .contents
     .contents__carousel
     .contents__title
@@ -74,4 +74,4 @@
           千円のアイテム
 
   .footer
-    = render "footer"
+    = render "shared/footer"
