@@ -1,10 +1,11 @@
 .contents-mypage__left__lists
   %ul.contents-mypage__left__lists__mypagelist
-    %li.contents-mypage__left__lists__mypagelist__tag.mypagetitle
-      .contents-mypage__left__lists__mypagelist__tag__text
-        マイページ
-      .contents-mypage__left__lists__mypagelist__tag__icon
-        = icon('fas', 'angle-right',class:"angle")
+    =link_to mypage_mypages_path do
+      %li.contents-mypage__left__lists__mypagelist__tag
+        .contents-mypage__left__lists__mypagelist__tag__text
+          マイページ
+        .contents-mypage__left__lists__mypagelist__tag__icon
+          = icon('fas', 'angle-right',class:"angle")
     %li.contents-mypage__left__lists__mypagelist__tag
       .contents-mypage__left__lists__mypagelist__tag__text
         お知らせ

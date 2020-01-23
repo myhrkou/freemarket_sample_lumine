@@ -5,13 +5,13 @@
     = render "shared/sell"
   .pan
     メルカリ＞マイページ＞ログアウト
-  .contents-logout
-    .contents-logout__left
+  .contents-mypage
+    .contents-mypage__left
       = render "left"
-    .contents-logout__right
-      =link_to destroy_user_session_path ,method: :delete do
-        .contents-logout__right__btn
-          .contents-logout__right__btn__text
+    .contents-mypage__right
+      .contents-mypage__right__main
+        =link_to destroy_user_session_path ,method: :delete,class:"login_button" do
+          .contents-logout__right__btn
             ログアウト
   .footer
     = render "shared/footer"
