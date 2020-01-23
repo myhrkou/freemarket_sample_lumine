@@ -31,7 +31,6 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, length: { minimum: 7 }
-  validates :password, presence: true
   validates :first_name, presence: true,format:{with:ZENKAKU}
   validates :last_name, presence: true,format:{with:ZENKAKU}
   validates :yomi_first_name, presence: true,format:{with:KATAKANA}
