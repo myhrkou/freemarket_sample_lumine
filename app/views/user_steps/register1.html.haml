@@ -26,6 +26,7 @@
       会員情報入力
     .register1__main__form
       = form_for @user, url: register2_user_steps_path, method: :get do |f|
+        = render 'layouts/error_messages', model: f.object
         .register1__main__form__nickname
           %b.label
             ニックネーム

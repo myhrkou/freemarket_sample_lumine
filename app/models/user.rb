@@ -22,16 +22,20 @@ class User < ApplicationRecord
 
   has_one :address
   accepts_nested_attributes_for :address
-  belongs_to :card
+  belongs_to :card, optional: true
   has_many :sns_credentials
+
+  ZENKAKU=/\A[ぁ-んァ-ン一-龥]+\z/
+  KATAKANA=/\A[ァ-ヶー－]+\z/
+  TEL=/\A\d{10,11}\z/
 
   validates :nickname, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, length: { minimum: 7 }
   validates :password, presence: true
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :yomi_first_name, presence: true
-  validates :yomi_last_name, presence: true
+  validates :first_name, presence: true,format:{with:ZENKAKU}
+  validates :last_name, presence: true,format:{with:ZENKAKU}
+  validates :yomi_first_name, presence: true,format:{with:KATAKANA}
+  validates :yomi_last_name, presence: true,format:{with:KATAKANA}
   validates :birth_day, presence: true
-  validates :phone_number, uniqueness: true
+  validates :phone_number, uniqueness: true,format:{with:TEL}
 end
