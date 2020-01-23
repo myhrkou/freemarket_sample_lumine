@@ -4,13 +4,13 @@ Rails.application.routes.draw do
                        registrations: "users/registrations",
                      }
   root "tests#index"
-    resources :tests,only: [:index]
-    resources :mypages do
-      collection do 
-        get :mypage
-        get :mypagelogout
-        get :card
-      end
+  resources :tests, only: [:index]
+  resources :mypages do
+    collection do
+      get :mypage
+      get :mypagelogout
+      get :card
+    end
   end
   resources :users
   resources :user_steps, only: [:create]
