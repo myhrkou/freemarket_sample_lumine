@@ -1,6 +1,7 @@
 .header__top
   .header__top__logo
-    = image_tag src="/images/fmarket_logo_red.svg",class: 'mercari'
+    =link_to root_path do
+      = image_tag src="/images/fmarket_logo_red.svg",class: 'mercari'
   .header__top__search
     .header__top__search__text
       %input{name: "content", type:"text",class: "input",placeholder: '何かお探しですか？'}
