@@ -60,33 +60,32 @@ class UserStepsController < ApplicationController
     @user.build_address(
       session[:address]
     )
-
     if @user.save
       sign_in User.find(@user.id) unless user_signed_in?
-    else
-      render "user_steps/fail"
-    end
-    Payjp.api_key = Rails.application.secrets.payjp_private_key
-    if params["payjp-token"].blank?
-      render "user_steps/fail"
-    else
-      customer = Payjp::Customer.create(
-        description: "test",
-        email: @user.email,
-        card: params["payjp-token"],
-        metadata: { user_id: current_user.id },
-      )
-      @card = Card.new(
-        user_id: current_user.id,
-        customer_id: customer.id,
-        card_id: customer.default_card,
-      )
-
-      if @card.save
-        redirect_to done_user_steps_path
+      Payjp.api_key = Rails.application.secrets.payjp_private_key
+      if params["payjp-token"].blank?
+        render "user_steps/register4"
       else
-        redirect_to register4_user_steps_path
+        customer = Payjp::Customer.create(
+          description: "test",
+          email: @user.email,
+          card: params["payjp-token"],
+          metadata: { user_id: @user.id },
+        )
+        @card = Card.new(
+          user_id: @user.id,
+          customer_id: customer.id,
+          card_id: customer.default_card,
+        )
+
+        if @card.save
+          redirect_to done_user_steps_path
+        else
+          redirect_to register4_user_steps_path
+        end
       end
+    else
+      render "user_steps/register1"
     end
   end
 

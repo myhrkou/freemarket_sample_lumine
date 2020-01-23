@@ -1,0 +1,21 @@
+.html
+  .hader
+    = render "shared/logintop"
+  .sell
+    = render "shared/sell"
+  .pan
+    メルカリ＞マイページ
+  .contents-mypage
+    .contents-mypage__left
+      = render "left"
+    .contents-mypage__right
+      .contents-mypage__right__title
+        お支払い方法
+      .contents-mypage__right__main
+        クレジットカード一覧
+        =link_to new_card_path,class:'login_button' do
+          .contents-mypage__right__main__button
+            =icon 'far','credit-card'
+            クレジットカードを追加する
+  .footer
+    = render "shared/footer"

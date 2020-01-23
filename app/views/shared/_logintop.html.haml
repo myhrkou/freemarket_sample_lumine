@@ -1,13 +1,13 @@
 .header__top
   .header__top__logo
-    = image_tag src="/images/fmarket_logo_red.svg",class: 'mercari'
+    =link_to root_path do
+      = image_tag src="/images/fmarket_logo_red.svg",class: 'mercari'
   .header__top__search
     .header__top__search__text
       %input{name: "content", type:"text",class: "input",placeholder: '何かお探しですか？'}
       //検索実装時にフォームに変更してください。
     .header__top__search__icon
       = icon('fas', 'search')
-
 .header__bottom
   .header__bottom__left
     .header__bottom__left__category
@@ -38,6 +38,7 @@
           -#       カテゴリー2.１
           -#     %li.category__sub
           -#       カテゴリー2.2
+
     .header__bottom__left__brand
       = icon('fas', 'tag',class:"tag")
       ブランドから探す
@@ -46,6 +47,26 @@
           brand1
         %li.brand
           brand2
+    
   .header__bottom__right
-    =link_to '新規会員登録',new_user_path,class:"header__bottom__right__register"
-    =link_to 'ログイン',new_user_session_path,class:"header__bottom__right__login"
+    .header__bottom__right__good
+      .header__bottom__right__good__icon
+      = icon('fas', 'heart',class:"heart")
+      .header__bottom__right__good__text
+        いいね
+    .header__bottom__right__info
+      .header__bottom__right__info__icon
+      = icon('fas', 'bell',class:"bell")
+      .header__bottom__right__info__text
+        お知らせ
+    .header__bottom__right__todo
+      .header__bottom__right__todo__icon
+      = icon('fas', 'check',class:"check")
+      .header__bottom__right__todo__text
+        やることリスト
+    =link_to mypage_mypages_path do
+      .header__bottom__right__my
+        .header__bottom__right__my__icon
+        = icon('fas', 'user',class:"user")
+        .header__bottom__right__my__text
+          マイページ

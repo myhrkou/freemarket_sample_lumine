@@ -1,10 +1,29 @@
-%label 登録クレジットカード情報
-%br
-= "**** **** **** " + @default_card_information.last4
-%br
-- exp_month = @default_card_information.exp_month.to_s
-- exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-= exp_month + " / " + exp_year
-= form_tag(card_delete_path, method: :post, id: 'charge-form',  name: "inputForm") do
-  %input{ type: "hidden", name: "card_id", value: "" }
-  %button 削除する
+.html
+  .hader
+    = render "shared/logintop"
+  .sell
+    = render "shared/sell"
+  .pan
+    メルカリ＞マイページ
+  .contents-mypage
+    .contents-mypage__left
+      = render "mypages/left"
+    .contents-mypage__right
+      .contents-mypage__right__title
+        お支払い方法
+      .contents-mypage__right__main
+        クレジットカード一覧
+        .contents-mypage__right__main__card
+          .contents-mypage__right__main__card__info
+            = "**** **** **** " + @default_card_information.last4
+            %br
+            - exp_month = @default_card_information.exp_month.to_s
+            - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+            = exp_month + " / " + exp_year
+          .contents-mypage__right__main__card__delete
+            = form_tag(delete_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
+              %input{ type: "hidden", name: "card_id", value: "" }
+              %button{class:"card_delete_button"}
+                削除する
+  .footer
+    = render "shared/footer"
