@@ -3,13 +3,13 @@ before_action :set_card
 
   def index
   end
-
   def profile
   end
-
+  def edit
+  end
   def update
     if current_user.update!(user_params)
-      render :profile
+      render :edit
     end
   end
 
