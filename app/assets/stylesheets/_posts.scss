@@ -15,14 +15,14 @@
         
         float: left;
         margin-right: 45px;
-        margin-left: 77.5px;
+        margin-left: 180px;
         
       }
       &__search{
         width: 100%;
         position: relative;
         background: rgb(245,245,245);
-        margin-right: 77.5px;
+        margin-right: 180px;
         &__text{
           float: left;
           height: 40px;
@@ -46,7 +46,7 @@
       display: flex;
       justify-content: space-between;
       margin-top: 8px;
-      margin-left: 77.5px;
+      margin-left: 180px;
       height:36px;
       &__left{
         display: flex;
@@ -67,7 +67,7 @@
         }
       }
       &__right{
-        margin-right: 77.5px;
+        margin-right: 180px;
         &__register{
           float: left;
           width:106px;

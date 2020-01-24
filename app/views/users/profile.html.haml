@@ -1,0 +1,25 @@
+.html
+  .hader
+    = render "shared/logintop"
+  .sell
+    = render "shared/sell"
+  .pan
+    メルカリ＞マイページ
+  .contents-mypage
+    .contents-mypage__left
+      = render "mypages/left"
+    .contents-mypage__right
+      .contents-mypage__right__title
+        プロフィール
+      .contents-mypage__right__mainprofile
+        .contents-mypage__right__mainprofile__profile
+          =form_for(current_user) do |f|
+            .contents-mypage__right__mainprofile__profile__name
+              .contents-mypage__right__mainprofile__profile__name__icon
+                = image_tag src="/images/usericon.png",class:"userface"
+              .contents-mypage__right__mainprofile__profile__name__form
+                =f.text_field :nickname,class:'profile_nickname'
+            .contents-mypage__right__mainprofile__profile__content
+              =f.text_area :content,class:"profile_content",placeholder:"例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"
+            .contents-mypage__right__mainprofile__profile__button
+              =f.submit "変更する",class:"profile_button"

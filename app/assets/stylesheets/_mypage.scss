@@ -28,7 +28,7 @@
   &__left {
     width: 280px;
     height: 100%;
-    margin: 40px 40px 0px 80px;
+    margin: 40px 40px 0px 180px;
     &__lists {
       &__mypagelist {
         &__tag {
@@ -53,7 +53,7 @@
   }
   &__right {
     width: 990px;
-    margin: 40px 80px 0px 0px;
+    margin: 40px 180px 0px 0px;
     &__top {
       &__user {
         margin: 0 auto;
@@ -89,6 +89,30 @@
       }
       &__button {
         background-color: #ea352d;
+      }
+    }
+    &__mainprofile {
+      &__profile {
+        &__name {
+          height: 200px;
+          background-image: url("/images/profile.jpg");
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &__icon {
+            margin-right: 10px;
+          }
+          &__form {
+          }
+        }
+        &__content {
+          padding: 20px;
+          background-color: #fff;
+        }
+        &__button{
+          background-color: #fff;
+          padding: 0 20px 40px;
+        }
       }
     }
     &__middle {
@@ -252,7 +276,7 @@
 }
 
 .pan {
-  margin-left: 80px;
+  margin-left: 180px;
 }
 
 .mypagetitle {
@@ -261,7 +285,13 @@
 }
 
 .userface {
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  border-radius: 50%;
   font-size: 60px;
+  background-color: #c0c0c0;
 }
 
 .heart,
@@ -310,4 +340,31 @@ a {
 
 .contents-mypage__left__lists__mypagelist__tag:hover {
   background-color: #f5f5f5;
+}
+
+.profile_content {
+  min-width: calc(100% - 20px);
+  max-width: calc(100% - 20px);
+  min-height: 150px;
+  padding: 10px;
+  border:2px solid #c0c0c0;
+}
+
+.profile_content::placeholder{
+  color: #c0c0c0;
+}
+
+.profile_nickname{
+  height: 45px;
+  width: 200px;
+  border-radius: 6px;
+  border: 2px solid #c0c0c0;
+}
+
+.profile_button{
+  width: 100%;
+  height: 60px;
+  background-color: #ea352d;
+  color: #f5f5f5;
+  cursor: pointer;
 }
