@@ -4,7 +4,8 @@
   .sell
     = render "shared/sell"
   .pan
-    メルカリ＞マイページ
+    - breadcrumb :profile
+    =render 'layouts/breadcrumbs'
   .contents-mypage
     .contents-mypage__left
       = render "mypages/left"
