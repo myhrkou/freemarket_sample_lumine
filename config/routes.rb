@@ -12,7 +12,11 @@ Rails.application.routes.draw do
       get :card
     end
   end
-  resources :users
+  resources :users do
+    collection do
+      get :profile
+    end
+  end
   resources :user_steps, only: [:create]
   resources :user_steps do
     collection do

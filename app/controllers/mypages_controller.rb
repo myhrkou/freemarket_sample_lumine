@@ -1,9 +1,12 @@
 class MypagesController < ApplicationController
   before_action :set_card
+
   def mypage
   end
+
   def mypagelogout
   end
+
   def card
   end
 

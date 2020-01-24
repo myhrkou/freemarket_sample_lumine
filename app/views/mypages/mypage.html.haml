@@ -7,12 +7,12 @@
     メルカリ＞マイページ
   .contents-mypage
     .contents-mypage__left
-      = render "left"
+      = render "mypages/left"
     .contents-mypage__right
       .contents-mypage__right__top
         .contents-mypage__right__top__user
           .contents-mypage__right__top__user__face
-            = icon('fas', 'user',class:"userface")
+            = image_tag src="/images/usericon.png",class:"userface"
           .contents-mypage__right__top__user__name
             =current_user.nickname
           .contents-mypage__right__top__user__count
