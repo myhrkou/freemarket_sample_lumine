@@ -9,7 +9,7 @@ before_action :set_card
 
   def update
     if current_user.update!(user_params)
-      render :profile
+      render template:"mypages/mypage"
     end
   end
 
