@@ -3,10 +3,10 @@ before_action :set_card
 
   def index
   end
-
   def profile
   end
-
+  def edit
+  end
   def update
     if current_user.update!(user_params)
       render template:"mypages/mypage"
