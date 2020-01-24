@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-before_action :set_card
+before_action :set_card,only: [:profile,:edit]
 
   def index
   end

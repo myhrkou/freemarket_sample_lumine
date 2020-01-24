@@ -28,7 +28,7 @@
   &__left {
     width: 280px;
     height: 100%;
-    margin: 40px 40px 0px 180px;
+    margin: 40px 40px 0px 250px;
     &__lists {
       &__mypagelist {
         &__tag {
@@ -53,12 +53,12 @@
   }
   &__right {
     width: 990px;
-    margin: 40px 180px 0px 0px;
+    margin: 40px 250px 0px 0px;
     &__top {
       &__user {
         margin: 0 auto;
         text-align: center;
-        background-image: url(https://www.sozailab.jp/db_img/sozai/35761/35c2d1776eacd7d07cc111a87a4acd68.jpg);
+        background-image: url(/images/profile.jpg);
         padding: 20px;
         &__name {
           margin-top: 8px;
@@ -109,7 +109,7 @@
           padding: 20px;
           background-color: #fff;
         }
-        &__button{
+        &__button {
           background-color: #fff;
           padding: 0 20px 40px;
         }
@@ -276,7 +276,7 @@
 }
 
 .pan {
-  margin-left: 180px;
+  margin-left: 250px;
 }
 
 .mypagetitle {
@@ -331,13 +331,6 @@ a {
   text-decoration: none;
 }
 
-.header__bottom__right__my:hover .header__bottom__right__my__text {
-  color: lightskyblue;
-}
-.header__bottom__right__my:hover .user {
-  color: lightskyblue;
-}
-
 .contents-mypage__left__lists__mypagelist__tag:hover {
   background-color: #f5f5f5;
 }
@@ -347,21 +340,21 @@ a {
   max-width: calc(100% - 20px);
   min-height: 150px;
   padding: 10px;
-  border:2px solid #c0c0c0;
+  border: 2px solid #c0c0c0;
 }
 
-.profile_content::placeholder{
+.profile_content::placeholder {
   color: #c0c0c0;
 }
 
-.profile_nickname{
+.profile_nickname {
   height: 45px;
   width: 200px;
   border-radius: 6px;
   border: 2px solid #c0c0c0;
 }
 
-.profile_button{
+.profile_button {
   width: 100%;
   height: 60px;
   background-color: #ea352d;
@@ -369,6 +362,6 @@ a {
   cursor: pointer;
 }
 
-a{
+a {
   color: black;
 }
