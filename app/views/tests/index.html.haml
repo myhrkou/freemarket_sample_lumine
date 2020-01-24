@@ -9,7 +9,7 @@
   .contents
     .contents__carousel
     .contents__title
-      %b アイテム一覧
+      全てのアイテム
     %ul.contents__all
       %li.contents__all__item
         .contents__all__item__image
@@ -20,10 +20,11 @@
           千円のアイテム
       %li.contents__all__item
         .contents__all__item__image
+          =image_tag src="/images/ばなな.jpg",class:'example'
           .contents__all__item__image__price
-            ¥1,100
+            ¥300
         .contents__all__item__name
-          千円のアイテム
+          100円のすいか！
       %li.contents__all__item
         .contents__all__item__image
           .contents__all__item__image__price
@@ -72,6 +73,5 @@
             ¥1,100
         .contents__all__item__name
           千円のアイテム
-
   .footer
     = render "shared/footer"
