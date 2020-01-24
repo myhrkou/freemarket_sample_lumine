@@ -12,7 +12,7 @@
 |birth_day|date|null: false|
 |phone_number|string||
 ### Association
-- has_many :cards
+- belongs_to :card
 - has_many :items
 - has_one :address
 
