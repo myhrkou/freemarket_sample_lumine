@@ -4,7 +4,8 @@
   .sell
     = render "shared/sell"
   .pan
-    メルカリ＞マイページ
+    - breadcrumb :user_comfirm
+    =render 'layouts/breadcrumbs'
   .contents-mypage
     .contents-mypage__left
       = render "mypages/left"
@@ -67,3 +68,5 @@
               .form
                 =fi.text_field :building, placeholder: '例) 柳ビル103',class:"login_textfield"
           =f.submit "登録する",class:"login_button"
+  .footer
+    = render "shared/footer"
