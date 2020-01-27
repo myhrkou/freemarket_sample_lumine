@@ -1,20 +1,21 @@
 .html
   .hader
-    = render "logintop"
+    = render "shared/logintop"
   .sell
-    = render "sell"
+    = render "shared/sell"
   .pan
-    メルカリ＞マイページ
+    - breadcrumb :mypage
+    =render 'layouts/breadcrumbs'
   .contents-mypage
     .contents-mypage__left
-      = render "mypageleft"
+      = render "mypages/left"
     .contents-mypage__right
       .contents-mypage__right__top
         .contents-mypage__right__top__user
           .contents-mypage__right__top__user__face
-            = icon('fas', 'user',class:"userface")
+            = image_tag src="/images/usericon.png",class:"userface"
           .contents-mypage__right__top__user__name
-            名前
+            =current_user.nickname
           .contents-mypage__right__top__user__count
             .contents-mypage__right__top__user__count__value
               評価数  0
@@ -238,4 +239,4 @@
               .li.contents-mypage__right__bottom__lists__tag__list__watch
                 一覧を見る
   .footer
-    = render "footer"
+    = render "shared/footer"

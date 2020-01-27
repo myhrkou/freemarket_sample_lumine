@@ -4,14 +4,20 @@ Rails.application.routes.draw do
                        registrations: "users/registrations",
                      }
   root "tests#index"
-    resources :tests,only: [:index] do
-    collection do 
+  resources :tests, only: [:index]
+  resources :mypages do
+    collection do
       get :mypage
       get :mypagelogout
+      get :card
     end
   end
-  
-  resources :users
+  resources :users do
+    collection do
+      get :profile
+    end
+  end
+
   resources :user_steps, only: [:create]
   resources :user_steps do
     collection do
@@ -24,12 +30,9 @@ Rails.application.routes.draw do
   end
   resources :cards, only: [:new, :show] do
     collection do
-      post "show", to: "cards#show"
       post "pay", to: "cards#pay"
-      post "delete", to: "card#delete"
+      post "delete", to: "cards#delete"
     end
   end
   resources :items,only:[:index,:new,:create]
- 
-
 end

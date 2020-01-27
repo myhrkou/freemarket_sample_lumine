@@ -1,0 +1,18 @@
+.html
+  .hader
+    = render "shared/logintop"
+  .sell
+    = render "shared/sell"
+  .pan
+    - breadcrumb :logout
+    =render 'layouts/breadcrumbs'
+  .contents-mypage
+    .contents-mypage__left
+      = render "left"
+    .contents-mypage__right
+      .contents-mypage__right__main
+        =link_to destroy_user_session_path ,method: :delete,class:"login_button" do
+          .contents-logout__right__btn
+            ログアウト
+  .footer
+    = render "shared/footer"

@@ -1,19 +1,28 @@
-%h2 Log in
-user
-= current_user
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.login
+  =render 'users/header'
+  .login__main
+    .login__main__register
+      .login__main__register__box
+        アカウントをお持ちでない方はこちら
+        =link_to new_user_path,class:'link' do
+          .login__main__register__box__button
+            新規会員登録
+    .login__main__sns
+      .login__main__sns__box
+        =link_to user_facebook_omniauth_authorize_path,class:'link', method: :post do
+          .login__main__sns__box__fb
+            =icon 'fab','facebook-square',class:'logo'
+            Facebookでログイン　　
+        =link_to user_google_oauth2_omniauth_authorize_path,class:'link_google',method: :post do
+          .login__main__sns__box__google
+            =icon 'fab','google',class:'logo__g'
+            Googleでログイン　　
+    .login__main__email
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .login__main__email__address
+          = f.email_field :email, autofocus: true, autocomplete: "email",class:"login_textfield"
+        .login__main__email__password
+          = f.password_field :password, autocomplete: "current-password",class:"login_textfield"
+        .login__main__email__button
+          = f.submit "ログイン",class:"login_button"
+  = render 'users/footer'
