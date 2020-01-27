@@ -43,7 +43,7 @@ class UserStepsController < ApplicationController
 
   def create
     pass = Devise.friendly_token
-    if pass.present?
+    if params["payjp-token"].blank?
       session[:password] = pass
     end
     @user = User.new(
@@ -61,7 +61,7 @@ class UserStepsController < ApplicationController
       session[:address]
     )
 
-    if @user.save
+    if @user.save!
       sign_in User.find(@user.id) unless user_signed_in?
     else
       render "user_steps/register4"

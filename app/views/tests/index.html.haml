@@ -1,6 +1,7 @@
 .html
   .header
     = render "logouttop"
+    = link_to "logout",destroy_user_session_path,method: :delete
   .sell
     = render "sell"
   .contents

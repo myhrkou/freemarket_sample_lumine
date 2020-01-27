@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get :mypagelogout
     end
   end
+  
   resources :users
   resources :user_steps, only: [:create]
   resources :user_steps do
@@ -28,4 +29,7 @@ Rails.application.routes.draw do
       post "delete", to: "card#delete"
     end
   end
+  resources :items,only:[:index,:new,:create]
+ 
+
 end
