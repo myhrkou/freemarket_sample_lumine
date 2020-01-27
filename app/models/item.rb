@@ -9,4 +9,6 @@ class Item < ApplicationRecord
     stop: 2, #停止
     complete: 3 #売却済み
   }
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
 end
