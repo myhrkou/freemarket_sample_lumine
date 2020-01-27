@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      item:
+        name: 商品名
+        description: 商品説明
+        condition: 商品の状態
+        delivery_charge_detail: 配送料の負担
+        delivery_origin: 発送元 
+        delivery_date: 発送までの日数 
+        price: 金額

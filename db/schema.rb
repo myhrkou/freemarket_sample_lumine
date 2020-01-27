@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200123091805) do
+ActiveRecord::Schema.define(version: 20200127032144) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "zip",        null: false
@@ -31,6 +31,29 @@ ActiveRecord::Schema.define(version: 20200123091805) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_cards_on_user_id", using: :btree
+  end
+
+  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",                                             null: false
+    t.text     "description",            limit: 65535,             null: false
+    t.string   "condition",                                        null: false
+    t.string   "delivery_charge_detail",                           null: false
+    t.integer  "delivery_origin",                                  null: false
+    t.string   "delivery_date",                                    null: false
+    t.integer  "price",                                            null: false
+    t.integer  "user_id",                                          null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.integer  "status",                               default: 0
+    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
+  end
+
+  create_table "items_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "image_url",  null: false
+    t.integer  "item_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_items_images_on_item_id", using: :btree
   end
 
   create_table "sns_credentials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -65,5 +88,7 @@ ActiveRecord::Schema.define(version: 20200123091805) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
+  add_foreign_key "items", "users"
+  add_foreign_key "items_images", "items"
   add_foreign_key "sns_credentials", "users"
 end

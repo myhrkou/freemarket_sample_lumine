@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get :profile
     end
   end
+
   resources :user_steps, only: [:create]
   resources :user_steps do
     collection do
@@ -33,4 +34,5 @@ Rails.application.routes.draw do
       post "delete", to: "cards#delete"
     end
   end
+  resources :items,only:[:index,:new,:create]
 end
