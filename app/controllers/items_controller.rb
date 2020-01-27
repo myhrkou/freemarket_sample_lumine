@@ -7,12 +7,9 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.items_images.new
-  
-   
   end
 
   def create
-  
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -29,21 +26,13 @@ class ItemsController < ApplicationController
     end
   end
 
- 
   private
 
   def item_params
     params.require(:item).permit(:name, :description,:condition,:delivery_charge_detail,:delivery_origin,:delivery_date,:price, items_images_attributes: [:image_url,:_destroy, :id]).merge(user_id:1)
-    
   end
 
   def set_item
     @item = Item.find(params[:id])
   end
-  
-
 end
-
-
-
-
