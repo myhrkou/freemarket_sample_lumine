@@ -66,6 +66,6 @@ class ItemsController < ApplicationController
   end
 
   def set_card
-    @card = Card.where(user_id: current_user.id).first
+    @card = Card.find_by(user_id: current_user.id)
   end
 end
