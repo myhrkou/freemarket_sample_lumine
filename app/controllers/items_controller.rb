@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
 
   def pay_comfirm
     @item = session[:item]
-    @item=Item.find_by(@item["id"].to_s)
+    @item=Item.find(@item["id"])
     Payjp.api_key = Rails.application.secrets.payjp_private_key
     customer = Payjp::Customer.retrieve(@card.customer_id)
     @default_card_information = customer.cards.retrieve(@card.card_id)
