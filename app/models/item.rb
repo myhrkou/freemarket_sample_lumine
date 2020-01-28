@@ -11,4 +11,9 @@ class Item < ApplicationRecord
   }
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
+
+  def price_yen
+    price=self.price.to_i
+    self.price="¥#{price.to_s(:delimited)}"
+  end
 end

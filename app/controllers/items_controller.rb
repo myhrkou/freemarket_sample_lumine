@@ -1,7 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, except: [:index, :new, :create,:all]
+  before_action :authenticate_user!,only: [:new]
+
   def index
-    @items=Item.all
+    @items=Item.all.limit(15).order(id:'DESC')
   end
 
   def new
@@ -11,6 +13,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.price_yen
     if @item.save
       redirect_to root_path
     else
@@ -26,10 +29,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def all
+    @items = Item.all.order(id:'DESC').page(params[:page]).per(15)
+  end
+
   private
 
   def item_params
-    params.require(:item).permit(:name, :description,:condition,:delivery_charge_detail,:delivery_origin,:delivery_date,:price, items_images_attributes: [:image_url,:_destroy, :id]).merge(user_id:1)
+    params.require(:item).permit(:name, :description,:condition,:delivery_charge_detail,:delivery_origin,:delivery_date,:price, items_images_attributes: [:image_url,:_destroy, :id]).merge(user_id:current_user.id)
   end
 
   def set_item
