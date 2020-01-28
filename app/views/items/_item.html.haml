@@ -1,0 +1,8 @@
+-@items.each do |item|
+  %li.contents__all__item
+    .contents__all__item__image
+      = image_tag item.items_images[0].image_url.url,class: 'example'
+      .contents__all__item__image__price
+        =item.price
+    .contents__all__item__name
+      =item.name

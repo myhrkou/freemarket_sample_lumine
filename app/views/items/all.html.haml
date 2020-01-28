@@ -13,15 +13,11 @@
   .contents
     .contents__carousel
       =image_tag src='/images/header.jpg',class:'carousel'
-    .contents__title
-      全てのアイテム
     .contents__new
-      .contents__new__title
-        新着アイテム
-      =link_to all_items_path,class:"contents__new__more" do
-        もっと見る
-        =icon('fas', 'angle-right')
+      新着アイテム
     %ul.contents__all
       = render 'item'
+    .contents__page
+      =paginate(@items)
   .footer
     = render "shared/footer"
