@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create,:all]
+  before_action :set_item, except: [:index, :new, :create,:all,:pay_comfirm,:pay]
   before_action :authenticate_user!,only: [:new]
+  before_action :set_card,only: [:pay]
 
   def index
     @items=Item.all.limit(15).order(id:'DESC')
@@ -13,7 +14,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.price_yen
     if @item.save
       redirect_to root_path
     else
@@ -29,10 +29,32 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    session[:item]=@item
+  end
+
   def all
     @items = Item.all.order(id:'DESC').page(params[:page]).per(15)
   end
 
+  def pay_comfirm
+    @item=session[:item]
+  end
+
+  def pay
+    @item=session[:item]
+    Payjp.api_key = Rails.application.secrets.payjp_private_key
+    Payjp::Charge.create(
+      amount: @item["price"].to_i,
+      customer: @card.customer_id,
+      currency: 'jpy'
+    )
+    id=@item["id"].to_s
+    @item=Item.find(id)
+    @item.complete!
+    redirect_to root_path
+  end
+  
   private
 
   def item_params
@@ -41,5 +63,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_card
+    @card=Card.where(user_id: current_user.id).first
   end
 end
