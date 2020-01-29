@@ -28,7 +28,7 @@
   &__left {
     width: 280px;
     height: 100%;
-    margin: 40px 40px 0px 250px;
+    margin: 40px 40px 0px 350px;
     &__lists {
       &__mypagelist {
         &__tag {
@@ -53,7 +53,7 @@
   }
   &__right {
     width: 990px;
-    margin: 40px 250px 0px 0px;
+    margin: 40px 350px 0px 0px;
     &__top {
       &__user {
         margin: 0 auto;
@@ -80,7 +80,7 @@
       background-color: #fff;
     }
     &__main {
-      padding: 70px 255px 100px;
+      padding: 70px 255px 70px;
       background-color: #fff;
       &__card {
         padding: 30px 0;
@@ -90,6 +90,10 @@
       &__button {
         background-color: #ea352d;
       }
+    }
+    &__info{
+      padding: 70px 200px 100px;
+      background-color: #fff;
     }
     &__mainprofile {
       &__profile {
@@ -276,7 +280,7 @@
 }
 
 .pan {
-  margin-left: 250px;
+  margin-left: 350px;
 }
 
 .mypagetitle {

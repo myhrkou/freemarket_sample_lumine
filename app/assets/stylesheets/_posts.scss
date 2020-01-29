@@ -14,13 +14,13 @@
         height: 40px;
         float: left;
         margin-right: 45px;
-        margin-left: 250px;
+        margin-left: 350px;
       }
       &__search {
         width: 100%;
         position: relative;
         background: rgb(245, 245, 245);
-        margin-right: 250px;
+        margin-right: 350px;
         &__text {
           float: left;
           height: 40px;
@@ -44,7 +44,7 @@
       display: flex;
       justify-content: space-between;
       margin-top: 8px;
-      margin-left: 250px;
+      margin-left: 350px;
       height: 36px;
       &__left {
         display: flex;
@@ -63,7 +63,7 @@
         }
       }
       &__right {
-        margin-right: 250px;
+        margin-right: 350px;
         &__register {
           float: left;
           width: 106px;
@@ -156,7 +156,7 @@
       font-weight: 100;
     }
     &__new {
-      padding: 25px 270px;
+      padding: 25px 350px;
       display: flex;
       justify-content: space-between;
       &__title {
@@ -169,22 +169,21 @@
       }
     }
     &__all {
-      width: calc(100% - 350px);
-      height: calc(100% - 100px);
+      width: calc(100% - 650px);
       padding: 0 50px 50px 50px;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       margin: 0px auto;
       &__item {
-        width: 16%;
+        width: 17.5%;
         margin: 10px;
         box-shadow: 0 4px 5px rgba(0, 0, 0, 0.18);
         &__image {
           position: relative;
           .example {
-            width: calc((100vw - 350px) * 0.16);
-            height: calc((100vw - 350px) * 0.16);
+            width: calc((100vw - 650px) * 0.175);
+            height: calc((100vw - 650px) * 0.175);
             object-fit: cover;
             vertical-align: bottom;
           }
@@ -221,7 +220,7 @@
     &__top {
       position: relative;
       width: 100%;
-      height: 250px;
+      height: 300px;
       &__smartphone {
         position: absolute;
         display: flex;
@@ -274,7 +273,7 @@
 
     &__bottom {
       height: 100%;
-      padding: 0px 250px 10px 300px;
+      padding: 0px 350px 10px 350px;
       background-color: rgb(34, 34, 34);
       color: white;
       &__link {
@@ -436,7 +435,7 @@
 
 .market {
   width: 100%;
-  height: 250px;
+  height: 300px;
 }
 
 .header__bottom__right__login:hover {
@@ -446,15 +445,15 @@
 }
 
 .contents__all__item:hover {
-  width: calc(16% - 4px);
+  width: calc(17.5% - 4px);
   height: calc(20% - 4px);
   border: solid 2px;
   border-color: rgb(0, 149, 238);
 }
 
 .contents__all__item:hover .example{
-  width: calc((100vw - 350px) * 0.16 - 4px);
-  height: calc((100vw - 350px) * 0.16 - 4px);
+  width: calc((100vw - 650px) * 0.175 - 4px);
+  height: calc((100vw - 650px) * 0.175 - 4px);
   object-fit: cover;
 }
 
