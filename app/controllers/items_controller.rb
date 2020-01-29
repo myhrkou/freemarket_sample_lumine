@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create, :all, :pay_comfirm, :pay]
   before_action :authenticate_user!, only: [:new]
-  before_action :set_card, only: [:pay]
+  before_action :set_card, only: [:pay_comfirm,:pay]
 
   def index
     @items = Item.all.limit(15).order(id: "DESC")
@@ -39,6 +39,10 @@ class ItemsController < ApplicationController
 
   def pay_comfirm
     @item = session[:item]
+    @item=Item.find(@item["id"])
+    Payjp.api_key = Rails.application.secrets.payjp_private_key
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    @default_card_information = customer.cards.retrieve(@card.card_id)
   end
 
   def pay

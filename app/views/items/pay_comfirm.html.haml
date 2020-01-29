@@ -1,3 +1,55 @@
-= price_yen(@item["price"])
-= form_tag pay_items_path(@item),method: :post do
-  %button 購入する
+.pay
+  =render 'users/header'
+  .pay__main
+    .pay__main__center
+      .pay__main__center__title
+        購入内容の確認
+      .pay__main__center__all
+        .pay__main__center__all__item
+          .pay__main__center__all__item__image
+            =image_tag @item.items_images[0].image_url.url,class:"image_pay"
+          .pay__main__center__all__item__info
+            .pay__main__center__all__item__info__name
+              =@item.name
+            %b.pay__main__center__all__item__info__price
+              -if @item.delivery_charge_detail=='送料込み（出品者負担）'
+                = price_yen(@item.price)
+                　(税込) 送料込み
+              -else
+                = price_yen(@item.price)
+                　(税込) 着払い
+        .pay__main__center__all__price
+          %b.pay__main__center__all__price__title
+            支払い金額
+          %b.pay__main__center__all__price__num
+            =price_yen(@item.price)
+        .pay__main__center__all__card
+          %b.pay__main__center__all__card__title
+            支払い方法
+          .pay__main__center__all__card__info
+            .pay__main__center__all__card__info__method
+              クレジットカード
+            .pay__main__center__all__card__info__detail
+              = "**** **** **** " + @default_card_information.last4
+              %br
+              - exp_month = @default_card_information.exp_month.to_s
+              - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+              = exp_month + " / " + exp_year
+        .pay__main__center__all__address
+          %b.pay__main__center__all__address__title
+            配送先
+          .pay__main__center__all__address__detail
+            .pay__main__center__all__address__detail__zip
+              〒
+              =current_user.address.zip
+            .pay__main__center__all__address__detail__address
+              =current_user.address.prefecture
+              =current_user.address.city
+              =current_user.address.number
+            .pay__main__center__all__address__detail__name
+              =current_user.last_name
+              =current_user.first_name
+        .pay__main__center__all__button
+          = form_tag pay_items_path(@item),method: :post do
+            =submit_tag "購入する",class:"login_button"
+  =render 'users/footer'
