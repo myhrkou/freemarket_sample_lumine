@@ -1,0 +1,50 @@
+.show {
+}
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background: rgba($color: black, $alpha: 0.5);
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  display: none;
+  &__window {
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    background-color: #fff;
+    top: calc(50% - 200px);
+    left: calc(50% - 250px);
+    &__text {
+      height: 170px;
+      text-align: center;
+      &__title {
+        font-size: 18px;
+        margin-top: 50px;
+      }
+      &__detail {
+        font-size: 15px;
+        color: gray;
+      }
+    }
+    &__button {
+      height: 80px;
+      border-top: 1px solid #c0c0c0;
+      display: flex;
+      &__no {
+        width: calc(50% - 1px);
+        line-height: 80px;
+        border-right:1px solid #c0c0c0;
+        text-align: center;
+        font-size: 15px;
+      }
+      &__yes {
+        width: 50%;
+        line-height: 80px;
+        text-align: center;
+        font-size: 15px;
+        color: dodgerblue;
+      }
+    }
+  }
+}

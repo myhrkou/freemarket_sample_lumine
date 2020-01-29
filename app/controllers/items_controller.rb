@@ -33,6 +33,14 @@ class ItemsController < ApplicationController
     session[:item] = @item
   end
 
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      redirect_to item_path
+    end
+  end
+
   def all
     @items = Item.all.order(id: "DESC").page(params[:page]).per(15)
   end
