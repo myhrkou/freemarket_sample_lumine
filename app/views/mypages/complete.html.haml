@@ -1,0 +1,50 @@
+.html
+  .hader
+    = render "shared/logintop"
+  .sell
+    = render "shared/sell"
+  .pan
+    - breadcrumb :complete
+    =render 'layouts/breadcrumbs'
+  .contents-mypage
+    .contents-mypage__left
+      = render "mypages/left"
+    .contents-mypage__right
+      .contents-mypage__right__exhibition
+        .contents-mypage__right__exhibition__title
+          出品した商品
+        .contents-mypage__right__exhibition__tab
+          =link_to exhibition_mypages_path,class:"item_tab" do
+            .contents-mypage__right__exhibition__tab__button
+              出品中
+          =link_to trans_mypages_path,class:"item_tab" do
+            .contents-mypage__right__exhibition__tab__button
+              取引中
+          =link_to complete_mypages_path,class:"item_tab__active" do
+            .contents-mypage__right__exhibition__tab__button
+              売却済み
+        .contents-mypage__right__exhibition__items
+          -if @completes.present?
+            -@completes.each do |item|
+              =link_to item_path(item) do
+                .contents-mypage__right__exhibition__items__item
+                  .contents-mypage__right__exhibition__items__item__left
+                    .contents-mypage__right__exhibition__items__item__left__image
+                      =image_tag item.items_images[0].image_url ,class:"mypage_list_logo"
+                    .contents-mypage__right__exhibition__items__item__left__detail
+                      .contents-mypage__right__exhibition__items__item__left__detail__name
+                        =item.name
+                      .contents-mypage__right__exhibition__items__item__left__detail__status__complete
+                        販売済
+                  .contents-mypage__right__exhibition__items__item__icon
+                    = icon('fas', 'angle-right',class:"angle_l")
+          -else
+            .contents-mypage__right__exhibition__items__empty
+              =image_tag "/images/logo_gray.svg",class:"empty_logo"
+              .contents-mypage__right__exhibition__items__empty__text
+                売却済の商品がありません
+        .contents-mypage__right__exhibition__page
+          =link_to path_to_prev_page(@completes) do
+            =icon "fas", "angle-left",class:"prev"
+          =link_to path_to_next_page(@completes) do
+            =icon "fas", "angle-right",class:"next"

@@ -9,6 +9,9 @@ Rails.application.routes.draw do
       get :mypage
       get :mypagelogout
       get :card
+      get :exhibition
+      get :trans
+      get :complete
     end
   end
   resources :users do

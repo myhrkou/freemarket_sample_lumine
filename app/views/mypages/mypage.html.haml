@@ -13,14 +13,21 @@
       .contents-mypage__right__top
         .contents-mypage__right__top__user
           .contents-mypage__right__top__user__face
-            = image_tag src="/images/usericon.png",class:"userface"
+            -if current_user.image.present?
+              = image_tag src=current_user.image,class:"userface"
+            -else
+              = image_tag src="/images/usericon.png",class:"userface"    
           .contents-mypage__right__top__user__name
             =current_user.nickname
           .contents-mypage__right__top__user__count
             .contents-mypage__right__top__user__count__value
-              評価数  0
+              評価
+              %b.contents-mypage__right__top__user__count__value__num
+                0
             .contents-mypage__right__top__user__count__sell
-              出品数  0
+              出品数
+              %b.contents-mypage__right__top__user__count__sell__num
+                =@items.count
       .contents-mypage__right__middle
         .contents-mypage__right__middle__tablist
           .contents-mypage__right__middle__tablist__tab
@@ -31,7 +38,7 @@
           .contents-mypage__right__middle__tablist__info-list.content.show
             %li.contents-mypage__right__middle__tablist__list__tag
               .contents-mypage__right__middle__tablist__list__tag__logo
-                = image_tag src="/images/logo_red.svg"
+                = image_tag src="/images/logo_red.svg",class:"mypage_list_logo"
               .contents-mypage__right__middle__tablist__list__tag__sentense
                 .contents-mypage__right__middle__tablist__list__tag__sentense__text
                   事務局から「ログイン通知」
@@ -44,7 +51,7 @@
                 = icon('fas', 'angle-right')
             %li.contents-mypage__right__middle__tablist__list__tag
               .contents-mypage__right__middle__tablist__list__tag__logo
-                = image_tag src="/images/logo_red.svg"
+                = image_tag src="/images/logo_red.svg",class:"mypage_list_logo"
               .contents-mypage__right__middle__tablist__list__tag__sentense
                 .contents-mypage__right__middle__tablist__list__tag__sentense__text
                   クーポンについて
@@ -57,7 +64,7 @@
                 = icon('fas', 'angle-right')
             %li.contents-mypage__right__middle__tablist__list__tag
               .contents-mypage__right__middle__tablist__list__tag__logo
-                = image_tag src="/images/logo_red.svg"
+                = image_tag src="/images/logo_red.svg",class:"mypage_list_logo"
               .contents-mypage__right__middle__tablist__list__tag__sentense
                 .contents-mypage__right__middle__tablist__list__tag__sentense__text
                   クーポンについて
@@ -70,7 +77,7 @@
                 = icon('fas', 'angle-right')
             %li.contents-mypage__right__middle__tablist__list__tag
               .contents-mypage__right__middle__tablist__list__tag__logo
-                = image_tag src="/images/logo_red.svg"
+                = image_tag src="/images/logo_red.svg",class:"mypage_list_logo"
               .contents-mypage__right__middle__tablist__list__tag__sentense
                 .contents-mypage__right__middle__tablist__list__tag__sentense__text
                   クーポンについて
@@ -87,7 +94,7 @@
           .contents-mypage__right__middle__tablist__todo-list.content
             %li.contents-mypage__right__middle__tablist__list__tag
               .contents-mypage__right__middle__tablist__list__tag__logo
-                = image_tag src="/images/logo_red.svg"
+                = image_tag src="/images/logo_red.svg",class:"mypage_list_logo"
               .contents-mypage__right__middle__tablist__list__tag__sentense
                 .contents-mypage__right__middle__tablist__list__tag__sentense__text
                   事務局から「ログイン通知」すること
@@ -100,7 +107,7 @@
                 = icon('fas', 'angle-right')
             %li.contents-mypage__right__middle__tablist__list__tag
               .contents-mypage__right__middle__tablist__list__tag__logo
-                = image_tag src="/images/logo_red.svg"
+                = image_tag src="/images/logo_red.svg",class:"mypage_list_logo"
               .contents-mypage__right__middle__tablist__list__tag__sentense
                 .contents-mypage__right__middle__tablist__list__tag__sentense__text
                   クーポンについてすること
@@ -113,7 +120,7 @@
                 = icon('fas', 'angle-right')
             %li.contents-mypage__right__middle__tablist__list__tag
               .contents-mypage__right__middle__tablist__list__tag__logo
-                = image_tag src="/images/logo_red.svg"
+                = image_tag src="/images/logo_red.svg",class:"mypage_list_logo"
               .contents-mypage__right__middle__tablist__list__tag__sentense
                 .contents-mypage__right__middle__tablist__list__tag__sentense__text
                   クーポンについてすること
@@ -126,7 +133,7 @@
                 = icon('fas', 'angle-right')
             %li.contents-mypage__right__middle__tablist__list__tag
               .contents-mypage__right__middle__tablist__list__tag__logo
-                = image_tag src="/images/logo_red.svg"
+                = image_tag src="/images/logo_red.svg",class:"mypage_list_logo"
               .contents-mypage__right__middle__tablist__list__tag__sentense
                 .contents-mypage__right__middle__tablist__list__tag__sentense__text
                   クーポンについてすること
@@ -152,7 +159,7 @@
           .contents-mypage__right__bottom__lists__tag
             %li.contents-mypage__right__bottom__lists__tag__item
               .contents-mypage__right__bottom__lists__tag__item__logo
-                = image_tag src="/images/logo_red.svg"
+                = image_tag src="/images/logo_red.svg",class:"mypage_list_logo"
               .contents-mypage__right__bottom__lists__tag__item__sentense
                 .contents-mypage__right__bottom__lists__tag__item__sentense__text
                   事務局から「ログイン通知」
@@ -165,7 +172,7 @@
                 = icon('fas', 'angle-right')
             %li.contents-mypage__right__bottom__lists__tag__item
               .contents-mypage__right__bottom__lists__tag__item__logo
-                = image_tag src="/images/logo_red.svg"
+                = image_tag src="/images/logo_red.svg",class:"mypage_list_logo"
               .contents-mypage__right__bottom__lists__tag__item__sentense
                 .contents-mypage__right__bottom__lists__tag__item__sentense__text
                   事務局から「ログイン通知」
@@ -179,7 +186,7 @@
             
             %li.contents-mypage__right__bottom__lists__tag__item
               .contents-mypage__right__bottom__lists__tag__item__logo
-                = image_tag src="/images/logo_red.svg"
+                = image_tag src="/images/logo_red.svg",class:"mypage_list_logo"
               .contents-mypage__right__bottom__lists__tag__item__sentense
                 .contents-mypage__right__bottom__lists__tag__item__sentense__text
                   事務局から「ログイン通知」
@@ -197,7 +204,7 @@
           .contents-mypage__right__bottom__lists__tag
             %li.contents-mypage__right__bottom__lists__tag__item
               .contents-mypage__right__bottom__lists__tag__item__logo
-                = image_tag src="/images/logo_red.svg"
+                = image_tag src="/images/logo_red.svg",class:"mypage_list_logo"
               .contents-mypage__right__bottom__lists__tag__item__sentense
                 .contents-mypage__right__bottom__lists__tag__item__sentense__text
                   事務局から「ログイン通知」過去
@@ -210,7 +217,7 @@
                 = icon('fas', 'angle-right')
             %li.contents-mypage__right__bottom__lists__tag__item
               .contents-mypage__right__bottom__lists__tag__item__logo
-                = image_tag src="/images/logo_red.svg"
+                = image_tag src="/images/logo_red.svg",class:"mypage_list_logo"
               .contents-mypage__right__bottom__lists__tag__item__sentense
                 .contents-mypage__right__bottom__lists__tag__item__sentense__text
                   事務局から「ログイン通知」過去
@@ -224,7 +231,7 @@
             
             %li.contents-mypage__right__bottom__lists__tag__item
               .contents-mypage__right__bottom__lists__tag__item__logo
-                = image_tag src="/images/logo_red.svg"
+                = image_tag src="/images/logo_red.svg",class:"mypage_list_logo"
               .contents-mypage__right__bottom__lists__tag__item__sentense
                 .contents-mypage__right__bottom__lists__tag__item__sentense__text
                   事務局から「ログイン通知」過去
