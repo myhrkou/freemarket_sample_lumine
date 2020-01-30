@@ -12,15 +12,15 @@ class MypagesController < ApplicationController
   end
 
   def exhibition
-    @exhibitions=Item.where(status: :exhibition).order(id: "DESC").page(params[:page]).per(10)
+    @exhibitions=Item.where(status: :exhibition).where(user_id:current_user.id).order(id: "DESC").page(params[:page]).per(10)
   end
 
   def trans
-    @transes=Item.where(status: :trans).order(id: "DESC").page(params[:page]).per(10)
+    @transes=Item.where(status: :trans).where(user_id:current_user.id).order(id: "DESC").page(params[:page]).per(10)
   end
 
   def complete
-    @completes=Item.where(status: :complete).order(id: "DESC").page(params[:page]).per(10)
+    @completes=Item.where(status: :complete).where(user_id:current_user.id).order(id: "DESC").page(params[:page]).per(10)
   end
 
   private

@@ -8,4 +8,17 @@ $(function () {
     $(".contents-mypage__right__exhibition__tab__button").removeClass(".active1");
     $(this).addClass(".active1");
   });
+
+// function buildhtml(){
+//   var html=`<img src=current_user.image class="userface">`;
+//   return html;
+// };
+
+  // $(".profile_image").on("change",function(){
+  //   alert("aa");
+  //   // $(".userface").removeAttr("src");
+  //   // $(".userface").attr('src','current_user.image.url');
+  //   $(".userface").remove();
+  //   $(".profile_image").append(buildhtml);
+  // });
 });

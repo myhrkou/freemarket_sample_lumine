@@ -93,7 +93,7 @@
       background-color: #fff;
     }
     &__main {
-      padding: 70px 255px 70px;
+      padding: 70px 200px 70px;
       background-color: #fff;
       &__card {
         padding: 30px 0;
@@ -440,6 +440,7 @@
 .userface {
   width: 70px;
   height: 70px;
+  object-fit: cover;
   text-align: center;
   line-height: 70px;
   border-radius: 50%;

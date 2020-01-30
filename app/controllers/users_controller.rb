@@ -1,13 +1,17 @@
 class UsersController < ApplicationController
-before_action :set_card,only: [:profile,:edit]
+before_action :set_card,only: [:profile,:edit,:update]
 
   def index
   end
+
   def profile
+    @items=Item.where(user_id:current_user.id)
   end
   def edit
   end
+
   def update
+    @items=Item.where(user_id:current_user.id)
     if current_user.update!(user_params)
       render template:"mypages/mypage"
     end
