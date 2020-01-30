@@ -13,16 +13,21 @@
       .contents-mypage__right__top
         .contents-mypage__right__top__user
           .contents-mypage__right__top__user__face
-            = image_tag src="/images/usericon.png",class:"userface"
+            -if current_user.image.present?
+              = image_tag src=current_user.image,class:"userface"
+            -else
+              = image_tag src="/images/usericon.png",class:"userface"    
           .contents-mypage__right__top__user__name
             =current_user.nickname
           .contents-mypage__right__top__user__count
             .contents-mypage__right__top__user__count__value
-              評価　
-              %b 0
+              評価
+              %b.contents-mypage__right__top__user__count__value__num
+                0
             .contents-mypage__right__top__user__count__sell
-              出品数　
-              %b 0
+              出品数
+              %b.contents-mypage__right__top__user__count__sell__num
+                =@items.count
       .contents-mypage__right__middle
         .contents-mypage__right__middle__tablist
           .contents-mypage__right__middle__tablist__tab

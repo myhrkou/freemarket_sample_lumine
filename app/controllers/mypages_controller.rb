@@ -2,6 +2,7 @@ class MypagesController < ApplicationController
   before_action :set_card
 
   def mypage
+    @items=Item.where(user_id:current_user.id)
   end
 
   def mypagelogout

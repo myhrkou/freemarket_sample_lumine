@@ -27,6 +27,7 @@ before_action :set_card,only: [:profile,:edit]
       :phone_number,
       :birth_day,
       :content,
+      :image,
       address_attributes: [:id, :zip, :prefecture, :city, :number, :building, :user_id],
     )
   end
