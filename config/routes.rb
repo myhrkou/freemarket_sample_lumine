@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       get :exhibition
       get :trans
       get :complete
+      get :negotiate
+      get :purchased
     end
   end
   resources :users do

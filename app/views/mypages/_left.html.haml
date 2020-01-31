@@ -45,6 +45,18 @@
           出品した商品-売却済み
         .contents-mypage__left__lists__mypagelist__tag__icon
           = icon('fas', 'angle-right',class:"angle")
+    =link_to negotiate_mypages_path do
+      %li.contents-mypage__left__lists__mypagelist__tag
+        .contents-mypage__left__lists__mypagelist__tag__text
+          購入した商品-取引中
+        .contents-mypage__left__lists__mypagelist__tag__icon
+          = icon('fas', 'angle-right',class:"angle")
+    =link_to purchased_mypages_path do
+      %li.contents-mypage__left__lists__mypagelist__tag
+        .contents-mypage__left__lists__mypagelist__tag__text
+          購入した商品-過去の取引
+        .contents-mypage__left__lists__mypagelist__tag__icon
+          = icon('fas', 'angle-right',class:"angle")
     .contents-mypage__left__lists__mypagelist__title
       メルペイ
   %ul.contents-mypage__left__lists__mypagelist

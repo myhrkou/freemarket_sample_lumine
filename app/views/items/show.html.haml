@@ -1,11 +1,15 @@
 .show
   =@item.name
   =price_yen(@item.price)
-  -if @item.user_id==current_user.id
+  -if ( @item.status=="exhibition" && @item.user_id==current_user.id )
     わいのやつ
     .modal_button
       削除
     =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
+  -elsif (@item.status=="complete" && @item.user_id !=current_user.id)
+    売り切れました
+  -elsif  ( @item.status=="complete" && @item.user_id==current_user.id )
+    取引が完了しました
   -else
     =link_to pay_comfirm_items_path(@item.id) do
       購入画面に進む 

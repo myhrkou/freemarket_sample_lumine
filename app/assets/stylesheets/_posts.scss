@@ -181,6 +181,22 @@
         box-shadow: 0 4px 5px rgba(0, 0, 0, 0.18);
         &__image {
           position: relative;
+          &__sold {
+            border-style: solid;
+            border-width: 80px 80px 0 0;
+            border-color: #ea352d transparent transparent transparent;
+            position: absolute;
+          }
+          &__text {
+            color: #fff;
+            line-height: 60px;
+            position: absolute;
+            transform: rotate(-45deg);
+            font-size: 18px;
+            font-weight: bolder;
+            letter-spacing: 2px;
+          }
+
           .example {
             width: calc((100vw - 650px) * 0.175);
             height: calc((100vw - 650px) * 0.175);
@@ -452,7 +468,7 @@
   border-color: rgb(0, 149, 238);
 }
 
-.contents__all__item:hover .example{
+.contents__all__item:hover .example {
   width: calc((100vw - 650px) * 0.175 - 4px);
   height: calc((100vw - 650px) * 0.175 - 4px);
   object-fit: cover;

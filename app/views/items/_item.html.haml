@@ -2,6 +2,10 @@
   %li.contents__all__item
     =link_to item_path(item) do
       .contents__all__item__image
+        -if item.status=="complete"
+          .contents__all__item__image__sold
+          .contents__all__item__image__text
+            SOLD
         = image_tag item.items_images[0].image_url.url,class: 'example'
         .contents__all__item__image__price
           =price_yen(item.price)
