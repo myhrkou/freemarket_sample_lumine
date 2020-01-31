@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create, :all, :pay_comfirm, :pay]
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new,:show]
   before_action :set_card, only: [:pay_comfirm, :pay]
 
   def index
