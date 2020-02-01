@@ -1,50 +1,125 @@
+= render "modal"
 = form_for @item do |f|
-  = render 'layouts/errors', model: f.object
-  = f.label :出品画像
-  #image-box
-    #previews
-      - if @item.persisted?
-        - @item.items_images.each_with_index do |image, i|
-          = image_tag image.image_url.url, data: { index: i }, width: "100", height: '100'
-    
-    = f.fields_for :items_images do |image|
-      .js-file_group{"data-index": image.index}
-        = image.file_field :image_url, class: 'js-file'
-        %br/
-        %span.js-remove 削除
-        
-      - if @item.persisted?
-        = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-    - if @item.persisted?
-      .js-file_group{"data-index" => @item.items_images.count}
-        = file_field_tag :image_url, name: "item[items_images_attributes][#{@item.items_images.count}][image_url]", class: 'js-file'
-        .js-remove 削除
- 
-  %br     
-  = f.label :商品名
-  = f.text_field :name,placeholder:"商品名(必須40文字まで)",cols:"40"
-  %br     
-  = f.label :商品の説明
-  = f.text_area :description,rows: "5",cols:"1000",placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
-  %br     
-  = f.label :商品詳細
-  %br      
-  = f.label :商品の状態
-  =f.select :"condition",[["---",""],["新品、未使用","新品、未使用"],["未使用に近い","未使用に近い"],["目立った傷や汚れなし","目立った傷や汚れなし"],["やや傷や汚れあり","やや傷や汚れあり"],["傷や汚れあり","傷や汚れあり"],["全体的に状態が悪い","全体的に状態が悪い"]]
-  %br     
-  = f.label :配送について
-  %br     
-  = f.label :配送料の負担
-  =f.select :"delivery_charge_detail",[["---",""],["送料込み（出品者負担）","送料込み（出品者負担）"],["着払い（購入者負担）","着払い（購入者負担）"]]
-  %br     
-  = f.label :発送元の地域
-  = f.collection_select :delivery_origin, Prefecture.all, :id, :name
-  %br     
-  = f.label :発送までの日数
-  =f.select :"delivery_date", [["---",""],["1~2日で発送","1~2日で発送"],["2~3日で発送","2~3日で発送"],["3~7日で発送","3~7日で発送"]]
-  %br 
-  = f.label :販売価格
-  %br
-  = f.label :価格
-  = f.number_field :price,placeholder:"例）300"
-  = f.submit
+  .bgc
+    .header
+      =render "users/header"
+    .contents
+      = render 'layouts/errors', model: f.object
+      .contents-title
+        商品の情報を入力
+      .contents-item_img
+        .contents-item_img_title
+          .contents-item_img_title_texttitle
+            出品画像
+          .contents-item_img_title_textmust.must
+            必須
+        .contents-item_img_text
+          最大10枚までアップロードできます
+        .contents-item_img_image
+          #image-box
+            #previews
+              - if @item.persisted?
+                - @item.items_images.each_with_index do |image, i|
+                  = image_tag image.image_url.url, data: { index: i }, width: "100", height: '100'
+            = f.fields_for :items_images do |image|
+              .js-file_group{"data-index": image.index}
+                =image.label :image_url ,class: "js-file1" do
+                  .js-file2
+                    .js-file2_text
+                      クリックしてファイルをアップロード
+                  = image.file_field :image_url, name: "item[items_images_attributes][#{@item.items_images.count}][image_url]",class: 'js-file'
+                - if @item.persisted?
+                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+            - if @item.persisted?
+              .js-file_group{"data-index" => @item.items_images.count}
+                =f.label
+                .file_image
+                = file_field_tag :image_url, name: "item[items_images_attributes][#{@item.items_images.count}][image_url]", class: 'js-file'        
+      .contents-item_text
+        .contents-item_text_title
+          .contents-item_text_title_subname
+            商品名
+          .contents-item_text_title_must.must
+            必須
+        .contents-item_text_name
+          = f.text_field :name,placeholder:"商品名(必須40文字まで)",cols:"40"
+        .contents-item_text_title
+          .contents-item_text_title_name
+            商品の説明
+          .contents-item_text_title_must.must
+            必須
+        .contents-item_text_description
+          = f.text_area :description,rows: "5",cols:"1000",placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+      .contents-item_select
+        .contents-item_select_title
+          商品の詳細
+        .contents-item_select_right
+          .contents-item_select_right_text
+            .contents-item_select_sub
+              商品の状態
+            .contents-item_select_sub_must.must
+              必須
+          .contents-item_select_right_condition
+            = f.select :"condition",[["---",""],["新品、未使用","新品、未使用"],["未使用に近い","未使用に近い"],["目立った傷や汚れなし","目立った傷や汚れなし"],["やや傷や汚れあり","やや傷や汚れあり"],["傷や汚れあり","傷や汚れあり"],["全体的に状態が悪い","全体的に状態が悪い"]]
+      .contents-delivery_select
+        .contents-delivery_select_left
+          配送について
+        .contents-delivery_select_right
+          .contents-delivery_select_right_subtop
+            .contents_delivery_select_sub_right_cost
+              配送料の負担
+            .contents_delivery_select_sub_must.must
+              必須
+          .contents-delivery_select_chagedetail
+            =f.select :"delivery_charge_detail",[["---",""],["送料込み（出品者負担）","送料込み（出品者負担）"],["着払い（購入者負担）","着払い（購入者負担）"]]
+          .contents-delivery_select_right_sub
+            .contents_delivery_select_origin
+              配送元の地域
+              -# 最初の値の--はのちに実装
+            .contents_delivery_select_must.must
+              必須
+          .contents-delivery_select_origindetail
+            =f.collection_select :delivery_origin, Prefecture.all, :id, :name
+          .contents-delivery_select_right_sub
+            .contents_delivery_select_date
+              発送までの日数
+            .contents_delivery_select_must.must
+              必須
+          .contents-delivery_select_datedetail
+            =f.select :"delivery_date", [["---",""],["1~2日で発送","1~2日で発送"],["2~3日で発送","2~3日で発送"],["3~7日で発送","3~7日で発送"]]
+      .contents-price
+        .contents-price_sub
+          .contents-price_title
+            販売価格（300~9,999,999）
+        .contents-price_right
+          .contents-price_right_item
+            .contents-price_right_item_text
+              .contents-price_name
+                価格
+              .contents-price_must.must
+                必須
+            .contents-price_input
+              = f.text_field :price,placeholder:"例）300"
+          .contents-price_right_tax
+            .contents-price_right_tax_text
+              販売手数料（10％）
+            .contents-price_right_tax_result
+              &ndash;
+          .contents-price_profit
+            .contents-price_profit_text
+              販売利益
+            .contents-price_profit_result
+              &ndash;
+      .contents-btn
+        .contents-btn_text
+          禁止されている出品、行為を必ずご確認ください。
+          %br
+          またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
+          %br
+          また、出品をもちまして加盟店規約に同意したことになります。
+        .contents-btn_sell
+          .contents-btn_sell_bottn
+          = f.submit '出品する',class: 'form_sell'
+    .footer
+      =render "users/footer"
+
