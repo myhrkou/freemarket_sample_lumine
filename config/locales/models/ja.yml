@@ -6,6 +6,7 @@ ja:
         description: 商品説明
         condition: 商品の状態
         delivery_charge_detail: 配送料の負担
-        delivery_origin: 発送元 
+        delivery_origin: 配送元の地域
         delivery_date: 発送までの日数 
-        price: 金額
+        price: 価格
+        items_images: 出品画像
