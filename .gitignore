@@ -30,7 +30,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# public/uploads/*
+public/uploads/*
 # public/images/*
 
 # config/secrets.yml
