@@ -1,0 +1,47 @@
+.html
+  .hader
+    = render "shared/logintop"
+  .sell
+    = render "shared/sell"
+  .pan
+    - breadcrumb :negotiate
+    =render 'layouts/breadcrumbs'
+  .contents-mypage
+    .contents-mypage__left
+      = render "mypages/left"
+    .contents-mypage__right
+      .contents-mypage__right__purchased
+        .contents-mypage__right__purchased__title
+          購入した商品
+        .contents-mypage__right__purchased__tab
+          =link_to negotiate_mypages_path,class:"item_tab2__active" do
+            .contents-mypage__right__purchased__tab__button
+              取引中
+          =link_to purchased_mypages_path,class:"item_tab2" do
+            .contents-mypage__right__purchased__tab__button
+              過去の取引
+        .contents-mypage__right__purchased__items
+          -if @negotiate_items.present?
+            -@negotiate_items.each do |item|
+              =link_to item_path(item) do
+                .contents-mypage__right__purchased__items__item
+                  .contents-mypage__right__purchased__items__item__left
+                    .contents-mypage__right__purchased__items__item__left__image
+                      =image_tag item.items_images[0].image_url ,class:"mypage_list_logo"
+                    .contents-mypage__right__purchased__items__item__left__detail
+                      .contents-mypage__right__purchased__items__item__left__detail__name
+                        =item.name
+                      .contents-mypage__right__purchased__items__item__left__detail__status__complete
+                        取引完了
+                  .contents-mypage__right__purchased__items__item__icon
+                    = icon('fas', 'angle-right',class:"angle_l")
+          -else
+            .contents-mypage__right__purchased__items__empty
+              =image_tag "/images/logo_gray.svg",class:"empty_logo"
+              .contents-mypage__right__purchased__items__empty__text
+                取引中の商品がありません
+        .contents-mypage__right__purchased__page
+          =link_to path_to_prev_page(@negotiate_items) do
+            =icon "fas", "angle-left",class:"prev"
+          =link_to path_to_next_page(@negotiate_items) do
+            =icon "fas", "angle-right",class:"next"

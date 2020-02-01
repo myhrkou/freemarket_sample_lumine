@@ -4,7 +4,7 @@
   .header {
     width: 100%;
     height: 100px;
-    z-index: 1;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.18);
     &__top {
       display: flex;
       justify-content: flex-start;
@@ -14,13 +14,13 @@
         height: 40px;
         float: left;
         margin-right: 45px;
-        margin-left: 250px;
+        margin-left: 350px;
       }
       &__search {
         width: 100%;
         position: relative;
         background: rgb(245, 245, 245);
-        margin-right: 250px;
+        margin-right: 350px;
         &__text {
           float: left;
           height: 40px;
@@ -43,8 +43,8 @@
     &__bottom {
       display: flex;
       justify-content: space-between;
-      margin-top: 8px;
-      margin-left: 250px;
+      margin: 8px 0;
+      margin-left: 350px;
       height: 36px;
       &__left {
         display: flex;
@@ -63,7 +63,7 @@
         }
       }
       &__right {
-        margin-right: 250px;
+        margin-right: 350px;
         &__register {
           float: left;
           width: 106px;
@@ -116,39 +116,34 @@
     }
   }
   .sell {
-    position: fixed;
-    z-index: 1;
-    bottom: 32px;
-    height: 160px;
-    right: 32px;
-    width: 160px;
-    background-color: rgb(234, 53, 45);
-    border-radius: 50%;
-    z-index: 2;
-    &__text {
-      text-align: center;
-      padding-top: 32px;
-      font-size: 22px;
-      color: white;
-    }
-    &__img {
-      text-align: center;
-      margin-top: 8px;
-      margin-left: 50px;
-      margin-right: 50px;
-      width: 60px;
-      height: 54px;
+    &__button {
+      height: 160px;
+      width: 160px;
+      background-color: rgb(234, 53, 45);
+      border-radius: 50%;
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 1;
+      &__text {
+        width: fit-content;
+        margin: 0 auto;
+        padding-top: 25px;
+        font-size: 22px;
+        color: white;
+      }
+      &__img {
+        text-align: center;
+        margin-left: 50px;
+        margin-right: 50px;
+        width: 60px;
+        height: 54px;
+      }
     }
   }
   .contents {
-    width: 100%;
-    height: 100％;
     background-color: rgb(239, 239, 239);
-    z-index: 1;
     &__carousel {
-      background-image: url(/images/header.jpg);
-      width: auto;
-      height: 290px;
     }
     &__title {
       width: 100%;
@@ -160,33 +155,60 @@
       color: #404040;
       font-weight: 100;
     }
+    &__new {
+      padding: 25px 350px;
+      display: flex;
+      justify-content: space-between;
+      &__title {
+        font-size: 25px;
+      }
+      &__more {
+        color: dodgerblue;
+        height: fit-content;
+        margin-top: 10px;
+      }
+    }
     &__all {
-      width: calc(100% - 350px);
-      height: calc(100% - 100px);
-      padding: 50px;
+      width: calc(100% - 650px);
+      padding: 0 50px 50px 50px;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       margin: 0px auto;
-
       &__item {
-        width: 16%;
+        width: 17.5%;
         margin: 10px;
         box-shadow: 0 4px 5px rgba(0, 0, 0, 0.18);
-
         &__image {
-          width: 100%;
-          height: 0;
-          background-color: white;
           position: relative;
-          padding: 0 0 100%;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+          &__sold {
+            border-style: solid;
+            border-width: 80px 80px 0 0;
+            border-color: #ea352d transparent transparent transparent;
+            position: absolute;
+          }
+          &__text {
+            color: #fff;
+            line-height: 60px;
+            position: absolute;
+            transform: rotate(-45deg);
+            font-size: 18px;
+            font-weight: bolder;
+            letter-spacing: 2px;
+          }
+
+          .example {
+            width: calc((100vw - 650px) * 0.175);
+            height: calc((100vw - 650px) * 0.175);
+            object-fit: cover;
+            vertical-align: bottom;
+          }
           &__price {
             width: 80px;
             height: 31px;
             background-color: rgba(0, 0, 0, 0.4);
             border-radius: 0 15px 15px 0;
-            bottom: 8px;
+            bottom: 14px;
             left: 0px;
             position: absolute;
             color: white;
@@ -197,22 +219,25 @@
           }
         }
         &__name {
-          width: 100%;
-          height: 64px;
+          width: calc(100% - 22px);
+          height: 38px;
+          padding: 11px;
           background-color: white;
-          text-align: center;
-          line-height: 64px;
-          font-size: 14px;
+          font-size: 13px;
+          line-height: 15px;
         }
       }
     }
+    &__page {
+      padding: 0 0 50px 0;
+      text-align: center;
+    }
   }
   .footer {
-    z-index: 1;
     &__top {
       position: relative;
       width: 100%;
-      height: 250px;
+      height: 300px;
       &__smartphone {
         position: absolute;
         display: flex;
@@ -265,7 +290,7 @@
 
     &__bottom {
       height: 100%;
-      padding: 0px 250px 10px 300px;
+      padding: 0px 350px 10px 350px;
       background-color: rgb(34, 34, 34);
       color: white;
       &__link {
@@ -427,8 +452,7 @@
 
 .market {
   width: 100%;
-  height: auto;
-  //position: relative;
+  height: 300px;
 }
 
 .header__bottom__right__login:hover {
@@ -438,10 +462,16 @@
 }
 
 .contents__all__item:hover {
-  width: calc(16% - 4px);
+  width: calc(17.5% - 4px);
   height: calc(20% - 4px);
   border: solid 2px;
   border-color: rgb(0, 149, 238);
+}
+
+.contents__all__item:hover .example {
+  width: calc((100vw - 650px) * 0.175 - 4px);
+  height: calc((100vw - 650px) * 0.175 - 4px);
+  object-fit: cover;
 }
 
 //ロゴについてのsass
@@ -454,11 +484,6 @@
 .smartphone {
   width: 150px;
   margin-left: 150px;
-}
-
-.example {
-  width: 100%;
-  height: 184px;
 }
 
 .camera {
@@ -681,4 +706,105 @@ li.category__sub1:hover ul.subsub > li.category__subsub2 {
 .header__bottom__right__my:hover .header__bottom__right__my__text {
   color: dodgerblue;
   transition: 0.5s;
+}
+
+.carousel {
+  width: 100vw;
+  vertical-align: bottom;
+}
+
+.pagination {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination > .current {
+  height: 100%;
+  width: 40px;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  background-color: #ea352d;
+  color: #fff;
+  line-height: 40px;
+}
+
+.pagination > .page {
+  height: 100%;
+  width: 40px;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.pagination > .page > a {
+  height: 40px;
+  width: 100%;
+  line-height: 40px;
+  padding: 12px 16px;
+}
+
+.pagination > .next {
+  height: 40px;
+  width: 40px;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  background-color: #fff;
+  right: 393px;
+  position: absolute;
+}
+
+.pagination > .next > a {
+  padding: 12px 16px;
+  line-height: 40px;
+}
+
+.pagination > .last {
+  height: 40px;
+  width: 40px;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  background-color: #fff;
+  right: 350px;
+  position: absolute;
+}
+
+.pagination > .last > a {
+  line-height: 40px;
+  padding: 12px 16px;
+}
+
+.pagination > .prev {
+  height: 40px;
+  width: 40px;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  background-color: #fff;
+  left: 393px;
+  position: absolute;
+}
+
+.pagination > .prev > a {
+  padding: 12px 16px;
+  line-height: 40px;
+}
+
+.pagination > .first {
+  height: 40px;
+  width: 40px;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  background-color: #fff;
+  left: 350px;
+  position: absolute;
+}
+
+.pagination > .first > a {
+  line-height: 40px;
+  padding: 12px 16px;
+}
+
+.contents__new__more:hover {
+  text-decoration: underline;
+  color: lightskyblue;
 }

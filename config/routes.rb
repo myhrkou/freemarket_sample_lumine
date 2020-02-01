@@ -3,13 +3,17 @@ Rails.application.routes.draw do
                        omniauth_callbacks: "users/omniauth_callbacks",
                        registrations: "users/registrations",
                      }
-  root "tests#index"
-  resources :tests, only: [:index]
+  root "items#index"
   resources :mypages do
     collection do
       get :mypage
       get :mypagelogout
       get :card
+      get :exhibition
+      get :trans
+      get :complete
+      get :negotiate
+      get :purchased
     end
   end
   resources :users do
@@ -34,5 +38,11 @@ Rails.application.routes.draw do
       post "delete", to: "cards#delete"
     end
   end
-  resources :items,only:[:index,:new,:create]
+  resources :items,only:[:index,:new,:create,:show,:destroy] do
+    collection do
+      get :all
+      post "pay", to: "items#pay"
+      get :pay_comfirm
+    end
+  end
 end

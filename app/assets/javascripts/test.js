@@ -17,5 +17,4 @@ $(function()  {
     $(".content2").removeClass("show2");
     $(".content2").eq(index).addClass("show2");
   });
-
 });

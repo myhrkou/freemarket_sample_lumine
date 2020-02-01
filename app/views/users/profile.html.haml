@@ -17,7 +17,12 @@
           =form_for(current_user) do |f|
             .contents-mypage__right__mainprofile__profile__name
               .contents-mypage__right__mainprofile__profile__name__icon
-                = image_tag src="/images/usericon.png",class:"userface"
+                =f.label :image,class:"profile_image_form" do
+                  =f.file_field :image,class:"profile_image"
+                  -if current_user.image.present?
+                    = image_tag current_user.image,class:"userface"
+                  -else
+                    = image_tag "/images/usericon.png",class:"userface"
               .contents-mypage__right__mainprofile__profile__name__form
                 =f.text_field :nickname,class:'profile_nickname'
             .contents-mypage__right__mainprofile__profile__content

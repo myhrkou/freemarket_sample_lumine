@@ -1,0 +1,34 @@
+.show
+  =@item.name
+  =price_yen(@item.price)
+  -if user_signed_in?
+    -if ( @item.status=="exhibition" && @item.user_id==current_user.id )
+      わいのやつ
+      .modal_button
+        削除
+      =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
+    -elsif (@item.status=="complete" && @item.user_id !=current_user.id)
+      売り切れました
+    -elsif  ( @item.status=="complete" && @item.user_id==current_user.id )
+      取引が完了しました
+    -else
+      =link_to pay_comfirm_items_path(@item.id) do
+        購入画面に進む 
+  -else
+    =link_to pay_comfirm_items_path(@item.id) do
+      購入画面に進む 
+.modal
+  .modal__window
+    .modal__window__text
+      .modal__window__text__title
+        確認
+      .modal__window__text__detail
+        削除すると二度と復活できません。
+        %br削除する代わりに停止することもできます。
+        %br
+        本当に削除しますか？
+    .modal__window__button
+      .modal__window__button__no
+        キャンセル
+      .modal__window__button__yes
+        削除する
