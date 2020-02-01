@@ -36,6 +36,30 @@ crumb :logout do
   parent :mypage
 end
 
+crumb :exhibition do
+  link "出品した商品-出品中",exhibition_mypages_path
+  parent :mypage
+end
+
+crumb :trans do
+  link "出品した商品-取引中",trans_mypages_path
+  parent :mypage
+end
+
+crumb :complete do
+  link "出品した商品-売却済み",complete_mypages_path
+  parent :mypage
+end
+
+crumb :negotiate do
+  link "購入した商品-取引中",negotiate_mypages_path
+  parent :mypage
+end
+
+crumb :purchased do
+  link "購入した商品-過去の取引",purchased_mypages_path
+  parent :mypage
+end
 # これ以降はまだ実装していない
 
 # crumb :category do

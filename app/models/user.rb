@@ -25,10 +25,11 @@ class User < ApplicationRecord
   belongs_to :card, optional: true
   has_many :sns_credentials
 
+  mount_uploader :image, ImageUploader
+
   ZENKAKU=/\A[ぁ-んァ-ン一-龥]+\z/
   KATAKANA=/\A[ァ-ヶー－]+\z/
   TEL=/\A\d{10,11}\z/
-
   validates :nickname, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, length: { minimum: 7 }
   validates :first_name, presence: true,format:{with:ZENKAKU}

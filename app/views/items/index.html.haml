@@ -1,5 +1,3 @@
-%button#modal-open-btn この商品を削除する
-= link_to "", items_path(@item), method: :DELETE, id: 'item-delete-btn'
 #overlay
   #modalWindow
     .modal-message-box
@@ -9,3 +7,30 @@
         %div あなたが出品した商品は「出品した商品一覧」からいつでも見ることができます。
     %button#modal-close-btn 続けて出品する 
     %button#delete-comformation-btn 商品ページへ行ってシェアする
+.html
+  .header
+    -if current_user.present?
+      =render 'shared/logintop'
+    -else
+      = render "shared/logouttop"
+  .sell
+    =link_to new_item_path ,class:'sell__button'do
+      .sell__button__text
+        出品
+      .sell__button__img
+        = icon('fas', 'camera',class:"camera")
+  .contents
+    .contents__carousel
+      =image_tag src='/images/header.jpg',class:'carousel'
+    .contents__title
+      全てのアイテム
+    .contents__new
+      .contents__new__title
+        新着アイテム
+      =link_to all_items_path,class:"contents__new__more" do
+        もっと見る
+        =icon('fas', 'angle-right')
+    %ul.contents__all
+      = render 'item'
+  .footer
+    = render "shared/footer"
