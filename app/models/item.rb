@@ -7,7 +7,8 @@ class Item < ApplicationRecord
   validates :condition, :delivery_charge_detail, :delivery_date, :price,presence: true
   validates :delivery_origin,inclusion: { in: (1..47),message: "を入力してください"}
 
-  validates :price,inclusion: { in: (300..9999999),message: "300~9999999の値を入力してください"}
+  # validates :price,inclusion: { in: 300..9999999,message: "300~9999999の値を入力してください"}
+  validates :price,numericality:{greater_than:299,less_than:10000000}
   accepts_nested_attributes_for :items_images, allow_destroy: true
 
   enum status:{
@@ -18,9 +19,4 @@ class Item < ApplicationRecord
   }
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
-
-
-  
-
-
 end
