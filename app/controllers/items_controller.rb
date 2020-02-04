@@ -31,8 +31,8 @@ class ItemsController < ApplicationController
 
   def show
     session[:item] = @item
-    @prefecture=Prefecture.find(@item.delivery_origin).name
-    @user=User.find(@item.user_id).nickname
+    @prefecture = Prefecture.find(@item.delivery_origin).name
+    @user = User.find(@item.user_id).nickname
 
   end
 
