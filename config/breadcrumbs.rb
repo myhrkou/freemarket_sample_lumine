@@ -61,9 +61,26 @@ crumb :purchased do
   parent :mypage
 end
 
-crumb :items do
-  link "出品商品画面", item_path
+crumb :items do |item|
+  if  ( item.status=="complete" && item.user_id==current_user.id )
+    link "取引画面", item_path
+    parent :complete
+  elsif ( item.status=="trans" && item.user_id==current_user.id )
+    link "取引画面", item_path
+    parent :trans
+  elsif ( item.status=="exhibition" && item.user_id==current_user.id )
+    link "出品商品画面", item_path
+    parent :exhibition
+  elsif  ( item.status=="complete" && item.buyer==current_user.id )
+      link "取引画面", item_path
+      parent :purchased
+  elsif ( item.status=="trans" && item.buyer==current_user.id )
+    link "取引画面", item_path
+    parent :negotiate
+  end
 end
+
+
 # これ以降はまだ実装していない
 
 # crumb :category do

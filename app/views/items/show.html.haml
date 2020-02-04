@@ -2,13 +2,13 @@
   .header
     =render '/shared/logintop'
   .pan
-    - breadcrumb :items
+    - breadcrumb :items,@item
     = render "layouts/breadcrumbs"
-  .show
+  .show-detail
     -if  ( @item.status=="complete" && @item.user_id==current_user.id )
-      .show_complete
-        .show_complete_left
-          .show_complete_left_title
+      .show-detail_complete
+        .show-detail_complete_left
+          .show-detail_complete_left_title
             取引情報
             %table.trans-table
               %tr
@@ -34,41 +34,41 @@
                 %th 商品ID
                 %td 
                   =@item.id 
-          .show_complete_left_buyinfo
-            .show_complete_left_buyinfo_title
+          .show-detail_complete_left_buyinfo
+            .show-detail_complete_left_buyinfo_title
               購入情報
-            .show_complete_left_buyinfo_element
-              .show_complete_left_buyinfo_element_img
+            .show-detail_complete_left_buyinfo_element
+              .show-detail_complete_left_buyinfo_element_img
                 = icon('fas', 'user',class:"user")
-              .show_complete_left_buyinfo_element_name
+              .show-detail_complete_left_buyinfo_element_name
                 コースケ
-              .show_complete_left_buyinfo_element_arrow
+              .show-detail_complete_left_buyinfo_element_arrow
                 = icon('fas', 'angle-right',class:"angle")
-        .show_complete_right
-          .show_complete_right_title
+        .show-detail_complete_right
+          .show-detail_complete_right_title
             取引画面
-          .show_complete_right_info
-            .show_complete_right_info_element
-              .show_complete_right_info_element_mark
+          .show-detail_complete_right_info
+            .show-detail_complete_right_info_element
+              .show-detail_complete_right_info_element_mark
                 = icon('fas', 'check',class:"checkmark")
-              .show_complete_right_info_element_text
+              .show-detail_complete_right_info_element_text
                 取引が完了しました
-            .show_complete_right_info_thanks
+            .show-detail_complete_right_info_thanks
               このたびはメルカリのご利用ありがとうございました
-          .show_complete_right_delete
+          .show-detail_complete_right_delete
             この商品を削除する
     -else
-      .show_element
-        .show_element_title
+      .show-detail_element
+        .show-detail_element_title
           =@item.name
-        .show_element_main
-          .show_element_main_left
-            .show_element_main_left_img
+        .show-detail_element_main
+          .show-detail_element_main_left
+            .show-detail_element_main_left_img
             = image_tag @item.items_images[0].image_url.url,class: 'detail'
-            .show_element_main_left_choice
+            .show-detail_element_main_left_choice
               複数画像
-          .show_element_main_right
-            .show_element_main_right_table
+          .show-detail_element_main_right
+            .show-detail_element_main_right_table
               %table
                 %tr
                   %th 出品者
@@ -93,41 +93,41 @@
                   %th 発送日の目安
                   %td 
                     =@item.delivery_date 
-        .show_element_price
-          .show_element_price_yen
+        .show-detail_element_price
+          .show-detail_element_price_yen
             =price_yen(@item.price)
-          .show_element_price_intax
-            .show_element_price_intax_text
+          .show-detail_element_price_intax
+            .show-detail_element_price_intax_text
               （税込）
-          .show_element_price_detail
-            .show_element_price_detail_text
+          .show-detail_element_price_detail
+            .show-detail_element_price_detail_text
               =@item.delivery_charge_detail
-        .show_element_description
+        .show-detail_element_description
           =@item.description
-      .show_botton
+      .show-detail_botton
         -if user_signed_in?
           -if ( @item.status=="exhibition" && @item.user_id==current_user.id )
-            .show_botton_edit
-              .show_botton_edit_text
+            .show-detail_botton_edit
+              .show-detail_botton_edit_text
                 商品の編集
-            .show_botton_or
+            .show-detail_botton_or
               or
-            .show_botton_stop
+            .show-detail_botton_stop
               出品を一旦停止にする
-            .show_botton_delete
+            .show-detail_botton_delete
               この商品を削除
             =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
 
           -elsif (@item.status=="complete" && @item.user_id !=current_user.id)
-            .show_botton_soldout
+            .show-detail_botton_soldout
               売り切れました
           -else
             =link_to pay_comfirm_items_path(@item.id) do
-              .show_botton_buy
+              .show-detail_botton_buy
                 購入画面に進む
         -else
           =link_to pay_comfirm_items_path(@item.id) do
-            .show_botton_buy
+            .show-detail_botton_buy
               購入画面に進む 
   .footer
     =render '/shared/footer'
