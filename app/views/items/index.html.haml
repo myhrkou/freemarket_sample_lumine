@@ -9,10 +9,7 @@
     %button#delete-comformation-btn 商品ページへ行ってシェアする
 .html
   .header
-    -if current_user.present?
-      =render 'shared/logintop'
-    -else
-      = render "shared/logouttop"
+    =render 'shared/header'
   .sell
     =link_to new_item_path ,class:'sell__button'do
       .sell__button__text
