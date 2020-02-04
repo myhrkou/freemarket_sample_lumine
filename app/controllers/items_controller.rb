@@ -31,7 +31,6 @@ class ItemsController < ApplicationController
 
   def show
     session[:item] = @item
-    @item = Item.find(params[:id])
     @prefecture=Prefecture.find(@item.delivery_origin).name
     @user=User.find(@item.user_id).nickname
 
