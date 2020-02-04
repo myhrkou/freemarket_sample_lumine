@@ -25,7 +25,7 @@
               売却済み
         .contents-mypage__right__exhibition__items
           -if @transes.present?
-            -@exhibitions.each do |item|
+            -@transes.each do |item|
               =link_to item_path(item) do
                 .contents-mypage__right__exhibition__items__item
                   .contents-mypage__right__exhibition__items__item__left

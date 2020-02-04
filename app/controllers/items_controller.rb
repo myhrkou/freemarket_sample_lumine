@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create, :all, :pay_comfirm, :pay]
+  before_action :set_item, except: [:index, :new, :show,:create, :all, :pay_comfirm, :pay]
   before_action :authenticate_user!, only: [:new,:show]
   before_action :set_card, only: [:pay_comfirm, :pay]
 
@@ -31,6 +31,9 @@ class ItemsController < ApplicationController
 
   def show
     session[:item] = @item
+    @prefecture = Prefecture.find(@item.delivery_origin).name
+    @user = User.find(@item.user_id).nickname
+
   end
 
   def destroy
@@ -71,6 +74,8 @@ class ItemsController < ApplicationController
       redirect_to pay_comfirm_items_path
     end
   end
+
+
 
   private
 
