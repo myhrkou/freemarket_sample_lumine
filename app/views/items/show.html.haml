@@ -1,6 +1,7 @@
 .show
   =@item.name
   =price_yen(@item.price)
+  =@item.delivery_origin.name
   -if user_signed_in?
     -if ( @item.status=="exhibition" && @item.user_id==current_user.id )
       わいのやつ
