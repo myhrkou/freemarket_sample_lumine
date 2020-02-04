@@ -14,8 +14,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-
-
     if @item.save
       redirect_to root_path
     else
@@ -33,6 +31,10 @@ class ItemsController < ApplicationController
 
   def show
     session[:item] = @item
+    @item = Item.find(params[:id])
+    @prefecture=Prefecture.find(@item.delivery_origin).name
+    @user=User.find(@item.user_id).nickname
+
   end
 
   def destroy
@@ -73,6 +75,8 @@ class ItemsController < ApplicationController
       redirect_to pay_comfirm_items_path
     end
   end
+
+
 
   private
 

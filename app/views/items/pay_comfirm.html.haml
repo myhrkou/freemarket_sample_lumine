@@ -14,10 +14,10 @@
             %b.pay__main__center__all__item__info__price
               -if @item.delivery_charge_detail=='送料込み（出品者負担）'
                 = price_yen(@item.price)
-                　(税込) 送料込み
+                  (税込) 送料込み
               -else
                 = price_yen(@item.price)
-                　(税込) 着払い
+                  (税込) 着払い
         .pay__main__center__all__price
           %b.pay__main__center__all__price__title
             支払い金額

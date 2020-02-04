@@ -70,10 +70,10 @@ class UserStepsController < ApplicationController
           description: "test",
           email: @user.email,
           card: params["payjp-token"],
-          metadata: { user_id: @user.id },
+          metadata: { user_id: current_user.id },
         )
         @card = Card.new(
-          user_id: @user.id,
+          user_id: curreny_user.id,
           customer_id: customer.id,
           card_id: customer.default_card,
         )

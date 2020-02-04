@@ -60,6 +60,10 @@ crumb :purchased do
   link "購入した商品-過去の取引",purchased_mypages_path
   parent :mypage
 end
+
+crumb :items do
+  link "出品商品画面", item_path
+end
 # これ以降はまだ実装していない
 
 # crumb :category do

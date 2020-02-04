@@ -1,34 +1,148 @@
-.show
-  =@item.name
-  =price_yen(@item.price)
-  -if user_signed_in?
-    -if ( @item.status=="exhibition" && @item.user_id==current_user.id )
-      わいのやつ
-      .modal_button
-        削除
-      =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
-    -elsif (@item.status=="complete" && @item.user_id !=current_user.id)
-      売り切れました
-    -elsif  ( @item.status=="complete" && @item.user_id==current_user.id )
-      取引が完了しました
+.html
+  .header
+    =render '/shared/logintop'
+  .pan
+    - breadcrumb :items
+    = render "layouts/breadcrumbs"
+  .show
+    -if  ( @item.status=="complete" && @item.user_id==current_user.id )
+      .show_complete
+        .show_complete_left
+          .show_complete_left_title
+            取引情報
+            %table.trans-table
+              %tr
+                %th 商品
+                %td
+                  =@item.name
+              %tr
+                %th 送料
+                %td 
+                  =@item.condition
+              %tr
+                %th 配送料手数料
+                %td 
+                  未定
+              %tr
+                %th 販売利益
+                %td 未定
+              %tr
+                %th 購入日時
+                %td
+                  =@prefecture
+              %tr
+                %th 商品ID
+                %td 
+                  =@item.id 
+          .show_complete_left_buyinfo
+            .show_complete_left_buyinfo_title
+              購入情報
+            .show_complete_left_buyinfo_element
+              .show_complete_left_buyinfo_element_img
+                = icon('fas', 'user',class:"user")
+              .show_complete_left_buyinfo_element_name
+                コースケ
+              .show_complete_left_buyinfo_element_arrow
+                = icon('fas', 'angle-right',class:"angle")
+        .show_complete_right
+          .show_complete_right_title
+            取引画面
+          .show_complete_right_info
+            .show_complete_right_info_element
+              .show_complete_right_info_element_mark
+                = icon('fas', 'check',class:"checkmark")
+              .show_complete_right_info_element_text
+                取引が完了しました
+            .show_complete_right_info_thanks
+              このたびはメルカリのご利用ありがとうございました
+          .show_complete_right_delete
+            この商品を削除する
     -else
-      =link_to pay_comfirm_items_path(@item.id) do
-        購入画面に進む 
-  -else
-    =link_to pay_comfirm_items_path(@item.id) do
-      購入画面に進む 
-.modal
-  .modal__window
-    .modal__window__text
-      .modal__window__text__title
-        確認
-      .modal__window__text__detail
-        削除すると二度と復活できません。
-        %br削除する代わりに停止することもできます。
-        %br
-        本当に削除しますか？
-    .modal__window__button
-      .modal__window__button__no
-        キャンセル
-      .modal__window__button__yes
-        削除する
+      .show_element
+        .show_element_title
+          =@item.name
+        .show_element_main
+          .show_element_main_left
+            .show_element_main_left_img
+            = image_tag @item.items_images[0].image_url.url,class: 'detail'
+            .show_element_main_left_choice
+              複数画像
+          .show_element_main_right
+            .show_element_main_right_table
+              %table
+                %tr
+                  %th 出品者
+                  %td
+                    =@user
+                %tr
+                  %th 商品の状態
+                  %td 
+                    =@item.condition
+                %tr
+                  %th 配送料の負担
+                  %td 
+                    =@item.delivery_charge_detail
+                %tr
+                  %th 配送の方法
+                  %td 未定
+                %tr
+                  %th 配送元地域
+                  %td
+                    =@prefecture
+                %tr
+                  %th 発送日の目安
+                  %td 
+                    =@item.delivery_date 
+        .show_element_price
+          .show_element_price_yen
+            =price_yen(@item.price)
+          .show_element_price_intax
+            .show_element_price_intax_text
+              （税込）
+          .show_element_price_detail
+            .show_element_price_detail_text
+              =@item.delivery_charge_detail
+        .show_element_description
+          =@item.description
+      .show_botton
+        -if user_signed_in?
+          -if ( @item.status=="exhibition" && @item.user_id==current_user.id )
+            .show_botton_edit
+              .show_botton_edit_text
+                商品の編集
+            .show_botton_or
+              or
+            .show_botton_stop
+              出品を一旦停止にする
+            .show_botton_delete
+              この商品を削除
+            =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
+
+          -elsif (@item.status=="complete" && @item.user_id !=current_user.id)
+            .show_botton_soldout
+              売り切れました
+          -else
+            =link_to pay_comfirm_items_path(@item.id) do
+              .show_botton_buy
+                購入画面に進む
+        -else
+          =link_to pay_comfirm_items_path(@item.id) do
+            .show_botton_buy
+              購入画面に進む 
+  .footer
+    =render '/shared/footer'
+  .modal
+    .modal__window
+      .modal__window__text
+        .modal__window__text__title
+          確認
+        .modal__window__text__detail
+          削除すると二度と復活できません。
+          %br削除する代わりに停止することもできます。
+          %br
+          本当に削除しますか？
+      .modal__window__button
+        .modal__window__button__no
+          キャンセル
+        .modal__window__button__yes
+          削除する
