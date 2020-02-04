@@ -6,8 +6,8 @@
   justify-content: center;
   margin: 0 auto;
   &_left{
-    margin-right: 40px;
-    width: 280px;
+    margin-right: 20px;
+    width: 200px;
     &_title{
       font-weight: bold;
     }
@@ -36,7 +36,7 @@
   }
   &_right{
     background-color: #fff;
-    width: 700px;
+    width: 570px;
     &_title{
       font-size: 24px;
       text-align: center;
@@ -67,11 +67,9 @@
       color: #fff;
       text-align: center;
       margin: 40px 100px;
+      }
     }
   }
-  
-}
-
  &_element{
    background-color: #fff;
    width: 62.5%;
@@ -88,7 +86,6 @@
    display: flex;
    justify-content: flex-start;
    margin:16px 0 0;
-
     &_left{
       width:50%;
       background-color: #f5f5f5;
@@ -98,7 +95,6 @@
     &_right{
       width:50%
     }
-    
    }
    &_price{
      margin: 24px 0 0;
@@ -115,7 +111,6 @@
         font-size: 14px;
         line-height: 58px;
        }
-   
      }
      &_detail{
        font-size: 16px;
@@ -123,10 +118,8 @@
        &_text{
         font-size: 16px;
         line-height: 58px;
-  
        }
      }
-
    }
    &_description{
      padding: 32px 0 0;
@@ -143,19 +136,14 @@
   padding-bottom: 8px;
   padding-right: 16px;
   padding-left: 16px;
-
-  
   height:100%;
   &_edit{
     background-color: red;
     margin: 0 auto ;
-    
-  
     width: 100%;
     &_text{
       color: white;
       text-align: center;
-    
     }
   }
   &_or{
@@ -168,7 +156,6 @@
     text-align: center;
     margin-top: 16px;
   }
-
   &_delete{
     background-color: #f5f5f5;
     width: 100%;
@@ -189,7 +176,6 @@
 
 th,td{
   border:1px solid #f5f5f5;
-
   font-weight: 400;
   padding: 8px;
   font-size:14px;
