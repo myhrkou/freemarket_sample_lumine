@@ -156,7 +156,7 @@
       font-weight: 100;
     }
     &__new {
-      padding: 25px 350px;
+      padding: 25px 330px;
       display: flex;
       justify-content: space-between;
       &__title {
@@ -169,7 +169,7 @@
       }
     }
     &__all {
-      width: calc(100% - 650px);
+      width: calc(100% - 610px);
       padding: 0 50px 50px 50px;
       display: flex;
       justify-content: center;
@@ -198,8 +198,8 @@
           }
 
           .example {
-            width: calc((100vw - 650px) * 0.175);
-            height: calc((100vw - 650px) * 0.175);
+            width: calc((100vw - 610px) * 0.175);
+            height: calc((100vw - 610px) * 0.175);
             object-fit: cover;
             vertical-align: bottom;
           }
@@ -290,7 +290,7 @@
 
     &__bottom {
       height: 100%;
-      padding: 0px 350px 10px 350px;
+      padding: 0px 330px 10px 330px;
       background-color: rgb(34, 34, 34);
       color: white;
       &__link {
@@ -469,8 +469,8 @@
 }
 
 .contents__all__item:hover .example {
-  width: calc((100vw - 650px) * 0.175 - 4px);
-  height: calc((100vw - 650px) * 0.175 - 4px);
+  width: calc((100vw - 610px) * 0.175 - 4px);
+  height: calc((100vw - 610px) * 0.175 - 4px);
   object-fit: cover;
 }
 
@@ -750,7 +750,7 @@ li.category__sub1:hover ul.subsub > li.category__subsub2 {
   border: 1px solid #c0c0c0;
   border-radius: 4px;
   background-color: #fff;
-  right: 393px;
+  right: 373px;
   position: absolute;
 }
 
@@ -765,7 +765,7 @@ li.category__sub1:hover ul.subsub > li.category__subsub2 {
   border: 1px solid #c0c0c0;
   border-radius: 4px;
   background-color: #fff;
-  right: 350px;
+  right: 330px;
   position: absolute;
 }
 
@@ -780,7 +780,7 @@ li.category__sub1:hover ul.subsub > li.category__subsub2 {
   border: 1px solid #c0c0c0;
   border-radius: 4px;
   background-color: #fff;
-  left: 393px;
+  left: 373px;
   position: absolute;
 }
 
@@ -795,7 +795,7 @@ li.category__sub1:hover ul.subsub > li.category__subsub2 {
   border: 1px solid #c0c0c0;
   border-radius: 4px;
   background-color: #fff;
-  left: 350px;
+  left: 330px;
   position: absolute;
 }
 

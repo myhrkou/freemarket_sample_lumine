@@ -11,25 +11,25 @@ describe Address do
     it "is invalid without a zip" do
       address = build(:address, zip: "")
       address.valid?
-      expect(address.errors[:zip]).to include("can't be blank")
+      expect(address.errors[:zip]).to include("を入力してください")
     end
 
     it "is invalid without a prefecture" do
       address = build(:address, prefecture: "")
       address.valid?
-      expect(address.errors[:prefecture]).to include("can't be blank")
+      expect(address.errors[:prefecture]).to include("を入力してください")
     end
 
     it "is invalid without a city" do
       address = build(:address, city: "")
       address.valid?
-      expect(address.errors[:city]).to include("can't be blank")
+      expect(address.errors[:city]).to include("を入力してください")
     end
 
     it "is invalid without a number" do
       address = build(:address, number: "")
       address.valid?
-      expect(address.errors[:number]).to include("can't be blank")
+      expect(address.errors[:number]).to include("を入力してください")
     end
 
   end
