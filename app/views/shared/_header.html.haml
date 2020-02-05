@@ -11,8 +11,9 @@
 .header__bottom
   %ul.header__bottom__left
     %li.header__bottom__left__category
-      = icon('fas', 'list-ul',class:"list-ul")
-      カテゴリーから探す
+      =link_to category_category_index_path do
+        = icon('fas', 'list-ul',class:"list-ul")
+        カテゴリーから探す
       = render 'shared/category'
     %li.header__bottom__left__brand
       = icon('fas', 'tag',class:"tag")
