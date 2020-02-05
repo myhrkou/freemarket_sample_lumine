@@ -703,6 +703,18 @@
     font-size: 25px;
     padding: 20px 0;
   }
+  &__root{
+    height: 70px;
+    &__link{
+      background-color: #fff;
+      margin: 10px 10px 10px 0;
+      padding: 10px;
+      line-height: 40px;
+      font-size: medium;
+      border-radius: 4px;
+      box-shadow: 1px 1px 1px #c0c0c0;
+    }
+  }
   &__box {
     padding: 0 0 50px 0;
   }

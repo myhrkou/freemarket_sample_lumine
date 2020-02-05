@@ -13,6 +13,9 @@
   .category
     .category__title
       カテゴリー一覧
+    .category__root
+      -@parents.each do |parent|
+        =link_to parent.name ,category0_category_index_path(parent.id),class:"category__root__link"
     -@parents.each do |parent|
       .category__box
         .category__title0
