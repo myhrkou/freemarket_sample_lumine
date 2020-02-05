@@ -37,6 +37,9 @@
       justify-content: space-between;
       &_right{
         width:400px;
+        &_category{
+          margin-bottom: 40px;
+        }
         &_text{
           display: flex;
         }
