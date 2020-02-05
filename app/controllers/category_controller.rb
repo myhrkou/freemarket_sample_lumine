@@ -6,18 +6,12 @@ class CategoryController < ApplicationController
 
   def category0
     @category_ids = Category.find(params[:format]).indirect_ids
-    @items = []
-    @category_ids.each do |category_id|
-      @items << Item.find_by(category_id: category_id)
-    end
+    @items=@category_ids.map{|category_id| Item.find_by(category_id: category_id)}
   end
 
   def category1
     @category_ids = Category.find(params[:format]).child_ids
-    @items = []
-    @category_ids.each do |category_id|
-      @items << Item.find_by(category_id: category_id)
-    end
+    @items=@category_ids.map{|category_id| Item.find_by(category_id: category_id)}
   end
 
   def category2
