@@ -2,9 +2,8 @@ class CategoryController < ApplicationController
   before_action :set_category
 
   def category
-
   end
-  
+
   def category0
     @items = Item.where(category0_id: params[:format]).order(id: "DESC").page(params[:page]).per(15)
   end
