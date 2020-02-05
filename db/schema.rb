@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200205030643) do
+ActiveRecord::Schema.define(version: 20200205091050) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "zip",        null: false
@@ -33,26 +33,12 @@ ActiveRecord::Schema.define(version: 20200205030643) do
     t.index ["user_id"], name: "index_cards_on_user_id", using: :btree
   end
 
-  create_table "category0s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "category1s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.integer  "category0_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["category0_id"], name: "index_category1s_on_category0_id", using: :btree
-  end
-
-  create_table "category2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.integer  "category1_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["category1_id"], name: "index_category2s_on_category1_id", using: :btree
+    t.string   "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -68,12 +54,10 @@ ActiveRecord::Schema.define(version: 20200205030643) do
     t.datetime "updated_at",                                       null: false
     t.integer  "status",                               default: 0
     t.integer  "buyer"
-    t.integer  "category2_id"
-    t.integer  "category1_id"
-    t.integer  "category0_id"
-    t.index ["category0_id"], name: "index_items_on_category0_id", using: :btree
-    t.index ["category1_id"], name: "index_items_on_category1_id", using: :btree
-    t.index ["category2_id"], name: "index_items_on_category2_id", using: :btree
+    t.integer  "category_id_id"
+    t.integer  "category_id"
+    t.index ["category_id"], name: "index_items_on_category_id", using: :btree
+    t.index ["category_id_id"], name: "index_items_on_category_id_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
@@ -117,11 +101,7 @@ ActiveRecord::Schema.define(version: 20200205030643) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
-  add_foreign_key "category1s", "category0s"
-  add_foreign_key "category2s", "category1s"
-  add_foreign_key "items", "category0s"
-  add_foreign_key "items", "category1s"
-  add_foreign_key "items", "category2s"
+  add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
   add_foreign_key "items_images", "items"
   add_foreign_key "sns_credentials", "users"

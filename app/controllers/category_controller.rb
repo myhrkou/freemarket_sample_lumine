@@ -5,22 +5,29 @@ class CategoryController < ApplicationController
   end
 
   def category0
-    @items = Item.where(category0_id: params[:format]).order(id: "DESC").page(params[:page]).per(15)
+    @category_ids = Category.find(params[:format]).indirect_ids
+    @items = []
+    @category_ids.each do |category_id|
+      @items << Item.find_by(category_id: category_id)
+    end
   end
 
   def category1
-    @items = Item.where(category1_id: params[:format]).order(id: "DESC").page(params[:page]).per(15)
+    @category_ids = Category.find(params[:format]).child_ids
+    @items = []
+    @category_ids.each do |category_id|
+      @items << Item.find_by(category_id: category_id)
+    end
   end
 
   def category2
-    @items = Item.where(category2_id: params[:format]).order(id: "DESC").page(params[:page]).per(15)
+    @category_id = Category.where(id: params[:format]).ids.first
+    @items = Item.where(category_id: @category_id)
   end
 
   private
 
   def set_category
-    @category0s = Category0.all
-    @category1s = Category1.all
-    @category2s = Category2.all
+    @parents = Category.all.order("id ASC").limit(3)
   end
 end

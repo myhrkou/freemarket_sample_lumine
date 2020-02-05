@@ -13,16 +13,16 @@
   .category
     .category__title
       カテゴリー一覧
-    -@category0s.each do |category0|
+    -@parents.each do |parent|
       .category__box
         .category__title0
           %span　
-          =link_to category0.name ,category0_category_index_path(category0.id),class:"category__0"
-          -category0.category1s.each do |category1|
+          =link_to parent.name ,category0_category_index_path(parent.id),class:"category__0"
+          -parent.children.each do |child|
             .category__title1
-              =link_to category1.name ,category1_category_index_path(category1.id),class:"category__1"
-              -category1.category2s.each do |category2|
+              =link_to child.name ,category1_category_index_path(child.id),class:"category__1"
+              -child.children.each do |grandchild|
                 .category__title2
-                  =link_to category2.name ,category2_category_index_path(category2.id),class:"category__2"
+                  =link_to grandchild.name ,category2_category_index_path(grandchild.id),class:"category__2"
   .footer
     = render "shared/footer"

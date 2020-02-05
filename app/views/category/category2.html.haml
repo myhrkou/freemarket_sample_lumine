@@ -13,11 +13,10 @@
   .contents
     .contents__new
       .contents__new__title
-        =@items.first.category2.name
+        =@items.first.category.name
         の商品一覧
     %ul.contents__all
       = render 'items/item'
     .contents__page
-      =paginate(@items)
   .footer
     = render "shared/footer"

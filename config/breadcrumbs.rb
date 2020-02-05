@@ -85,17 +85,17 @@ crumb :category do
 end
 
 crumb :category0 do |items|
-  link Category0.find(items.first.category0_id).name,category0_category_index_path(items.first.category0_id)
+  link Category.find(items.first.category.root).name,category0_category_index_path(items.first.category.root.id)
   parent :category
 end
 
 crumb :category1 do |items|
-  link Category1.find(items.first.category1_id).name,category1_category_index_path(items.first.category1_id)
+  link Category.find(items.first.category.parent).name,category1_category_index_path(items.first.category.parent.id)
   parent :category0,items
 end
 
 crumb :category2 do |items|
-  link Category2.find(items.first.category2_id).name,category2_category_index_path(items.first.category2_id)
+  link Category.find(items.first.category).name,category2_category_index_path(items.first.category.id)
   parent :category1,items
 end
 
