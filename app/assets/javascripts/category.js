@@ -66,7 +66,6 @@ $(function () {
             }).done(function (children) {
               var categories = '';
               children.forEach(function (child) {
-                console.log(child.name)
                 var category = buildcategory(child);
                 categories += category;
               });
