@@ -4,6 +4,7 @@ Rails.application.routes.draw do
                        registrations: "users/registrations",
                      }
   root "items#index"
+  
   resources :mypages do
     collection do
       get :mypage
