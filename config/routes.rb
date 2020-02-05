@@ -45,12 +45,12 @@ Rails.application.routes.draw do
       get :pay_comfirm
     end
   end
-  resources :category do
+  resources :categories do
     collection do
       get :category
-      get :category0
-      get :category1
-      get :category2
+      get :category_root
+      get :category_child
+      get :category_grandchild
     end
   end
 end

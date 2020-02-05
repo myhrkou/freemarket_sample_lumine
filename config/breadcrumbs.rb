@@ -81,21 +81,21 @@ crumb :items do |item|
 end
 
 crumb :category do
-  link "カテゴリー一覧",category_category_index_path
+  link "カテゴリー一覧",category_categories_path
 end
 
 crumb :category0 do |items|
-  link Category.find(items.first.category.root).name,category0_category_index_path(items.first.category.root.id)
+  link Category.find(items.first.category.root).name,category_root_categories_path(items.first.category.root.id)
   parent :category
 end
 
 crumb :category1 do |items|
-  link Category.find(items.first.category.parent).name,category1_category_index_path(items.first.category.parent.id)
+  link Category.find(items.first.category.parent).name,category_child_categories_path(items.first.category.parent.id)
   parent :category0,items
 end
 
 crumb :category2 do |items|
-  link Category.find(items.first.category).name,category2_category_index_path(items.first.category.id)
+  link Category.find(items.first.category).name,category_grandchild_categories_path(items.first.category.id)
   parent :category1,items
 end
 

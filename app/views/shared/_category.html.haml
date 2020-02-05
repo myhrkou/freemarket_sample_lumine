@@ -1,16 +1,16 @@
 .category__all
   %ul.category0s
     -@parents.each do |parent|
-      =link_to category0_category_index_path(parent.id) do
+      =link_to category_root_categories_path(parent.id) do
         %li.category0
           =parent.name
           %ul.category1s
             -parent.children.each do |child|
-              =link_to category1_category_index_path(child.id) do
+              =link_to category_child_categories_path(child.id) do
                 %li.category1
                   =child.name
                   %ul.category2s
                     -child.children.each do |grandchild|
-                      =link_to category2_category_index_path(grandchild.id) do
+                      =link_to category_grandchild_categories_path(grandchild.id) do
                         %li.category2
                           =grandchild.name

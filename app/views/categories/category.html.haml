@@ -15,17 +15,17 @@
       カテゴリー一覧
     .category__root
       -@parents.each do |parent|
-        =link_to parent.name ,category0_category_index_path(parent.id),class:"category__root__link"
+        =link_to parent.name ,category_root_categories_path(parent.id),class:"category__root__link"
     -@parents.each do |parent|
       .category__box
         .category__title0
           %span　
-          =link_to parent.name ,category0_category_index_path(parent.id),class:"category__0"
+          =link_to parent.name ,category_root_categories_path(parent.id),class:"category__0"
           -parent.children.each do |child|
             .category__title1
-              =link_to child.name ,category1_category_index_path(child.id),class:"category__1"
+              =link_to child.name ,category_child_categories_path(child.id),class:"category__1"
               -child.children.each do |grandchild|
                 .category__title2
-                  =link_to grandchild.name ,category2_category_index_path(grandchild.id),class:"category__2"
+                  =link_to grandchild.name ,category_grandchild_categories_path(grandchild.id),class:"category__2"
   .footer
     = render "shared/footer"
