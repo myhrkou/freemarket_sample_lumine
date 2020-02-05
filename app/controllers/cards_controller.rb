@@ -1,10 +1,9 @@
 class CardsController < ApplicationController
   require "payjp"
-  before_action :set_card,only: %i[delete show]
+  before_action :set_card,only: %i[new delete show]
   before_action :set_category
 
   def new
-    @card = Card.where(user_id: current_user.id)
     redirect_to card_path if @card.exists?
   end
 
@@ -57,7 +56,7 @@ class CardsController < ApplicationController
   end
 
   def set_category
-    @parents = Category.all.order("id ASC").limit(3)
+    @parents = Category.order("id ASC").limit(3)
   end
 end
 

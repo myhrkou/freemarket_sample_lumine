@@ -42,6 +42,6 @@ before_action :set_category
   end
 
   def set_category
-    @parents = Category.all.order("id ASC").limit(3)
+    @parents = Category.order("id ASC").limit(3)
   end
 end

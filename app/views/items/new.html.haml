@@ -84,7 +84,7 @@
             .contents_delivery_select_must.must
               必須
           .contents-delivery_select_origindetail
-            =f.collection_select :delivery_origin, Prefecture.all, :id, :name
+            =f.collection_select :delivery_origin_id, DeliveryOrigin.all, :id, :name
           .contents-delivery_select_right_sub
             .contents_delivery_select_date
               発送までの日数

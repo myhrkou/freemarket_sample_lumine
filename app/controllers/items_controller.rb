@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -89,6 +88,6 @@ class ItemsController < ApplicationController
   end
 
   def set_category
-    @parents = Category.all.order("id ASC").limit(3)
+    @parents = Category.order("id ASC").limit(3)
   end
 end
