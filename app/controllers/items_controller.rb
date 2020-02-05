@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create, :all, :pay_comfirm, :pay]
   before_action :authenticate_user!, only: [:new,:show]
   before_action :set_card, only: [:pay_comfirm, :pay]
+  before_action :set_category,except:[:new,:create,:update,:destroy,:pay,:pay_comfirm]
 
   def index
     @items = Item.all.limit(15).order(id: "DESC")
@@ -84,5 +85,11 @@ class ItemsController < ApplicationController
 
   def set_card
     @card = Card.find_by(user_id: current_user.id)
+  end
+
+  def set_category
+    @category0s=Category0.all
+    @category1s=Category1.all
+    @category2s=Category2.all
   end
 end

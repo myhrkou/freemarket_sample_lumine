@@ -1,0 +1,28 @@
+.html
+  .header
+    =render 'shared/header'
+  .pan
+    - breadcrumb :category
+    =render 'layouts/breadcrumbs'
+  .sell
+    =link_to new_item_path ,class:'sell__button'do
+      .sell__button__text
+        出品
+      .sell__button__img
+        = icon('fas', 'camera',class:"camera")
+  .category
+    .category__title
+      カテゴリー一覧
+    -@category0s.each do |category0|
+      .category__box
+        .category__title0
+          %span　
+          =link_to category0.name ,category0_category_index_path(category0.id),class:"category__0"
+          -category0.category1s.each do |category1|
+            .category__title1
+              =link_to category1.name ,category1_category_index_path(category1.id),class:"category__1"
+              -category1.category2s.each do |category2|
+                .category__title2
+                  =link_to category2.name ,category2_category_index_path(category2.id),class:"category__2"
+  .footer
+    = render "shared/footer"

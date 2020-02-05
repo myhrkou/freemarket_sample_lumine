@@ -60,11 +60,28 @@ crumb :purchased do
   link "購入した商品-過去の取引",purchased_mypages_path
   parent :mypage
 end
-# これ以降はまだ実装していない
 
-# crumb :category do
-#   link "カテゴリー一覧",
-# end
+crumb :category do
+  link "カテゴリー一覧",category_category_index_path
+end
+
+crumb :category0 do |items|
+  link Category0.find(items.first.category0_id).name,category0_category_index_path(items.first.category0_id)
+  parent :category
+end
+
+crumb :category1 do |items|
+  link Category1.find(items.first.category1_id).name,category1_category_index_path(items.first.category1_id)
+  parent :category0,items
+end
+
+crumb :category2 do |items|
+  link Category2.find(items.first.category2_id).name,category2_category_index_path(items.first.category2_id)
+  parent :category1,items
+end
+
+
+# これ以降はまだ実装していない
 
 # crumb :brand do
 #   link "ブランド一覧",

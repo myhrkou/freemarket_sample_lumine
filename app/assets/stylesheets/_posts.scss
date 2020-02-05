@@ -4,7 +4,6 @@
   .header {
     width: 100%;
     height: 100px;
-    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.18);
     &__top {
       display: flex;
       justify-content: flex-start;
@@ -54,6 +53,67 @@
           font-size: 14px;
           font-weight: 600;
           line-height: 44px;
+          .category__all {
+            background-color: #fff;
+            z-index: 2;
+            .category0s {
+              background-color: #fff;
+              box-shadow: 0 1px 2px #666666;
+              position: absolute;
+              width: 170px;
+              height: 308px;
+              display: none;
+              .category0 {
+                font-size: 12px;
+                font-weight: lighter;
+                padding-left: 10px;
+                .category1s {
+                  background-color: #fff;
+                  box-shadow: 0 1px 2px #666666;
+                  position: absolute;
+                  left: 170px;
+                  width: 170px;
+                  height: 308px;
+                  top: 0;
+                  display: none;
+                  .category1 {
+                    height: 30px;
+                    color: #404040;
+                    line-height: 30px;
+                    padding-left: 10px;
+                    .category2s {
+                      background-color: #fff;
+                      box-shadow: 0 1px 2px #666666;
+                      position: absolute;
+                      left: 170px;
+                      width: 170px;
+                      height: 308px;
+                      top: 0;
+                      display: none;
+                      .category2 {
+                        height: 30px;
+                        color: #404040;
+                        line-height: 30px;
+                        padding-left: 10px;
+                      }
+                      .category2:hover {
+                        background-color: #eee;
+                        color: #404040;
+                      }
+                    }
+                  }
+                  .category1:hover {
+                    background-color: #eee;
+                    color: #404040;
+                  }
+                }
+              }
+              .category0:hover {
+                background-color: #ea352d;
+                color: #fff;
+              }
+            }
+          }
         }
         &__brand {
           padding-left: 10px;
@@ -180,6 +240,7 @@
         margin: 10px;
         box-shadow: 0 4px 5px rgba(0, 0, 0, 0.18);
         &__image {
+          z-index: 1;
           position: relative;
           &__sold {
             border-style: solid;
@@ -493,185 +554,7 @@
   font-stretch: 100%;
 }
 
-//brandのホバー機能についてのsass
-ul.brand__all {
-  width: 100px;
-}
-
-.brand__all li {
-  display: none;
-}
-
-.header__bottom__left__brand:hover {
-  color: dodgerblue;
-}
-
-li.brand:hover {
-  color: white;
-  background-color: red;
-}
-
-.header__bottom__left__brand:hover li {
-  background: white;
-  border-right: 1px solid #eee;
-  color: black;
-  display: block;
-
-  height: 2rem;
-  line-height: 2rem;
-  text-align: center;
-  text-decoration: none;
-}
-
-.category__li {
-  font-size: 10px;
-}
-
-.category__all {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
-  width: 100px;
-}
-
-.category__all li {
-  display: none;
-  width: 100%;
-}
-
-.category__item {
-  position: absolute;
-  left: 178px;
-  top: 100px;
-  width: 100%;
-}
-
-li.category__sub1 li.category__sub2 {
-  position: absolute;
-  width: 72px;
-  margin: 0;
-}
-
-ul.subsub {
-  position: relative;
-  left: 100px;
-  top: -33px;
-}
-
-li.category__subsub {
-  position: absolute;
-  width: 72px;
-  margin: 0;
-}
-
-.category-list:hover {
-  display: block;
-}
-
-.header__bottom__left__category:hover {
-  color: dodgerblue;
-}
-
-.header__bottom__left__category:hover .category__li {
-  background: white;
-  border-right: 1px solid #eee;
-  color: black;
-  display: block;
-
-  height: 2rem;
-  line-height: 2rem;
-  text-align: center;
-  text-decoration: none;
-  width: 100px;
-}
-
-.category__title1:hover.category__item {
-  background: white;
-  border-right: 1px solid #eee;
-  color: black;
-  display: block;
-
-  height: 2rem;
-  line-height: 2rem;
-  text-align: center;
-  text-decoration: none;
-  width: 100px;
-}
-
-.category__title1:hover + .category__item ul.sub > li.category__sub1 {
-  background: white;
-  border-right: 1px solid #eee;
-  color: black;
-  display: block;
-
-  height: 2rem;
-  line-height: 2rem;
-  text-align: center;
-  text-decoration: none;
-  width: 100px;
-}
-
-.category__title1:hover + .category__item > ul.sub > li.category__sub2 {
-  background: white;
-  border-right: 1px solid #eee;
-  color: black;
-  display: block;
-
-  height: 2rem;
-  line-height: 2rem;
-  text-align: center;
-  text-decoration: none;
-  width: 100px;
-}
-
-li.category__sub1:hover {
-  background: white;
-  border-right: 1px solid #eee;
-  color: black;
-  display: block;
-
-  height: 2rem;
-  line-height: 2rem;
-  text-align: center;
-  text-decoration: none;
-  width: 100px;
-}
-
-li.category__sub1:hover + li.category__sub2 {
-  background: white;
-  border-right: 1px solid #eee;
-  color: black;
-  display: block;
-
-  height: 2rem;
-  line-height: 2rem;
-  text-align: center;
-  text-decoration: none;
-  width: 100px;
-}
-
-li.category__sub1:hover ul.subsub > li.category__subsub1 {
-  background: white;
-  border-right: 1px solid #eee;
-  color: black;
-  display: block;
-
-  height: 2rem;
-  line-height: 2rem;
-  text-align: center;
-  text-decoration: none;
-  width: 100px;
-}
-
-li.category__sub1:hover ul.subsub > li.category__subsub2 {
-  background: white;
-  border-right: 1px solid #eee;
-  color: black;
-  display: block;
-
-  height: 2rem;
-  line-height: 2rem;
-  text-align: center;
-  text-decoration: none;
-  width: 100px;
+.category0_link {
 }
 
 .header__bottom__right__good:hover .heart {
@@ -807,4 +690,51 @@ li.category__sub1:hover ul.subsub > li.category__subsub2 {
 .contents__new__more:hover {
   text-decoration: underline;
   color: lightskyblue;
+}
+
+.category {
+  padding: 0 500px;
+  background-color: #efefef;
+  &__title{
+    font-size: 25px;
+    padding: 20px 0;
+  }
+  &__box {
+    padding: 0 0 50px 0;
+  }
+  &__title0 {
+    background-color: #ea352d;
+    font-size: 25px;
+    border-radius: 4px;
+  }
+  &__title1{
+    background-color: rgb(255, 255, 255);
+    color: #404040;
+    font-size: medium;
+    padding:10px 20px;
+  }
+  &__title2{
+    background-color: white;
+    color: #404040;
+    font-size: small;
+    padding:5px 30px;
+  }
+  &__0{
+    color: #fff;
+  }
+  &__0:hover{
+    color: #ddd;
+    text-decoration: underline;
+  }
+  &__1:hover{
+    color: #666666;
+    text-decoration: underline;
+  }
+  &__2{
+    color: dodgerblue;
+  }
+&__2:hover{
+  color: rgb(120, 185, 250);
+  text-decoration: underline;
+}
 }

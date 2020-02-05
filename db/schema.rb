@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200204053128) do
+ActiveRecord::Schema.define(version: 20200205030643) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "zip",        null: false
@@ -68,6 +68,12 @@ ActiveRecord::Schema.define(version: 20200204053128) do
     t.datetime "updated_at",                                       null: false
     t.integer  "status",                               default: 0
     t.integer  "buyer"
+    t.integer  "category2_id"
+    t.integer  "category1_id"
+    t.integer  "category0_id"
+    t.index ["category0_id"], name: "index_items_on_category0_id", using: :btree
+    t.index ["category1_id"], name: "index_items_on_category1_id", using: :btree
+    t.index ["category2_id"], name: "index_items_on_category2_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
@@ -111,6 +117,11 @@ ActiveRecord::Schema.define(version: 20200204053128) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
+  add_foreign_key "category1s", "category0s"
+  add_foreign_key "category2s", "category1s"
+  add_foreign_key "items", "category0s"
+  add_foreign_key "items", "category1s"
+  add_foreign_key "items", "category2s"
   add_foreign_key "items", "users"
   add_foreign_key "items_images", "items"
   add_foreign_key "sns_credentials", "users"

@@ -1,0 +1,16 @@
+.category__all
+  %ul.category0s
+    -@category0s.each do |category0|
+      =link_to category0_category_index_path(category0.id) do
+        %li.category0
+          =category0.name
+          %ul.category1s
+            -category0.category1s.each do |category1|
+              =link_to category1_category_index_path(category1.id) do
+                %li.category1
+                  =category1.name
+                  %ul.category2s
+                    -category1.category2s.each do |category2|
+                      =link_to category2_category_index_path(category2.id) do
+                        %li.category2
+                          =category2.name

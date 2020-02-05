@@ -1,0 +1,23 @@
+.html
+  .header
+    =render 'shared/header'
+  .pan
+    - breadcrumb :category1,@items
+    =render 'layouts/breadcrumbs'
+  .sell
+    =link_to new_item_path ,class:'sell__button'do
+      .sell__button__text
+        出品
+      .sell__button__img
+        = icon('fas', 'camera',class:"camera")
+  .contents
+    .contents__new
+      .contents__new__title
+        =@items.first.category1.name
+        の商品一覧    
+    %ul.contents__all
+      = render 'items/item'
+    .contents__page
+      =paginate(@items)
+  .footer
+    = render "shared/footer"
