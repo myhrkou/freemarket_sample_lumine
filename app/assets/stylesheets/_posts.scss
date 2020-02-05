@@ -55,7 +55,6 @@
           line-height: 44px;
           .category__all {
             background-color: #fff;
-            z-index: 2;
             .category0s {
               background-color: #fff;
               box-shadow: 0 1px 2px #666666;
@@ -63,6 +62,7 @@
               width: 170px;
               height: 308px;
               display: none;
+              z-index: 2;
               .category0 {
                 font-size: 12px;
                 font-weight: lighter;
@@ -76,6 +76,7 @@
                   height: 308px;
                   top: 0;
                   display: none;
+                  z-index: 2;
                   .category1 {
                     height: 30px;
                     color: #404040;
@@ -90,6 +91,7 @@
                       height: 308px;
                       top: 0;
                       display: none;
+                      z-index: 2;
                       .category2 {
                         height: 30px;
                         color: #404040;
@@ -240,13 +242,13 @@
         margin: 10px;
         box-shadow: 0 4px 5px rgba(0, 0, 0, 0.18);
         &__image {
-          z-index: 1;
           position: relative;
           &__sold {
             border-style: solid;
             border-width: 80px 80px 0 0;
             border-color: #ea352d transparent transparent transparent;
             position: absolute;
+            z-index: 1;
           }
           &__text {
             color: #fff;
@@ -256,6 +258,7 @@
             font-size: 18px;
             font-weight: bolder;
             letter-spacing: 2px;
+            z-index: 1;
           }
 
           .example {
@@ -277,6 +280,7 @@
             font-size: 19px;
             padding-left: 10px;
             line-height: 31px;
+            z-index: 1;
           }
         }
         &__name {
