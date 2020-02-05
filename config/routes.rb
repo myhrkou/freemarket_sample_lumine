@@ -22,7 +22,6 @@ Rails.application.routes.draw do
       get :profile
     end
   end
-
   resources :user_steps, only: [:create]
   resources :user_steps do
     collection do
@@ -44,6 +43,14 @@ Rails.application.routes.draw do
       get :all
       post "pay", to: "items#pay"
       get :pay_comfirm
+    end
+  end
+  resources :categories do
+    collection do
+      get :category
+      get :category_root
+      get :category_child
+      get :category_grandchild
     end
   end
 end

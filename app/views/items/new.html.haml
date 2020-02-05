@@ -1,4 +1,3 @@
-= render "modal"
 = form_for @item do |f|
   .bgc
     .header
@@ -56,6 +55,13 @@
         .contents-item_select_right
           .contents-item_select_right_text
             .contents-item_select_sub
+              カテゴリー
+            .contents-item_select_sub_must.must
+              必須
+          .contents-item_select_right_category
+            =f.collection_select :category_id, @parents, :id, :name,{prompt: "---"}, class: "select-default", id: "parent-form"
+          .contents-item_select_right_text
+            .contents-item_select_sub
               商品の状態
             .contents-item_select_sub_must.must
               必須
@@ -79,7 +85,7 @@
             .contents_delivery_select_must.must
               必須
           .contents-delivery_select_origindetail
-            =f.collection_select :delivery_origin, Prefecture.all, :id, :name
+            =f.collection_select :delivery_origin_id, DeliveryOrigin.all, :id, :name, class: "select-default"
           .contents-delivery_select_right_sub
             .contents_delivery_select_date
               発送までの日数

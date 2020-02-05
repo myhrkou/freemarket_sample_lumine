@@ -1,7 +1,9 @@
-
 .html
   .header
     =render 'shared/header'
+  .pan
+    - breadcrumb :category1,@items
+    =render 'layouts/breadcrumbs'
   .sell
     =link_to new_item_path ,class:'sell__button'do
       .sell__button__text
@@ -9,17 +11,12 @@
       .sell__button__img
         = icon('fas', 'camera',class:"camera")
   .contents
-    .contents__carousel
-      =image_tag src='/images/header.jpg',class:'carousel'
-    .contents__title
-      全てのアイテム
     .contents__new
       .contents__new__title
-        新着アイテム
-      =link_to all_items_path,class:"contents__new__more" do
-        もっと見る
-        =icon('fas', 'angle-right')
+        =@items.first.category.parent.name
+      の商品一覧    
     %ul.contents__all
-      = render 'item'
+      = render 'items/item'
+    .contents__page
   .footer
     = render "shared/footer"

@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :show,:create, :all, :pay_comfirm, :pay]
-  before_action :authenticate_user!, only: [:new,:show]
+  before_action :set_item, except: [:index, :new, :create, :all, :pay_comfirm, :pay]
+  before_action :authenticate_user!, only: [:new, :show]
   before_action :set_card, only: [:pay_comfirm, :pay]
+  before_action :set_category, except: [:create, :update, :destroy, :pay, :pay_comfirm]
 
   def index
     @items = Item.all.limit(15).order(id: "DESC")
@@ -10,6 +11,12 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.items_images.new
+    respond_to do |format|
+      format.html
+      format.json do
+       @children = Category.find(params[:parent_id]).children
+      end
+    end
   end
 
   def create
@@ -31,9 +38,6 @@ class ItemsController < ApplicationController
 
   def show
     session[:item] = @item
-    @prefecture = Prefecture.find(@item.delivery_origin).name
-    @user = User.find(@item.user_id).nickname
-
   end
 
   def destroy
@@ -75,13 +79,12 @@ class ItemsController < ApplicationController
     end
   end
 
-
-
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :condition, :delivery_charge_detail, :delivery_origin, :delivery_date, :price, items_images_attributes: [:item_id,:image_url,:_destroy, :id ]).merge(user_id:current_user.id)
+    params.require(:item).permit(:name, :description, :condition, :delivery_charge_detail, :delivery_origin_id, :delivery_date, :price,:category_id, items_images_attributes: [:item_id, :image_url, :_destroy, :id]).merge(user_id: current_user.id)
   end
+
 
   def set_item
     @item = Item.find(params[:id])
@@ -89,5 +92,9 @@ class ItemsController < ApplicationController
 
   def set_card
     @card = Card.find_by(user_id: current_user.id)
+  end
+
+  def set_category
+    @parents = Category.order("id ASC").limit(3)
   end
 end

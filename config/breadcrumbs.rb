@@ -80,12 +80,27 @@ crumb :items do |item|
   end
 end
 
+crumb :category do
+  link "カテゴリー一覧",category_categories_path
+end
+
+crumb :category0 do |items|
+  link Category.find(items.first.category.root).name,category_root_categories_path(items.first.category.root.id)
+  parent :category
+end
+
+crumb :category1 do |items|
+  link Category.find(items.first.category.parent).name,category_child_categories_path(items.first.category.parent.id)
+  parent :category0,items
+end
+
+crumb :category2 do |items|
+  link Category.find(items.first.category).name,category_grandchild_categories_path(items.first.category.id)
+  parent :category1,items
+end
+
 
 # これ以降はまだ実装していない
-
-# crumb :category do
-#   link "カテゴリー一覧",
-# end
 
 # crumb :brand do
 #   link "ブランド一覧",
