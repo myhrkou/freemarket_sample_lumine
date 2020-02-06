@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
+      set_category
       render :new
     end
   end

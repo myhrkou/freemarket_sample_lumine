@@ -4,7 +4,6 @@ class CardsController < ApplicationController
   before_action :set_category
 
   def new
-    redirect_to card_path if @card.exists?
   end
 
   def pay #payjpとCardのデータベース作成を実施します。
