@@ -2,7 +2,7 @@
   .header
     =render 'shared/header'
   .pan
-    - breadcrumb :category1,@items
+    - breadcrumb :category1,@category
     =render 'layouts/breadcrumbs'
   .sell
     =link_to new_item_path ,class:'sell__button'do
@@ -13,8 +13,8 @@
   .contents
     .contents__new
       .contents__new__title
-        =@items.first.category.parent.name
-      の商品一覧    
+        =@category.name
+        の商品一覧    
     %ul.contents__all
       = render 'items/item'
     .contents__page

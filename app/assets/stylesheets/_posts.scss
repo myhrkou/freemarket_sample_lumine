@@ -237,6 +237,10 @@
       justify-content: center;
       flex-wrap: wrap;
       margin: 0px auto;
+      &__empty{
+        font-size: 25px;
+        color: #999999;
+      }
       &__item {
         width: 17.5%;
         margin: 10px;
