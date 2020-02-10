@@ -59,7 +59,6 @@
               このたびはメルカリのご利用ありがとうございました
           .show-detail_complete_right_delete
             この商品を削除する
-
     -else
       .show-detail_element
         .show-detail_element_title
@@ -72,15 +71,12 @@
                   %div
                     %h3.img-element 
                       = image_tag item.image_url.url,class:"img_carusel"
-
             .show-detail_element_main_left_choice
               %div.slick2
                 - @item.items_images.each do |item|
                   %div
                     %h3.img-element 
                       = image_tag item.image_url.url,class:"img_choice"
-
-
           .show-detail_element_main_right
             .show-detail_element_main_right_table
               %table.detail-table
@@ -127,11 +123,9 @@
             .show-detail_botton_stop
               =link_to stop_items_path(@item.id) do
                 出品を一旦停止にする
-            
             .show-detail_botton_delete.modal_button
               この商品を削除
             =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
-
           -elsif (@item.status=="complete" && @item.user_id !=current_user.id)
             .show-detail_botton_soldout
               売り切れました

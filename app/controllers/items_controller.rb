@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all.limit(15).order(id: "DESC")
   end
-
+  
   def new
     @item = Item.new
     @item.items_images.new
