@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 before_action :set_card,only: [:profile,:edit,:update]
+before_action :set_category
 
   def index
   end
@@ -38,5 +39,9 @@ before_action :set_card,only: [:profile,:edit,:update]
 
   def set_card
     @card=Card.where(user_id:current_user.id)
+  end
+
+  def set_category
+    @parents = Category.order("id ASC").limit(3)
   end
 end

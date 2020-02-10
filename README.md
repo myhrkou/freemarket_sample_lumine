@@ -65,6 +65,6 @@
 ## categorysテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string||
+|name|string|ancestory|
 ### Association
 - has_many :items

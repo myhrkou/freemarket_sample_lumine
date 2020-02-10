@@ -1,10 +1,9 @@
 class CardsController < ApplicationController
   require "payjp"
-  before_action :set_card,only: %i[delete show]
+  before_action :set_card,only: %i[new delete show]
+  before_action :set_category
 
   def new
-    @card = Card.where(user_id: current_user.id)
-    redirect_to card_path if @card.exists?
   end
 
   def pay #payjpとCardのデータベース作成を実施します。
@@ -53,6 +52,10 @@ class CardsController < ApplicationController
 
   def set_card
     @card = Card.find_by(user_id: current_user.id)
+  end
+
+  def set_category
+    @parents = Category.order("id ASC").limit(3)
   end
 end
 

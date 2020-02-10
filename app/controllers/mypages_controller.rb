@@ -1,5 +1,6 @@
 class MypagesController < ApplicationController
   before_action :set_card
+  before_action :set_category
 
   def mypage
     @items = Item.where(user_id: current_user.id)
@@ -36,5 +37,9 @@ class MypagesController < ApplicationController
 
   def set_card
     @card = Card.where(user_id: current_user.id).first
+  end
+
+  def set_category
+    @parents = Category.order("id ASC").limit(3)
   end
 end

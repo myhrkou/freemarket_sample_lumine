@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user, optional: true 
+  belongs_to :category
   has_many :items_images,dependent: :destroy
   validates :name, presence: true,length: {maximum: 40}
   validates :description, presence: true,length: {maximum: 1000}
