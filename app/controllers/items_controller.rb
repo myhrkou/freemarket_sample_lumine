@@ -87,12 +87,12 @@ class ItemsController < ApplicationController
 
    def stop
     @item = Item.find(params[:format])
-     @item.status = "stop"
-     if @item.save
-       redirect_to root_path
-     else
-       render :new
-     end
+    @item.status = "stop"
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
    end
 
   private
