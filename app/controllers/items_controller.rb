@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create, :all, :pay_comfirm, :pay,:stop]
+  before_action :set_item, only: [:update,:show,:destroy]
   before_action :authenticate_user!, only: [:new,:show]
   before_action :set_card, only: [:pay_comfirm, :pay]
   before_action :set_category, except: [:create, :update, :destroy, :pay, :pay_comfirm]
@@ -47,10 +47,6 @@ class ItemsController < ApplicationController
     else
       redirect_to item_path
     end
-  end
-
-  def edit
-    @item = Item.find(params[:id])
   end
 
   def all
