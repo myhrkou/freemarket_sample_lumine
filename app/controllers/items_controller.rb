@@ -1,13 +1,13 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create, :all, :pay_comfirm, :pay]
-  before_action :authenticate_user!, only: [:new, :show]
+  before_action :set_item, only: [:update,:show,:destroy]
+  before_action :authenticate_user!, only: [:new,:show]
   before_action :set_card, only: [:pay_comfirm, :pay]
   before_action :set_category, except: [:create, :update, :destroy, :pay, :pay_comfirm]
 
   def index
     @items = Item.all.limit(15).order(id: "DESC")
   end
-
+  
   def new
     @item = Item.new
     @item.items_images.new
@@ -73,6 +73,7 @@ class ItemsController < ApplicationController
     @item = Item.find(id)
     @item.complete!
     @item.buyer = current_user.id
+    @item.updated_at = Time.now
     if @item.save
       redirect_to root_path
     else
@@ -80,12 +81,20 @@ class ItemsController < ApplicationController
     end
   end
 
-  private
+   def stop
+    @item = Item.find(params[:format])
+    @item.status = "stop"
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
+   end
 
+  private
   def item_params
     params.require(:item).permit(:name, :description, :condition, :delivery_charge_detail, :delivery_origin_id, :delivery_date, :price,:category_id, items_images_attributes: [:item_id, :image_url, :_destroy, :id]).merge(user_id: current_user.id)
   end
-
 
   def set_item
     @item = Item.find(params[:id])

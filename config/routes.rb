@@ -38,11 +38,12 @@ Rails.application.routes.draw do
       post "delete", to: "cards#delete"
     end
   end
-  resources :items,only:[:index,:new,:create,:show,:destroy] do
+  resources :items,only:[:index,:new,:create,:show,:destroy,:edit] do
     collection do
       get :all
       post "pay", to: "items#pay"
       get :pay_comfirm
+      get "stop"
     end
   end
   resources :categories do
