@@ -18,7 +18,6 @@
       &__search {
         width: 100%;
         position: relative;
-        background: rgb(245, 245, 245);
         margin-right: 330px;
         &__text {
           float: left;
@@ -237,7 +236,7 @@
       justify-content: center;
       flex-wrap: wrap;
       margin: 0px auto;
-      &__empty{
+      &__empty {
         font-size: 25px;
         color: #999999;
       }
@@ -496,13 +495,17 @@
   }
 }
 
-.input {
+.search_form {
   width: calc(100% - 10px);
   background: rgb(245, 245, 245);
   height: 40px;
   border: 1px solid #c0c0c0;
   border-radius: 4px;
   padding-left: 10px;
+}
+
+.search_form:focus {
+  outline: 1px solid dodgerblue;
 }
 
 .mercari {
@@ -703,13 +706,13 @@
 .category {
   padding: 0 500px;
   background-color: #efefef;
-  &__title{
+  &__title {
     font-size: 25px;
     padding: 20px 0;
   }
-  &__root{
+  &__root {
     height: 70px;
-    &__link{
+    &__link {
       background-color: #fff;
       margin: 10px 10px 10px 0;
       padding: 10px;
@@ -727,33 +730,33 @@
     font-size: 25px;
     border-radius: 4px;
   }
-  &__title1{
+  &__title1 {
     background-color: rgb(255, 255, 255);
     color: #404040;
     font-size: medium;
-    padding:10px 20px;
+    padding: 10px 20px;
   }
-  &__title2{
+  &__title2 {
     background-color: white;
     color: #404040;
     font-size: small;
-    padding:5px 30px;
+    padding: 5px 30px;
   }
-  &__0{
+  &__0 {
     color: #fff;
   }
-  &__0:hover{
+  &__0:hover {
     color: #ddd;
     text-decoration: underline;
   }
-  &__1:hover{
+  &__1:hover {
     color: #666666;
     text-decoration: underline;
   }
-  &__2{
+  &__2 {
     color: dodgerblue;
   }
-  &__2:hover{
+  &__2:hover {
     color: rgb(120, 185, 250);
     text-decoration: underline;
   }
