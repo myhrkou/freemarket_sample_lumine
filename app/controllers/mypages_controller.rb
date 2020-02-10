@@ -13,7 +13,7 @@ class MypagesController < ApplicationController
   end
 
   def exhibition
-    @exhibitions = Item.where(status: :exhibition).where(user_id: current_user.id).order(id: "DESC").page(params[:page]).per(10)
+    @exhibitions = Item.where(status: [:exhibition,:stop]).where(user_id: current_user.id).order(id: "DESC").page(params[:page]).per(10)
   end
 
   def trans

@@ -28,7 +28,7 @@
   &__left {
     width: 350px;
     height: 100%;
-    margin: 40px 40px 0px 350px;
+    margin: 40px 40px 0px 330px;
     &__lists {
       &__mypagelist {
         &__tag {
@@ -58,7 +58,7 @@
   }
   &__right {
     width: 990px;
-    margin: 40px 350px 0px 0px;
+    margin: 40px 330px 0px 0px;
     &__top {
       &__user {
         margin: 0 auto;
@@ -360,6 +360,14 @@
                   color: #fff;
                   font-size: 12px;
                   background-color: #c0c0c0;
+                  border-radius: 2px;
+                }
+                &__stop{
+                  width: fit-content;
+                  padding: 1px 4px;
+                  color: #fff;
+                  font-size: 12px;
+                  background-color: #ea352d;
                   border-radius: 2px;
                 }
               }

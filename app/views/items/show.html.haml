@@ -57,7 +57,7 @@
                 取引が完了しました
             .show-detail_complete_right_info_thanks
               このたびはメルカリのご利用ありがとうございました
-          .show-detail_complete_right_delete
+          .show-detail_complete_right_delete.modal_button
             この商品を削除する
     -else
       .show-detail_element
@@ -124,6 +124,19 @@
               =link_to stop_items_path(@item.id) do
                 出品を一旦停止にする
             .show-detail_botton_delete.modal_button
+              この商品を削除
+            =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
+          -elsif(@item.status=="stop" && @item.user_id==current_user.id)
+            .show-detail_botton_edit
+              =link_to edit_item_path(@item.id) do
+                .show-detail_botton_edit_text
+                  商品の編集
+            .show-detail_botton_or
+              or
+            .show-detail_botton_stop
+              =link_to exhibition_items_path(@item.id) do
+                出品を再開する
+            .show-detail_botton_delete.modal_button.modal_button
               この商品を削除
             =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
           -elsif (@item.status=="complete" && @item.user_id !=current_user.id)

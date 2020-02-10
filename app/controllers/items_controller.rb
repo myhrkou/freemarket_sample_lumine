@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   before_action :set_category, except: [:create, :update, :destroy, :pay, :pay_comfirm]
 
   def index
-    @items = Item.all.limit(15).order(id: "DESC")
+    @items = Item.where.not(status: "stop").limit(15).order(id: "DESC")
   end
   
   def new
@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
   end
 
   def all
-    @items = Item.all.order(id: "DESC").page(params[:page]).per(15)
+    @items = Item.where.not(status: "stop").order(id: "DESC").page(params[:page]).per(15)
   end
 
   def pay_comfirm
@@ -84,6 +84,16 @@ class ItemsController < ApplicationController
    def stop
     @item = Item.find(params[:format])
     @item.status = "stop"
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
+   end
+
+   def exhibition
+    @item = Item.find(params[:format])
+    @item.status = "exhibition"
     if @item.save
       redirect_to root_path
     else
