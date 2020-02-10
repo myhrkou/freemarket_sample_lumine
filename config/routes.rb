@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       post "pay", to: "items#pay"
       get :pay_comfirm
       get "stop"
+      get "exhibition"
     end
   end
   resources :categories do

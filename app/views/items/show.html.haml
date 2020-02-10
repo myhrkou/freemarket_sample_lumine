@@ -126,6 +126,19 @@
             .show-detail_botton_delete.modal_button
               この商品を削除
             =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
+          -elsif(@item.status=="stop" && @item.user_id==current_user.id)
+            .show-detail_botton_edit
+              =link_to edit_item_path(@item.id) do
+                .show-detail_botton_edit_text
+                  商品の編集
+            .show-detail_botton_or
+              or
+            .show-detail_botton_stop
+              =link_to exhibition_items_path(@item.id) do
+                出品を再開する
+            .show-detail_botton_delete.modal_button
+              この商品を削除
+            =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
           -elsif (@item.status=="complete" && @item.user_id !=current_user.id)
             .show-detail_botton_soldout
               売り切れました
