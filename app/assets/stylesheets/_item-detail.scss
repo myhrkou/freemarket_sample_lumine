@@ -1,218 +1,220 @@
-.show-detail{
- background-color: #f5f5f5;
- padding: 24px 330px 330px;
- &_complete{
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  &_left{
-    margin-right: 20px;
-    width: 200px;
-    &_title{
-      font-weight: bold;
-    }
-    &_buyinfo{
-      margin-top:40px;
-      &_title{
-      font-weight: bold;
+.show-detail {
+  background-color: #f5f5f5;
+  padding: 24px 330px;
+  &_complete {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    &_left {
+      margin-right: 20px;
+      width: 350px;
+      &_title {
+        font-weight: bold;
       }
-      &_element{
-        display: flex;
-        justify-content: space-between;
-        background-color: #fff;
-        padding: 16px;
-        line-height: 40px;
-        &_img{
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          text-align: center;
-        }
-        &_name{
-          font-size: 16px;
-        }
-      }
-    }
-  }
-  &_right{
-    background-color: #fff;
-    width: 570px;
-    &_title{
-      font-size: 24px;
-      text-align: center;
-      padding: 8px 24px;
-    }
-    &_info{
-      padding: 24px 8px;
-      background-color: #fff6de;
-      text-align: center;
-      font-size: 16px;
-      &_element{
-        color: red;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        &_text{
-          font-size: 16px;
+      &_buyinfo {
+        margin-top: 40px;
+        &_title {
           font-weight: bold;
         }
-      }
-      &_thanks{
-        padding-top: 8px;
-        font-size: 14px;
-      }
-    }
-    &_delete{
-      background-color: red;
-      color: #fff;
-      text-align: center;
-      margin: 40px 100px;
-      height:60px;
-      line-height: 60px;
-      font-size:24px;
-      }
-    }
-  }
- &_element{
-   background-color: #fff;
-   width: 100%;
-   margin: 0 auto ;
-   margin-bottom: 20px;
-   &_title{
-     font-size: 24px;
-     text-align: center;
-     word-wrap: break-word;
-     line-height: 1.4;
-     padding-top: 24px;
-   }
-   &_main{
-   display: flex;
-   justify-content: space-between;
-   margin:16px 0 0;
-    &_left{
-      width:300px;
-      height:380px;
-      background-color: #f5f5f5;
-      margin-right: 40px;
-      margin-left:40px;
-      &_img{
-     
-        width:300px;
-        height: 300px;
-        
-      }
-      &_choice{
-        width: 300px;
-        height:60px;
+        &_element {
+          display: flex;
+          justify-content: space-between;
+          background-color: #fff;
+          padding: 16px;
+          line-height: 40px;
+          &_img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+          }
+          &_name {
+            font-size: 16px;
+          }
+        }
       }
     }
-    &_right{
-      width:50%;
-      padding-right: 60px;
-    }
-   }
-   &_price{
-     margin: 24px 0 0;
-     text-align: center;
-     display: flex;
-     justify-content: center;
-     &_yen{
-       font-size: 50px;
-       margin-right: 16px;
-     }
-     &_intax{
-      vertical-align: bottom;
-       &_text{
-        font-size: 14px;
-        line-height: 58px;
-       }
-     }
-     &_detail{
-       font-size: 16px;
-       vertical-align: bottom;
-    
-       &_text{
+    &_right {
+      background-color: #fff;
+      width: 990px;
+      &_title {
+        font-size: 24px;
+        text-align: center;
+        padding: 8px 24px;
+      }
+      &_info {
+        padding: 24px 8px;
+        background-color: #fff6de;
+        text-align: center;
         font-size: 16px;
-        line-height: 58px;
-       }
-     }
-   }
-   &_description{
-     padding: 32px 0 0;
-     font-size: 18px;
-     line-height: 1.5;
-     margin-left: 40px;
-   }
- }
- &_botton{
-  background-color: #fff;
-  width: 100%;
-  margin: 0 auto ;
-  padding-top: 8px;
-  padding-bottom: 8px;
-
-  height:100%;
-  &_edit{
-    background-color: red;
-    margin: 0 auto ;
-    width: 90%;
-    height:60px;
-    line-height: 60px;
-    font-size:24px;
-    &_text{
-      color: white;
-      text-align: center;
+        &_element {
+          color: red;
+          display: flex;
+          justify-content: center;
+          text-align: center;
+          &_text {
+            font-size: 16px;
+            font-weight: bold;
+          }
+        }
+        &_thanks {
+          padding-top: 8px;
+          font-size: 14px;
+        }
+      }
+      &_delete {
+        background-color: red;
+        color: #fff;
+        text-align: center;
+        margin: 40px 100px;
+        height: 60px;
+        line-height: 60px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+      &_delete:hover {
+        background-color: rgb(233, 17, 17);
+      }
     }
   }
-  &_or{
-    text-align: center;
-    height:20px;
-    line-height: 20px;
+  &_element {
+    background-color: #fff;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    &_title {
+      font-size: 24px;
+      text-align: center;
+      word-wrap: break-word;
+      line-height: 1.4;
+      padding-top: 24px;
+    }
+    &_main {
+      display: flex;
+      justify-content: space-between;
+      margin: 16px 0 0;
+      &_left {
+        width: 300px;
+        height: 380px;
+        background-color: #f5f5f5;
+        margin-right: 40px;
+        margin-left: 40px;
+        &_img {
+          width: 300px;
+          height: 300px;
+        }
+        &_choice {
+          width: 300px;
+          height: 60px;
+        }
+      }
+      &_right {
+        width: 50%;
+        padding-right: 60px;
+      }
+    }
+    &_price {
+      margin: 24px 0 0;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      &_yen {
+        font-size: 50px;
+        margin-right: 16px;
+      }
+      &_intax {
+        vertical-align: bottom;
+        &_text {
+          font-size: 14px;
+          line-height: 58px;
+        }
+      }
+      &_detail {
+        font-size: 16px;
+        vertical-align: bottom;
+
+        &_text {
+          font-size: 16px;
+          line-height: 58px;
+        }
+      }
+    }
+    &_description {
+      padding: 32px 0 0;
+      font-size: 18px;
+      line-height: 1.5;
+      margin-left: 40px;
+    }
   }
-  &_stop{
-    background-color: #f5f5f5;
-    width: 90%;
-    margin: 0 auto ;
-    text-align: center;
-    font-size:24px;
-    height:60px;
-    line-height: 60px;
-    cursor: pointer;
+  &_botton {
+    background-color: #fff;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    height: 100%;
+    &_edit {
+      background-color: red;
+      margin: 0 auto;
+      width: 90%;
+      height: 60px;
+      line-height: 60px;
+      font-size: 24px;
+      &_text {
+        color: white;
+        text-align: center;
+      }
+    }
+    &_or {
+      text-align: center;
+      height: 20px;
+      line-height: 20px;
+    }
+    &_stop {
+      background-color: #f5f5f5;
+      width: 90%;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 24px;
+      height: 60px;
+      line-height: 60px;
+      cursor: pointer;
+    }
+    &_delete {
+      background-color: #f5f5f5;
+      width: 90%;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 16px;
+      margin-bottom: 16px;
+      height: 60px;
+      line-height: 60px;
+      font-size: 24px;
+      cursor: pointer;
+    }
   }
-  &_delete{
-    background-color: #f5f5f5;
-    width: 90%;
-    margin: 0 auto ;
-    text-align: center;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    height:60px;
-    line-height: 60px;
-    font-size:24px;
-    cursor: pointer;
-  }
- }
 }
 
-.detail{
+.detail {
   margin-top: 67.5px;
   margin-bottom: 67.5px;
   width: 300px;
-  height:300px
+  height: 300px;
 }
 
-th,td{
-  border:1px solid #f5f5f5;
+th,
+td {
+  border: 1px solid #f5f5f5;
   font-weight: 400;
   padding: 8px;
-  font-size:14px;
+  font-size: 14px;
 }
 
-th{
-  width:40%;
+th {
+  width: 40%;
 }
 
-.show-detail_botton_buy{
+.show-detail_botton_buy {
   font-size: 24px;
   line-height: 60px;
   text-align: center;
@@ -220,7 +222,7 @@ th{
   color: white;
 }
 
-.show-detail_botton_soldout{
+.show-detail_botton_soldout {
   font-size: 24px;
   line-height: 60px;
   text-align: center;
@@ -232,33 +234,31 @@ th{
   background-color: #fff;
 }
 
-.checkmark{
+.checkmark {
   color: red;
   font-size: 32px;
   margin-right: 8px;
 }
 
-.img-element{
-
+.img-element {
   text-align: center;
 }
 
-td{
- width:61%;
+td {
+  width: 61%;
 }
 
-.detail-table{
-  width:100%
+.detail-table {
+  width: 100%;
 }
 
-.img_choice{
-  width:80px;
-  height:80px;
+.img_choice {
+  width: 80px;
+  height: 80px;
   object-fit: cover;
 }
 
-
-.img_carusel{
+.img_carusel {
   width: 300px;
   height: 300px;
 
@@ -266,38 +266,38 @@ td{
 }
 
 *:focus {
-outline: none;
+  outline: none;
 }
 
-.img_choice:focus{
-  border:1px solid #000000
+.img_choice:focus {
+  border: 1px solid #000000;
 }
 
-.slick-slide .slick-cloned{
-  opacity: 1.0;
+.slick-slide .slick-cloned {
+  opacity: 1;
 }
 
-.img-element{
+.img-element {
   width: 80px;
 }
 
-.slick2{
-.slick-active{
-  opacity: 0.4;
-}
-.slick-center{
-  opacity: 1.0;
-}
+.slick2 {
+  .slick-active {
+    opacity: 0.4;
+  }
+  .slick-center {
+    opacity: 1;
+  }
 }
 
-.show-detail_botton_edit:hover{
+.show-detail_botton_edit:hover {
   opacity: 0.8;
 }
 
-.show-detail_botton_edit:hover{
+.show-detail_botton_edit:hover {
   opacity: 0.8;
 }
 
-.show-detail_botton_buy:hover{
+.show-detail_botton_buy:hover {
   opacity: 0.8;
 }
