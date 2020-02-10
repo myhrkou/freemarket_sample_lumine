@@ -1,9 +1,10 @@
 .html
   .header
-    = render '/shared/logintop'
-  .pan
-    - breadcrumb :items,@item
-    = render "layouts/breadcrumbs"
+    = render '/shared/header'
+  -if (@item.user_id == current_user.id)
+    .pan
+      - breadcrumb :items,@item
+      = render "layouts/breadcrumbs"
   .show-detail
     -if  ( @item.status=="complete" && @item.user_id==current_user.id )
       .show-detail_complete
@@ -18,18 +19,19 @@
               %tr
                 %th 送料
                 %td 
-                  =@item.condition
+                  =@item.delivery_charge_detail
               %tr
-                %th 配送料手数料
+                %th 販売手数料
                 %td 
-                  未定
+                  =fee(@item.price)
               %tr
                 %th 販売利益
-                %td 未定
+                %td 
+                  =benefit(@item.price)
               %tr
                 %th 購入日時
                 %td
-                  =@prefecture
+                  =@item.updated_at.strftime("%Y-%m-%d %H:%M")
               %tr
                 %th 商品ID
                 %td 
@@ -57,6 +59,7 @@
               このたびはメルカリのご利用ありがとうございました
           .show-detail_complete_right_delete
             この商品を削除する
+
     -else
       .show-detail_element
         .show-detail_element_title
@@ -64,16 +67,27 @@
         .show-detail_element_main
           .show-detail_element_main_left
             .show-detail_element_main_left_img
-            = image_tag @item.items_images[0].image_url.url,class: 'detail'
+              %div.slick1
+                - @item.items_images.each do |item|
+                  %div
+                    %h3.img-element 
+                      = image_tag item.image_url.url,class:"img_carusel"
+
             .show-detail_element_main_left_choice
-              複数画像
+              %div.slick2
+                - @item.items_images.each do |item|
+                  %div
+                    %h3.img-element 
+                      = image_tag item.image_url.url,class:"img_choice"
+
+
           .show-detail_element_main_right
             .show-detail_element_main_right_table
-              %table
+              %table.detail-table
                 %tr
                   %th 出品者
                   %td
-                    =@user
+                    =@item.user.nickname
                 %tr
                   %th 商品の状態
                   %td 
@@ -83,12 +97,9 @@
                   %td 
                     =@item.delivery_charge_detail
                 %tr
-                  %th 配送の方法
-                  %td 未定
-                %tr
                   %th 配送元地域
                   %td
-                    =@prefecture
+                    =@item.delivery_origin.name
                 %tr
                   %th 発送日の目安
                   %td 
@@ -108,13 +119,16 @@
         -if user_signed_in?
           -if ( @item.status=="exhibition" && @item.user_id==current_user.id )
             .show-detail_botton_edit
-              .show-detail_botton_edit_text
-                商品の編集
+              =link_to edit_item_path(@item.id) do
+                .show-detail_botton_edit_text
+                  商品の編集
             .show-detail_botton_or
               or
             .show-detail_botton_stop
-              出品を一旦停止にする
-            .show-detail_botton_delete
+              =link_to stop_items_path(@item.id) do
+                出品を一旦停止にする
+            
+            .show-detail_botton_delete.modal_button
               この商品を削除
             =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
 

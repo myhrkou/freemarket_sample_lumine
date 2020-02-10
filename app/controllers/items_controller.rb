@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :show,:create, :all, :pay_comfirm, :pay]
+  before_action :set_item, except: [:index, :new, :create, :all, :pay_comfirm, :pay,:stop]
   before_action :authenticate_user!, only: [:new,:show]
   before_action :set_card, only: [:pay_comfirm, :pay]
 
@@ -31,9 +31,7 @@ class ItemsController < ApplicationController
 
   def show
     session[:item] = @item
-    @prefecture = Prefecture.find(@item.delivery_origin).name
-    @user = User.find(@item.user_id).nickname
-
+   
   end
 
   def destroy
@@ -42,6 +40,10 @@ class ItemsController < ApplicationController
     else
       redirect_to item_path
     end
+  end
+
+  def edit
+    @item = Item.find(params[:id])
   end
 
   def all
@@ -68,6 +70,7 @@ class ItemsController < ApplicationController
     @item = Item.find(id)
     @item.complete!
     @item.buyer = current_user.id
+    @item.updated_at = Time.now
     if @item.save
       redirect_to root_path
     else
@@ -75,12 +78,22 @@ class ItemsController < ApplicationController
     end
   end
 
+   def stop
+    @item = Item.find(params[:format])
+     @item.status = "stop"
+     if @item.save
+       redirect_to root_path
+     else
+       render :new
+     end
+   end
+
 
 
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :condition, :delivery_charge_detail, :delivery_origin, :delivery_date, :price, items_images_attributes: [:item_id,:image_url,:_destroy, :id ]).merge(user_id:current_user.id)
+    params.require(:item).permit(:name, :description, :condition, :delivery_charge_detail, :delivery_origin_id, :delivery_date, :price, items_images_attributes: [:item_id,:image_url,:_destroy, :id ]).merge(user_id:current_user.id)
   end
 
   def set_item

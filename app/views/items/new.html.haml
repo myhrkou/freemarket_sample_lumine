@@ -1,5 +1,5 @@
-= render "modal"
-= form_for @item do |f|
+-# = render "modal"
+= form_for @item, method: "post" do |f|
   .bgc
     .header
       =render "users/header"
@@ -75,11 +75,10 @@
           .contents-delivery_select_right_sub
             .contents_delivery_select_origin
               配送元の地域
-              -# 最初の値の--はのちに実装
             .contents_delivery_select_must.must
               必須
           .contents-delivery_select_origindetail
-            =f.collection_select :delivery_origin, Prefecture.all, :id, :name
+            =f.collection_select :delivery_origin_id, Prefecture.all, :id, :name,prompt:"---"
           .contents-delivery_select_right_sub
             .contents_delivery_select_date
               発送までの日数
@@ -117,9 +116,4 @@
           またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
           %br
           また、出品をもちまして加盟店規約に同意したことになります。
-        .contents-btn_sell
-          .contents-btn_sell_bottn
-          = f.submit '出品する',class: 'modal_sell'
-    .footer
-      =render "users/footer"
-
+        = f.submit '出品する',class:'form_sell'

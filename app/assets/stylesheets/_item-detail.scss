@@ -1,6 +1,6 @@
 .show-detail{
  background-color: #f5f5f5;
- padding: 24px 40px 40px;
+ padding: 24px 330px 330px;
  &_complete{
   display: flex;
   justify-content: center;
@@ -67,12 +67,15 @@
       color: #fff;
       text-align: center;
       margin: 40px 100px;
+      height:60px;
+      line-height: 60px;
+      font-size:24px;
       }
     }
   }
  &_element{
    background-color: #fff;
-   width: 62.5%;
+   width: 100%;
    margin: 0 auto ;
    margin-bottom: 20px;
    &_title{
@@ -84,16 +87,29 @@
    }
    &_main{
    display: flex;
-   justify-content: flex-start;
+   justify-content: space-between;
    margin:16px 0 0;
     &_left{
-      width:50%;
+      width:300px;
+      height:380px;
       background-color: #f5f5f5;
-      margin-right: 10px;
+      margin-right: 40px;
       margin-left:40px;
+      &_img{
+     
+        width:300px;
+        height: 300px;
+        
+      }
+      &_choice{
+        //background-color: blue;
+        width: 300px;
+        height:60px;
+      }
     }
     &_right{
-      width:50%
+      width:50%;
+      padding-right: 60px;
     }
    }
    &_price{
@@ -115,6 +131,7 @@
      &_detail{
        font-size: 16px;
        vertical-align: bottom;
+    
        &_text{
         font-size: 16px;
         line-height: 58px;
@@ -130,17 +147,19 @@
  }
  &_botton{
   background-color: #fff;
-  width: 60%;
+  width: 100%;
   margin: 0 auto ;
   padding-top: 8px;
   padding-bottom: 8px;
-  padding-right: 16px;
-  padding-left: 16px;
+
   height:100%;
   &_edit{
     background-color: red;
     margin: 0 auto ;
-    width: 100%;
+    width: 90%;
+    height:60px;
+    line-height: 60px;
+    font-size:24px;
     &_text{
       color: white;
       text-align: center;
@@ -148,21 +167,28 @@
   }
   &_or{
     text-align: center;
+    height:20px;
+    line-height: 20px;
   }
   &_stop{
     background-color: #f5f5f5;
-    width: 100%;
+    width: 90%;
     margin: 0 auto ;
     text-align: center;
-    margin-top: 16px;
+    font-size:24px;
+    height:60px;
+    line-height: 60px;
   }
   &_delete{
     background-color: #f5f5f5;
-    width: 100%;
+    width: 90%;
     margin: 0 auto ;
     text-align: center;
     margin-top: 16px;
     margin-bottom: 16px;
+    height:60px;
+    line-height: 60px;
+    font-size:24px;
   }
  }
 }
@@ -170,7 +196,7 @@
 .detail{
   margin-top: 67.5px;
   margin-bottom: 67.5px;
-  width: 100%;
+  width: 300px;
   height:300px
 }
 
@@ -209,4 +235,68 @@ th{
   color: red;
   font-size: 32px;
   margin-right: 8px;
+}
+
+.img-element{
+
+  text-align: center;
+}
+
+td{
+ width:61%;
+}
+
+.detail-table{
+  width:100%
+}
+
+.img_choice{
+  width:80px;
+  height:80px;
+  object-fit: cover;
+}
+
+
+.img_carusel{
+  width: 300px;
+  height: 300px;
+
+  object-fit: cover;
+}
+
+*:focus {
+outline: none;
+}
+
+.img_choice:focus{
+  border:1px solid #000000
+}
+
+.slick-slide .slick-cloned{
+  opacity: 1.0;
+}
+
+.img-element{
+  width: 80px;
+}
+
+.slick2{
+.slick-active{
+  opacity: 0.4;
+}
+.slick-center{
+  opacity: 1.0;
+}
+}
+
+.show-detail_botton_edit:hover{
+  opacity: 0.8;
+}
+
+.show-detail_botton_edit:hover{
+  opacity: 0.8;
+}
+
+.show-detail_botton_buy:hover{
+  opacity: 0.8;
 }

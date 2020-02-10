@@ -5,9 +5,9 @@ class Item < ApplicationRecord
   validates :name, presence: true,length: {maximum: 40}
   validates :description, presence: true,length: {maximum: 1000}
   validates :condition, :delivery_charge_detail, :delivery_date, :price,presence: true
-  validates :delivery_origin,inclusion: { in: (1..47),message: "を入力してください"}
+ 
+  validates :delivery_origin, presence: true
 
-  # validates :price,inclusion: { in: 300..9999999,message: "300~9999999の値を入力してください"}
   validates :price,numericality:{greater_than:299,less_than:10000000}
   accepts_nested_attributes_for :items_images, allow_destroy: true
 
