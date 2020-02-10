@@ -64,6 +64,10 @@
   font-size: 14px;
 }
 
+.login_textfield:focus{
+  outline: 1px solid dodgerblue;
+}
+
 .login_button{
   height: 50px;
   width: 328px;

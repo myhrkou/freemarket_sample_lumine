@@ -145,6 +145,10 @@ body {
   background-color: #fff;
 }
 
+.name_textfield:focus {
+  outline: 1px solid dodgerblue;
+}
+
 .label {
   text-align: left;
   display: flex;
@@ -202,6 +206,15 @@ body {
     height: 50px;
     border: 1px solid #ccc;
     background-color: white;
+  }
+  &_1i:focus{
+    outline: 1px solid dodgerblue;
+  }
+  &_2i:focus{
+    outline: 1px solid dodgerblue;
+  }
+  &_3i:focus{
+    outline: 1px solid dodgerblue;
   }
 }
 
