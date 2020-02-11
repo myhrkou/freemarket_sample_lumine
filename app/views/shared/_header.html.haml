@@ -4,10 +4,12 @@
       = image_tag src="/images/fmarket_logo_red.svg",class: 'mercari'
   .header__top__search
     .header__top__search__text
-      %input{name: "content", type:"text",class: "search_form",placeholder: '何かお探しですか？'}
-      //検索実装時にフォームに変更してください。
-    .header__top__search__icon
-      = icon('fas', 'search')
+      =form_tag search_items_path,method: :get do
+        =text_field_tag :keyword,params[:keyword],class:"search_form",placeholder:"何かお探しですか？"
+        =label_tag "" do
+          =submit_tag '',class:"search_button"
+          .header__top__search__icon
+            = icon('fas', 'search')
 .header__bottom
   %ul.header__bottom__left
     %li.header__bottom__left__category

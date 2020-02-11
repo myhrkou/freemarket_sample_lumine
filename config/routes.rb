@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       get :pay_comfirm
       get "stop"
       get "exhibition"
+      get :search
     end
   end
   resources :categories do
