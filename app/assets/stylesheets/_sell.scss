@@ -107,6 +107,7 @@
     &-btn{
       border-top: 1px solid #eee;
       padding: 40px;
+      text-align: center;
       &_text{
         font-size: 14px;
       }
@@ -152,6 +153,15 @@
 
 .form_sell{
   margin: 40px 0 0;
+  background-color: red;
+  border: 1px solid red;
+  color: white;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+}
+
+.form_edit{
   background-color: red;
   border: 1px solid red;
   color: white;
@@ -222,4 +232,14 @@
 
 .select-default{
   width: 100%;
+}
+
+.cansel_edit{
+  width:45%;
+  margin:24px auto ;
+  background-color: rgb(170,170,170);
+  color: white;
+  font-size: 14px;
+  border: 1px solid #aaa;
+ 
 }
