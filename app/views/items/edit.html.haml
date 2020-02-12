@@ -1,1 +1,118 @@
-仮
+= form_for @item, method: "post" do |f|
+  .bgc
+    .header
+      =render "users/header"
+    .contents
+      = render 'layouts/errors', model: f.object
+      .contents-title
+        商品の情報を入力
+      .contents-item_img
+        .contents-item_img_title
+          .contents-item_img_title_texttitle
+            出品画像
+          .contents-item_img_title_textmust.must
+            必須
+        .contents-item_img_text
+          最大10枚までアップロードできます
+        .contents-item_img_image
+          #image-box
+            #previews
+              - if @item.persisted?
+                - @item.items_images.each_with_index do |image, i|
+                  .js-img{data:{index:i}}
+                    = image_tag image.image_url.url, data: { index: i }, width: "100", height: '100'
+                    #preview_menus
+                      .js-remove 削除
+                      .js-edit 編集
+            .js-file_group{"data-index" => @item.items_images.count}
+              =f.label :image_url ,class: "js-file1" do
+                .js-file2
+                  .js-file2_text
+                    クリックしてファイルをアップロード
+                = f.file_field :image_url, name: "item[items_images_attributes][#{@item.items_images.count}][image_url]",class: 'js-file'
+      .contents-item_text
+        .contents-item_text_title
+          .contents-item_text_title_subname
+            商品名
+          .contents-item_text_title_must.must
+            必須
+        .contents-item_text_name
+          = f.text_field :name,placeholder:"商品名(必須40文字まで)",cols:"40"
+        .contents-item_text_title
+          .contents-item_text_title_name
+            商品の説明
+          .contents-item_text_title_must.must
+            必須
+        .contents-item_text_description
+          = f.text_area :description,rows: "5",cols:"1000",placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+      .contents-item_select
+        .contents-item_select_title
+          商品の詳細
+        .contents-item_select_right
+          .contents-item_select_right_text
+            .contents-item_select_sub
+              カテゴリー
+            .contents-item_select_sub_must.must
+              必須
+          .contents-item_select_right_category
+            =f.collection_select :category_id, @parents, :id, :name,{prompt: "---"}, class: "select-default", id: "parent-form"
+          .contents-item_select_right_text
+            .contents-item_select_sub
+              商品の状態
+            .contents-item_select_sub_must.must
+              必須
+          .contents-item_select_right_condition
+            = f.select :"condition",[["---",""],["新品、未使用","新品、未使用"],["未使用に近い","未使用に近い"],["目立った傷や汚れなし","目立った傷や汚れなし"],["やや傷や汚れあり","やや傷や汚れあり"],["傷や汚れあり","傷や汚れあり"],["全体的に状態が悪い","全体的に状態が悪い"]]
+      .contents-delivery_select
+        .contents-delivery_select_left
+          配送について
+        .contents-delivery_select_right
+          .contents-delivery_select_right_subtop
+            .contents_delivery_select_sub_right_cost
+              配送料の負担
+            .contents_delivery_select_sub_must.must
+              必須
+          .contents-delivery_select_chagedetail
+            =f.select :"delivery_charge_detail",[["---",""],["送料込み（出品者負担）","送料込み（出品者負担）"],["着払い（購入者負担）","着払い（購入者負担）"]]
+          .contents-delivery_select_right_sub
+            .contents_delivery_select_origin
+              配送元の地域
+            .contents_delivery_select_must.must
+              必須
+          .contents-delivery_select_origindetail
+            =f.collection_select :delivery_origin_id, DeliveryOrigin.all, :id, :name, prompt:"---",class: "select-default"
+          .contents-delivery_select_right_sub
+            .contents_delivery_select_date
+              発送までの日数
+            .contents_delivery_select_must.must
+              必須
+          .contents-delivery_select_datedetail
+            =f.select :"delivery_date", [["---",""],["1~2日で発送","1~2日で発送"],["2~3日で発送","2~3日で発送"],["3~7日で発送","3~7日で発送"]]
+      .contents-price
+        .contents-price_sub
+          .contents-price_title
+            販売価格（300~9,999,999）
+        .contents-price_right
+          .contents-price_right_item
+            .contents-price_right_item_text
+              .contents-price_name
+                価格
+              .contents-price_must.must
+                必須
+            .contents-price_input
+              = f.text_field :price,placeholder:"例）300"
+          .contents-price_right_tax
+            .contents-price_right_tax_text
+              販売手数料（10％）
+            .contents-price_right_tax_result
+              =fee(@item.price)
+          .contents-price_profit
+            .contents-price_profit_text
+              販売利益
+            .contents-price_profit_result
+              =benefit(@item.price)
+      .contents-btn
+        = f.submit '変更する',class:'form_edit'
+        = f.submit 'キャンセル',class:'cansel_edit'
+    .footer
+      =render "users/footer"

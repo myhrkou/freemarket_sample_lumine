@@ -107,6 +107,7 @@
     &-btn{
       border-top: 1px solid #eee;
       padding: 40px;
+      text-align: center;
       &_text{
         font-size: 14px;
       }
@@ -160,6 +161,15 @@
   font-size: 14px;
 }
 
+.form_edit{
+  background-color: red;
+  border: 1px solid red;
+  color: white;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+}
+
 
 .js-remove{
   width: 50px;
@@ -174,8 +184,6 @@
   color: #0099e8;
   text-align: center;
 }
-
-
 
 .js-file{
   display: none;
@@ -222,4 +230,22 @@
 
 .select-default{
   width: 100%;
+}
+
+.cansel_edit{
+  width:45%;
+  margin:24px auto ;
+  background-color: rgb(170,170,170);
+  color: white;
+  font-size: 14px;
+  border: 1px solid #aaa;
+  height:50px;
+}
+
+.cansel_edit:hover{
+  opacity: 0.7;
+}
+
+.form_edit:hover{
+  background: #FF3333;
 }
