@@ -34,6 +34,7 @@
           top: 0px;
           line-height: 40px;
           text-align: center;
+          cursor: pointer;
         }
       }
     }
@@ -226,6 +227,28 @@
       &__more {
         color: dodgerblue;
         height: fit-content;
+        margin-top: 10px;
+      }
+    }
+    &__search{
+      padding: 25px 330px;
+      &__result{
+        display: flex;
+        align-items: baseline;
+        &__num{
+          font-size: 20px;
+          font-weight: bold;
+        }
+        &__text{
+          margin-left: 5px;
+          font-size: 18px;
+          font-weight: lighter;
+          color: #222222;
+        }
+      }
+      &__quantity{
+        font-size: 10px;
+        color: #666666;
         margin-top: 10px;
       }
     }
@@ -502,6 +525,10 @@
   border: 1px solid #c0c0c0;
   border-radius: 4px;
   padding-left: 10px;
+}
+
+.search_button{
+  display: none;
 }
 
 .search_form:focus {

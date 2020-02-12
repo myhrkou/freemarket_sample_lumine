@@ -1,0 +1,27 @@
+.html
+  .header
+    =render 'shared/header'
+  .sell
+    =link_to new_item_path ,class:'sell__button'do
+      .sell__button__text
+        出品
+      .sell__button__img
+        = icon('fas', 'camera',class:"camera")
+  .contents
+    .contents__search
+      .contents__search__result
+        .contents__search__result__num
+          =@keyword
+        .contents__search__result__text
+          の検索結果
+      .contents__search__quantity
+        =@items.offset_value
+        &#045;
+        =@items.offset_value+@items.length
+        件表示
+    %ul.contents__all
+      = render 'item'
+    .contents__page
+      =paginate(@items)
+  .footer
+    = render "shared/footer"
