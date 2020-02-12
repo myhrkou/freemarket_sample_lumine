@@ -20,7 +20,6 @@ $(function () {
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0, lastIndex);
   $('#image-box').on('change', '.js-file1', function (e) {
-    
     $(".js-file1").removeAttr("for");
     $(".js-file1").attr("for", `items_images_attributes_${fileIndex[0]}_image_url`);
     // ファイルのブラウザ上でのURLを取得する
