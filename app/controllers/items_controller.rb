@@ -142,6 +142,5 @@ class ItemsController < ApplicationController
     end
     @search = Item.ransack(params[:q])
     @items = @search.result.where.not(status: "stop").page(params[:page]).per(16)
-    # @items=Item.remove_stop(@items)
   end
 end
