@@ -73,7 +73,7 @@ class UserStepsController < ApplicationController
           metadata: { user_id: current_user.id },
         )
         @card = Card.new(
-          user_id: curreny_user.id,
+          user_id: current_user.id,
           customer_id: customer.id,
           card_id: customer.default_card,
         )
