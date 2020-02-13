@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:update, :show, :destroy]
+  before_action :set_item, only: [:update, :show, :destroy,:edit]
   before_action :authenticate_user!, only: [:new, :show]
   before_action :set_card, only: [:pay_comfirm, :pay]
   before_action :set_category, except: [:create, :update, :destroy, :pay, :pay_comfirm]
