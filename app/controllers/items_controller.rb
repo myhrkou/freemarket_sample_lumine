@@ -106,7 +106,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @keyword = params[:q][:name_cont]
+    @keyword = params[:q][:name_cont_any]
     respond_to do |format|
       format.html
       format.json do
