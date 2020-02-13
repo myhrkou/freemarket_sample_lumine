@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:update, :show, :destroy,:edit]
+  before_action :set_item, only: [:update, :show, :destroy, :edit]
   before_action :authenticate_user!, only: [:new, :show]
   before_action :set_card, only: [:pay_comfirm, :pay]
   before_action :set_category, except: [:create, :update, :destroy, :pay, :pay_comfirm]
@@ -136,6 +136,9 @@ class ItemsController < ApplicationController
   def set_ransack
     if params[:q] != nil
       params[:q][:category_id_in] = Item.select_category(params[:q])
+      if params[:q][:name_cont_any] != nil
+        params[:q][:name_cont_any] = params[:q][:name_cont_any].split(/[\p{blank}\s]+/)
+      end
     end
     @search = Item.ransack(params[:q])
     @items = @search.result.page(params[:page]).per(16)

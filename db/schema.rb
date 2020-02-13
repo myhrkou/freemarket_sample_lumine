@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200205091050) do
+ActiveRecord::Schema.define(version: 20200213100259) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "zip",        null: false
@@ -41,28 +41,6 @@ ActiveRecord::Schema.define(version: 20200205091050) do
     t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
   end
 
-  create_table "category0s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "category1s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.integer  "category0_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["category0_id"], name: "index_category1s_on_category0_id", using: :btree
-  end
-
-  create_table "category2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.integer  "category1_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["category1_id"], name: "index_category2s_on_category1_id", using: :btree
-  end
-
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                                             null: false
     t.text     "description",            limit: 65535,             null: false
@@ -76,8 +54,10 @@ ActiveRecord::Schema.define(version: 20200205091050) do
     t.datetime "updated_at",                                       null: false
     t.integer  "status",                               default: 0
     t.integer  "buyer"
+    t.integer  "category_id_id"
     t.integer  "category_id"
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
+    t.index ["category_id_id"], name: "index_items_on_category_id_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
