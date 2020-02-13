@@ -16,6 +16,7 @@ $(function () {
   }, function () {
     $(this).children(".category2s").hide();
   })
+
   var buildcategory = function (child) {
     var html = `<option value='${child.id}'>${child.name}</option>`
     return html;
@@ -38,11 +39,30 @@ $(function () {
               `
     return html;
   }
+  var buildHTML3 = function (categories) {
+    var html = `
+            <select class='select-default' id='parent-form2' name="item[category_id]">
+              <option value=''>すべて</option>
+              ${categories}
+            </select>
+              `
+    return html;
+  };
+  var buildHTML4 = function (categories) {
+    var html = `
+            <select class='select-default' id='parent-form3' name="item[category_id]">
+              <option value=''>すべて</option>
+              ${categories}
+            </select>
+              `
+    return html;
+  }
   $("#parent-form").on("change", function () {
     var parentValue = document.getElementById("parent-form").value;
+    url = location.href;
     if (parentValue != "") {
       $.ajax({
-        url: '/items/new',
+        url: url,
         type: "GET",
         data: { parent_id: parentValue },
         dataType: 'json'
@@ -52,14 +72,19 @@ $(function () {
           var category = buildcategory(child);
           categories += category;
         });
-        var html = buildHTML(categories);
+        if (url.match("new")) {
+          var html = buildHTML(categories);
+        } else {
+          var html = buildHTML3(categories);
+        }
         $("#parent-form2").remove();
         $(".contents-item_select_right_category").append(html);
+        $(".contents__searchscreen__left__form__category").append(html);
         $("#parent-form2").on("change", function () {
           var parentValue2 = document.getElementById("parent-form2").value;
           if (parentValue2 != "") {
             $.ajax({
-              url: '/items/new',
+              url: url,
               type: "GET",
               data: { parent_id: parentValue2 },
               dataType: 'json'
@@ -69,9 +94,14 @@ $(function () {
                 var category = buildcategory(child);
                 categories += category;
               });
-              var html = buildHTML2(categories);
+              if (url.match("new")) {
+                var html = buildHTML2(categories);
+              } else {
+                var html = buildHTML4(categories);
+              }
               $("#parent-form3").remove();
               $(".contents-item_select_right_category").append(html);
+              $(".contents__searchscreen__left__form__category").append(html);
               var parentValue3 = document.getElementById("parent-form3").value;
               if (parentValue3 != "") {
                 $.ajax({
@@ -88,18 +118,39 @@ $(function () {
             $("#parent-form3").remove();
           }
         });
+      }).fail(function () {
+        alert("failed");
       });
     } else {
       $("#parent-form2").remove();
       $("#parent-form3").remove();
     }
   });
-  $(".modal_sell").click(function(){
-    var category=$("#parent-form3").value;
-    if(category.length!=0){
-    $("#parent-form").empty();
-    var test = `<option value='${category}'></option>`
-    $('#parent-form').append(test)
+  $(".modal_sell").click(function () {
+    var category = $("#parent-form3").value;
+    if (category.length != 0) {
+      $("#parent-form").empty();
+      var result = `<option value='${category}'></option>`
+      $('#parent-form').append(result)
     }
   });
+
+  $("#search_button").click(function () {
+    var category3 = document.getElementById("parent-form3").value;
+    var category2 = document.getElementById("parent-form2").value;
+    if (category3.length != 0) {
+      $("#parent-form").empty();
+      var result = `<option value='${category3}'></option>`
+      $('#parent-form').append(result)
+    } else if (category2.length != 0) {
+      $("#parent-form").empty();
+      var result = `<option value='${category2}'></option>`
+      $('#parent-form').append(result)
+    }
+  });
+  
+  $("#search_reset").click(function(){
+    $("#parent-form2").remove();
+    $("#parent-form3").remove();
+  })
 });

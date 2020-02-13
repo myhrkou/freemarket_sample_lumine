@@ -1,20 +1,21 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit,:update,:show,:destroy]
-  before_action :authenticate_user!, only: [:new,:show]
+  before_action :set_item, only: [:update, :show, :destroy]
+  before_action :authenticate_user!, only: [:new, :show]
   before_action :set_card, only: [:pay_comfirm, :pay]
   before_action :set_category, except: [:create, :update, :destroy, :pay, :pay_comfirm]
+  before_action :set_ransack, only: [:index, :show, :edit, :all, :search]
 
   def index
     @items = Item.where.not(status: "stop").limit(15).order(id: "DESC")
   end
-  
+
   def new
     @item = Item.new
     @item.items_images.new
     respond_to do |format|
       format.html
       format.json do
-       @children = Category.find(params[:parent_id]).children
+        @children = Category.find(params[:parent_id]).children
       end
     end
   end
@@ -84,7 +85,7 @@ class ItemsController < ApplicationController
     end
   end
 
-   def stop
+  def stop
     @item = Item.find(params[:format])
     @item.status = "stop"
     if @item.save
@@ -92,9 +93,9 @@ class ItemsController < ApplicationController
     else
       render :new
     end
-   end
+  end
 
-   def exhibition
+  def exhibition
     @item = Item.find(params[:format])
     @item.status = "exhibition"
     if @item.save
@@ -102,16 +103,22 @@ class ItemsController < ApplicationController
     else
       render :new
     end
-   end
+  end
 
-   def search
-    @keyword=params[:keyword]
-    @items=Item.search(params[:keyword]).page(params[:page]).per(15)
-   end
+  def search
+    @keyword = params[:q][:name_cont]
+    respond_to do |format|
+      format.html
+      format.json do
+        @children = Category.find(params[:parent_id]).children
+      end
+    end
+  end
 
   private
+
   def item_params
-    params.require(:item).permit(:name, :description, :condition, :delivery_charge_detail, :delivery_origin_id, :delivery_date, :price,:category_id, items_images_attributes: [:item_id, :image_url, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :condition, :delivery_charge_detail, :delivery_origin_id, :delivery_date, :price, :category_id, items_images_attributes: [:item_id, :image_url, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_item
@@ -124,5 +131,13 @@ class ItemsController < ApplicationController
 
   def set_category
     @parents = Category.order("id ASC").limit(3)
+  end
+
+  def set_ransack
+    if params[:q] != nil
+      params[:q][:category_id_in] = Item.select_category(params[:q])
+    end
+    @search = Item.ransack(params[:q])
+    @items = @search.result.page(params[:page]).per(16)
   end
 end
