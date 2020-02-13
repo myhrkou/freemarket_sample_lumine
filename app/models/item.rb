@@ -32,4 +32,16 @@ class Item < ApplicationRecord
       return q[:category_id_in]
     end
   end
+
+  def self.remove_stop(items)
+    stoped_items=self.where(status:2)
+    items.each_with_index do |item,i|
+      stoped_items.each do |stoped_item|
+        if (item==stoped_item)
+          items.delete(stoped_item)
+        end
+      end
+    end
+    return items
+  end
 end
