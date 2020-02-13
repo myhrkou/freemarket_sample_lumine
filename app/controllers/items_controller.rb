@@ -106,7 +106,6 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @keyword = params[:q][:name_cont_any]
     respond_to do |format|
       format.html
       format.json do
@@ -134,6 +133,7 @@ class ItemsController < ApplicationController
   end
 
   def set_ransack
+    @keyword = params[:q][:name_cont_any]
     if params[:q] != nil
       params[:q][:category_id_in] = Item.select_category(params[:q])
       if params[:q][:name_cont_any] != nil
