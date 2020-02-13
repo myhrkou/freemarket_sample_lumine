@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category
+  before_action :set_ransack
 
   def category
   end
@@ -39,5 +40,10 @@ class CategoriesController < ApplicationController
   def set_category
     @parents = Category.order("id ASC").limit(3)
     @categories = Category.order("id ASC")
+  end
+
+  def set_ransack
+    @search = Item.ransack(params[:q])
+    @items = @search.result.page(params[:page]).per(16)
   end
 end

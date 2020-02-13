@@ -532,12 +532,15 @@
         .contents__searchscreen__right__all {
           width: calc(100% - 320px);
           display: flex;
-          justify-content: left;
+          justify-content: center;
           flex-wrap: wrap;
           margin-right: 330px;
           .contents__all__empty {
             font-size: 25px;
             color: #999999;
+          }
+          .contents__all__empty{
+
           }
           .contents__all__item {
             width: 170px;
@@ -609,8 +612,99 @@
           }
         }
         &__page {
-          padding: 0 0 50px 0;
+          padding: 20px 0 50px 0;
           text-align: center;
+          width: 760px;
+          .pagination {
+            height: 40px;
+            display: flex;
+            justify-content: center;
+          }
+
+          .pagination > .current {
+            height: 100%;
+            width: 40px;
+            border: 1px solid #c0c0c0;
+            border-radius: 4px;
+            background-color: #ea352d;
+            color: #fff;
+            line-height: 40px;
+          }
+
+          .pagination > .page {
+            height: 100%;
+            width: 40px;
+            border: 1px solid #c0c0c0;
+            border-radius: 4px;
+            background-color: #fff;
+          }
+
+          .pagination > .page > a {
+            height: 40px;
+            width: 100%;
+            line-height: 40px;
+            padding: 12px 16px;
+          }
+
+          .pagination > .next {
+            height: 40px;
+            width: 40px;
+            border: 1px solid #c0c0c0;
+            border-radius: 4px;
+            background-color: #fff;
+            right: 373px;
+            position: absolute;
+          }
+
+          .pagination > .next > a {
+            padding: 12px 16px;
+            line-height: 40px;
+          }
+
+          .pagination > .last {
+            height: 40px;
+            width: 40px;
+            border: 1px solid #c0c0c0;
+            border-radius: 4px;
+            background-color: #fff;
+            right: 330px;
+            position: absolute;
+          }
+
+          .pagination > .last > a {
+            line-height: 40px;
+            padding: 12px 16px;
+          }
+
+          .pagination > .prev {
+            height: 40px;
+            width: 40px;
+            border: 1px solid #c0c0c0;
+            border-radius: 4px;
+            background-color: #fff;
+            left: 653px;
+            position: absolute;
+          }
+
+          .pagination > .prev > a {
+            padding: 12px 16px;
+            line-height: 40px;
+          }
+
+          .pagination > .first {
+            height: 40px;
+            width: 40px;
+            border: 1px solid #c0c0c0;
+            border-radius: 4px;
+            background-color: #fff;
+            left: 610px;
+            position: absolute;
+          }
+
+          .pagination > .first > a {
+            line-height: 40px;
+            padding: 12px 16px;
+          }
         }
       }
     }
