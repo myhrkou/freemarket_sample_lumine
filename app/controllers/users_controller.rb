@@ -1,20 +1,22 @@
 class UsersController < ApplicationController
-before_action :set_card,only: [:profile,:edit,:update]
-before_action :set_category
+  before_action :set_card, only: [:profile, :edit, :update]
+  before_action :set_category
+  before_action :set_ransack, only: [:profile, :edit]
 
   def index
   end
 
   def profile
-    @items=Item.where(user_id:current_user.id)
+    @items = Item.where(user_id: current_user.id)
   end
+
   def edit
   end
 
   def update
-    @items=Item.where(user_id:current_user.id)
+    @items = Item.where(user_id: current_user.id)
     if current_user.update!(user_params)
-      render template:"mypages/mypage"
+      render template: "mypages/mypage"
     end
   end
 
@@ -38,10 +40,15 @@ before_action :set_category
   end
 
   def set_card
-    @card=Card.where(user_id:current_user.id)
+    @card = Card.where(user_id: current_user.id)
   end
 
   def set_category
     @parents = Category.order("id ASC").limit(3)
+  end
+
+  def set_ransack
+    @search = Item.ransack(params[:q])
+    @items = @search.result.page(params[:page]).per(16)
   end
 end
