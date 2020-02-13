@@ -85,6 +85,16 @@
                   %td
                     =@item.user.nickname
                 %tr
+                  %th カテゴリ
+                  %td 
+                    =@item.category.root.name
+                    %br
+                    >
+                    =@item.category.parent.name
+                    %br
+                    >
+                    =@item.category.name
+                %tr
                   %th 商品の状態
                   %td 
                     =@item.condition

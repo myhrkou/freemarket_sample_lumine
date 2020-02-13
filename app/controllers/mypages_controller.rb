@@ -1,6 +1,7 @@
 class MypagesController < ApplicationController
   before_action :set_card
   before_action :set_category
+  before_action :set_ransack
 
   def mypage
     @items = Item.where(user_id: current_user.id)
@@ -41,5 +42,10 @@ class MypagesController < ApplicationController
 
   def set_category
     @parents = Category.order("id ASC").limit(3)
+  end
+
+  def set_ransack
+    @search = Item.ransack(params[:q])
+    @items = @search.result.page(params[:page]).per(16)
   end
 end

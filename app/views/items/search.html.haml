@@ -7,21 +7,116 @@
         出品
       .sell__button__img
         = icon('fas', 'camera',class:"camera")
-  .contents
-    .contents__search
-      .contents__search__result
-        .contents__search__result__num
-          =@keyword
-        .contents__search__result__text
-          の検索結果
-      .contents__search__quantity
-        =@items.offset_value
-        &#045;
-        =@items.offset_value+@items.length
-        件表示
-    %ul.contents__all
-      = render 'item'
-    .contents__page
-      =paginate(@items)
+  .contents__searchscreen
+    .contents__searchscreen__left
+      =search_form_for(@search,url: search_items_path) do |f|
+        .contents__searchscreen__left__sort
+          = f.select :sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()' ,class:"sort_form"}
+        .contents__searchscreen__left__form
+          .contents__searchscreen__left__form__label0
+            詳細検索
+          .contents__searchscreen__left__form__label1
+            =icon "fas","plus",class:"search_icon"
+            キーワードを追加する
+          .contents__searchscreen__left__form__keyword
+            =f.search_field :name_cont,{class:"detail_search_form",placeholder:"例）値下げ"}
+          .contents__searchscreen__left__form__label
+            =icon "fas","list-ul",class:"search_icon"
+            カテゴリーを選択する
+          .contents__searchscreen__left__form__category
+            =f.collection_select :category_id_in, @parents, :id, :name,{include_blank: 'すべて'}, {class: "select-default", id: "parent-form"}
+          .contents__searchscreen__left__form__label
+            =icon "fas","coins",class:"search_icon"
+            価格
+          .contents__searchscreen__left__form__price
+            %select{type: "text",class:"price_selecter",id:"price_selecter"}
+              %option{value: "0"} 選択してください
+              %option{value: "1"}300 ~ 1000
+              %option{value: "2"}1000 ~ 5000
+              %option{value: "3"}5000 ~ 10000
+              %option{value: "4"}10000 ~ 30000
+              %option{value: "5"}30000 ~ 50000
+              %option{value: "6"}50000 ~
+            =f.search_field :price_gteq,{class:"price_field_lower",id:"price_field_lower",placeholder:"¥Min"}
+            &#126;
+            =f.search_field :price_lteq,class:"price_field_upper",id:"price_field_upper",placeholder:"¥Max"
+          .contents__searchscreen__left__form__label
+            =icon "fas","star",class:"search_icon"
+            商品の状態
+          .contents__searchscreen__left__form__condition
+            .contents__searchscreen__left__form__condition__box
+              %input{type:"checkbox",class:"condition_box",id:"condition_box_all"}
+              %label.condition_label
+                すべて
+            .contents__searchscreen__left__form__condition__box
+              =f.check_box :condition_in,{multiple: true,class:"condition_box",id:"condition_box0"},"新品、未使用",nil
+              =f.label "新品、未使用",class:"condition_label"
+            .contents__searchscreen__left__form__condition__box
+              =f.check_box :condition_in,{multiple: true,class:"condition_box",id:"condition_box1"},"未使用に近い",nil
+              =f.label "未使用に近い",class:"condition_label"
+            .contents__searchscreen__left__form__condition__box
+              =f.check_box :condition_in,{multiple: true,class:"condition_box",id:"condition_box2"},"目立った傷や汚れなし",nil
+              =f.label "目立った傷や汚れなし",class:"condition_label"
+            .contents__searchscreen__left__form__condition__box
+              =f.check_box :condition_in,{multiple: true,class:"condition_box",id:"condition_box3"},"やや傷や汚れあり",nil
+              =f.label "やや傷や汚れあり",class:"condition_label"
+            .contents__searchscreen__left__form__condition__box
+              =f.check_box :condition_in,{multiple: true,class:"condition_box",id:"condition_box4"},"傷や汚れあり",nil
+              =f.label "傷や汚れあり",class:"condition_label"
+            .contents__searchscreen__left__form__condition__box
+              =f.check_box :condition_in,{multiple: true,class:"condition_box",id:"condition_box5"},"全体的に状態が悪い",nil
+              =f.label "全体的に状態が悪い",class:"condition_label"
+          .contents__searchscreen__left__form__label
+            =icon "fas","truck",class:"search_icon"
+            配送料の負担
+          .contents__searchscreen__left__form__charge
+            .contents__searchscreen__left__form__charge__box
+              %input{type:"checkbox",class:"charge_box",id:"charge_box_all"}
+              %label.charge_label
+                すべて
+            .contents__searchscreen__left__form__charge__box
+              =f.check_box :delivery_charge_detail_in,{multiple: true,class:"charge_box",id:"charge_box0"},"着払い（購入者負担）",nil
+              =f.label "着払い(購入者負担)",class:"charge_label"
+            .contents__searchscreen__left__form__charge__box
+              =f.check_box :delivery_charge_detail_in,{multiple: true,class:"charge_box",id:"charge_box1"},"送料込み（出品者負担）",nil
+              =f.label "送料込み(出品者負担)",class:"charge_label"
+          .contents__searchscreen__left__form__label
+            =icon "fas","shopping-cart",class:"search_icon"
+            販売状況
+          .contents__searchscreen__left__form__status
+            .contents__searchscreen__left__form__status__box
+              %input{type:"checkbox",class:"status_box",id:"status_box_all"}
+              %label.status_label
+                すべて
+            .contents__searchscreen__left__form__status__box
+              =f.check_box :status_in,{multiple: true,class:"status_box",id:"status_box0"},0,nil
+              =f.label "販売中",class:"status_label"
+            .contents__searchscreen__left__form__status__box
+              =f.check_box :status_in,{multiple: true,class:"status_box",id:"status_box1"},3,nil
+              =f.label "売り切れ",class:"status_label"
+          .contents__searchscreen__left__form__button
+            .contents__searchscreen__left__form__button__clear
+              =f.submit "クリア",type: :reset,id:"search_reset"
+            .contents__searchscreen__left__form__button__submit
+              =f.submit "完了",id:"search_button"
+    .contents__searchscreen__right
+      .contents__searchscreen__right__search
+        .contents__searchscreen__right__search__result
+          .contents__searchscreen__right__search__result__num
+            =@keyword
+          .contents__searchscreen__right__search__result__text
+            -if @keyword.present?
+              の検索結果
+            -else
+              検索結果
+        .contents__searchscreen__right__search__quantity
+          =@items.offset_value
+          &#045;
+          =@items.offset_value + @items.length
+          件表示
+      %ul.contents__searchscreen__right__all
+        = render 'item'
+      .contents__searchscreen__right__page
+        =paginate(@items)
   .footer
     = render "shared/footer"

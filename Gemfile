@@ -103,3 +103,5 @@ gem 'gretel'
 gem 'kaminari'
 
 gem 'ancestry'
+
+gem 'ransack'
