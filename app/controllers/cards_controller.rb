@@ -2,6 +2,7 @@ class CardsController < ApplicationController
   require "payjp"
   before_action :set_card,only: %i[new delete show]
   before_action :set_category
+  before_action :set_ransack,except:[:pay]
 
   def new
   end
@@ -56,6 +57,11 @@ class CardsController < ApplicationController
 
   def set_category
     @parents = Category.order("id ASC").limit(3)
+  end
+
+  def set_ransack
+    @search = Item.ransack(params[:q])
+    @items = @search.result.page(params[:page]).per(16)
   end
 end
 
