@@ -150,7 +150,17 @@ $(function () {
       $("#parent-form3").remove();
     }
   });
-  $(".modal_sell").click(function () {
+
+  $(".form_sell").click(function () {
+    var category = $("#parent-form3").value;
+    if (category.length != 0) {
+      $("#parent-form").empty();
+      var result = `<option value='${category}'></option>`
+      $('#parent-form').append(result)
+    }
+  });
+
+  $(".form_edit").click(function () {
     var category = $("#parent-form3").value;
     if (category.length != 0) {
       $("#parent-form").empty();

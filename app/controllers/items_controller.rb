@@ -26,6 +26,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       set_category
+      set_ransack
       render :new
     end
   end
