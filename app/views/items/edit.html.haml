@@ -1,4 +1,4 @@
-= form_for @item, method: "post" do |f|
+= form_for @item do |f|
   .bgc
     .header
       =render "users/header"
@@ -30,6 +30,9 @@
                   .js-file2_text
                     クリックしてファイルをアップロード
                 = f.file_field :image_url, name: "item[items_images_attributes][#{@item.items_images.count}][image_url]",class: 'js-file'
+              =f.fields_for :items_images do |image|
+                =image.check_box :_destroy, data:{index:image.index},class:"hidden-destroy"
+                =image.file_field :image_url, name: "item[items_images_attributes][#{@item.items_images.count}][image_url]",class: 'js-file'
       .contents-item_text
         .contents-item_text_title
           .contents-item_text_title_subname
@@ -113,6 +116,7 @@
               =benefit(@item.price)
       .contents-btn
         = f.submit '変更する',class:'form_edit'
-        = f.submit 'キャンセル',class:'cansel_edit'
+        = link_to item_path(@item.id),method: :get do
+          = f.submit 'キャンセル',class:'cansel_edit'
     .footer
       =render "users/footer"

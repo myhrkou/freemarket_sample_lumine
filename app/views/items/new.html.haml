@@ -123,5 +123,7 @@
           %br
           また、出品をもちまして加盟店規約に同意したことになります。
         = f.submit '出品する',class:'form_sell'
+        = link_to root_path(@item.id),method: :get do
+          = f.submit '戻る',class:'form_back'
     .footer
       =render "users/footer"

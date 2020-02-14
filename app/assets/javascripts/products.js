@@ -26,23 +26,32 @@ $(function () {
     if (e.target.files[0]) {
       const file = e.target.files[0];
       const blobUrl = window.URL.createObjectURL(file);
-      // $(`.js-file`).remove();
       $('#previews').append(buildImg(fileIndex[0], blobUrl));
     };
     // fileIndexの先頭の数字を使ってinputを作る
     $('.js-file1').append(buildFileField(fileIndex[0]));
     fileIndex.shift();
     // 末尾の数に1足した数を追加する
-    fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
-    // }
+    fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
   });
   $('#image-box').on('click', '.js-remove', function () {
-    const targetIndex = $(this).parents(".js-img").data("index")
+    const targetIndex = $(this).parents(".js-img").data("index");
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     // もしチェックボックスが存在すればチェックを入れる
+    console.log
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parents(".js-img").remove();
     $(`img[data-index="${targetIndex}"]`).remove();
+
+    if (location.href.match(/new/)){
+      if (targetIndex == 1){
+        $(`#item_items_images_attributes_0_image_url`).remove();
+      } else{
+        $(`#items_images_attributes_${targetIndex - 1}_image_url`).remove();
+      }
+    } else{
+      $(`#item_items_images_attributes_${targetIndex}_image_url`).remove();
+    }
   });
 });
