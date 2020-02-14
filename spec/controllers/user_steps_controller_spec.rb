@@ -10,9 +10,20 @@ describe UserStepsController do
 
   describe "GET #register2" do
     it "renders the :register2 template" do
-      # birthday = Date.new(user_params["birth_day(1i)"].to_i, user_params["birth_day(2i)"].to_i, user_params["birth_day(3i)"].to_i)
-      user_params = attributes_for(:user)
-      get :register2, params: { user: user_params }
+      get :register2, params: { user: {
+        nickname: "abebuu" ,
+        email: "ggg@gmail.com",
+        password: "00000000" ,
+        password_confirmation: "00000000" ,
+        first_name: "ひろし" ,
+        last_name: "佐藤" ,
+        yomi_first_name: "ヒロシ" ,
+        yomi_last_name: "サトウ" ,
+        "birth_day(1i)": "1996",
+        "birth_day(2i)": "5",
+        "birth_day(3i)": "30",
+        phone_number: "00011112222"
+      } }
       expect(response).to be_successful
     end
   end
