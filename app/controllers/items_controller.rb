@@ -26,11 +26,21 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       set_category
+      set_ransack
       render :new
     end
   end
 
   def edit
+    @child_id = Category.find(@item.category_id).parent_id
+    @children = Category.find(@item.category_id).parent.siblings
+    @grand_children = Category.find(@item.category_id).siblings
+    respond_to do |format|
+      format.html
+      format.json do
+        @children = Category.find(params[:parent_id]).children
+      end
+    end
   end
 
   def update
@@ -133,6 +143,22 @@ class ItemsController < ApplicationController
   end
 
   def set_ransack
+    if (params[:q]!=nil && params[:q][:category_id_in] != nil)
+      params[:q][:category_id_in] = params[:q][:category_id_in].to_i
+      if (params[:q][:category_id_in].between?(1, 3))
+        @parent_id = params[:q][:category_id_in].to_i
+      elsif (params[:q][:category_id_in].between?(4, 9))
+        @parent_id = Category.find(params[:q][:category_id_in]).parent_id
+        @child_id = params[:q][:category_id_in]
+        @children = Category.find(@child_id).siblings
+      elsif (params[:q][:category_id_in].between?(10, 30))
+        @parent_id = Category.find(params[:q][:category_id_in]).root_id
+        @child_id = Category.find(params[:q][:category_id_in]).parent_id
+        @grand_child_id = params[:q][:category_id_in]
+        @children = Category.find(@child_id).siblings
+        @grand_children = Category.find(@grand_child_id).siblings
+      end
+    end
     if params[:q] != nil
       params[:q][:category_id_in] = Item.select_category(params[:q])
       if params[:q][:name_cont_any] != nil
