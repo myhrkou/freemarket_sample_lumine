@@ -59,6 +59,8 @@
               必須
           .contents-item_select_right_category
             =f.collection_select :category_id, @parents, :id, :name,{prompt: "---"}, class: "select-default", id: "parent-form"
+            =f.select :category_id, options_for_select(@children.map{|c|[c[:name], c[:id], {'data-sample'=>c[:id]}]}, @child_id),{}, {class: "select-default", id: "parent-form2"}
+            =f.select :category_id, options_for_select(@grand_children.map{|c|[c[:name], c[:id], {'data-sample'=>c[:id]}]}, @item.category_id),{},{class: "select-default", id: "parent-form3"}
           .contents-item_select_right_text
             .contents-item_select_sub
               商品の状態
