@@ -240,12 +240,32 @@
   font-size: 14px;
   border: 1px solid #aaa;
   height:50px;
+  line-height: 50px;
+}
+
+.form_back{
+  width:45%;
+  margin:24px auto ;
+  background-color: rgb(170,170,170);
+  color: white;
+  font-size: 14px;
+  border: 1px solid #aaa;
+  height:50px;
+  line-height: 50px;
 }
 
 .cansel_edit:hover{
   opacity: 0.7;
 }
 
+.form_back:hover{
+  opacity: 0.7;
+}
+
 .form_edit:hover{
   background: #FF3333;
+}
+
+.hidden-destroy{
+  display: none;
 }

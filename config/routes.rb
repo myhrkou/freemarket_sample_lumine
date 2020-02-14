@@ -38,7 +38,7 @@ Rails.application.routes.draw do
       post "delete", to: "cards#delete"
     end
   end
-  resources :items,only:[:index,:new,:create,:show,:destroy,:edit] do
+  resources :items do
     collection do
       get :all
       post "pay", to: "items#pay"
