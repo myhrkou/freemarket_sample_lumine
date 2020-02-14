@@ -116,7 +116,8 @@
               =benefit(@item.price)
       .contents-btn
         = f.submit '変更する',class:'form_edit'
-        = link_to item_path(@item.id),method: :get do
-          = f.submit 'キャンセル',class:'cansel_edit'
+        = link_to :back do
+          .cansel_edit
+            キャンセル
     .footer
       =render "users/footer"
