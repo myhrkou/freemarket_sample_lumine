@@ -39,11 +39,9 @@ $(function () {
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     // もしチェックボックスが存在すればチェックを入れる
-    console.log
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parents(".js-img").remove();
     $(`img[data-index="${targetIndex}"]`).remove();
-
     if (location.href.match(/new/)){
       if (targetIndex == 1){
         $(`#item_items_images_attributes_0_image_url`).remove();
