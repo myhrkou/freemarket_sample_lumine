@@ -8,7 +8,7 @@ FactoryBot.define do
     last_name { "佐藤" }
     yomi_first_name { "ヒロシ" }
     yomi_last_name { "サトウ" }
-    birth_day { "1996-05-30" }
+    birth_day { "1996,05,30" }
     phone_number { "00011112222" }
   end
 
