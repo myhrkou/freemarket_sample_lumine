@@ -23,7 +23,10 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      respond_to do |format|
+        format.html { render :new }
+        format.json
+      end
     else
       set_category
       set_ransack
@@ -143,7 +146,7 @@ class ItemsController < ApplicationController
   end
 
   def set_ransack
-    if (params[:q]!=nil && params[:q][:category_id_in] != nil)
+    if (params[:q] != nil && params[:q][:category_id_in] != nil)
       params[:q][:category_id_in] = params[:q][:category_id_in].to_i
       if (params[:q][:category_id_in].between?(1, 3))
         @parent_id = params[:q][:category_id_in].to_i
