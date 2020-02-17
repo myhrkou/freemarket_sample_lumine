@@ -148,7 +148,7 @@
                 出品を再開する
             .show-detail_botton_delete.modal_button.modal_button
               この商品を削除
-            =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
+              =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
           -elsif (@item.status=="complete" && @item.user_id !=current_user.id)
             .show-detail_botton_soldout
               売り切れました
@@ -164,7 +164,7 @@
     = render '/shared/footer'
   .modal
     .modal__window
-      .modal__window__text
+      .modal__window__text.modal_show
         .modal__window__text__title
           確認
         .modal__window__text__detail

@@ -1,76 +1,3 @@
-#overlay {
-  //モーダルウィンドウの背景を設定
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-  //透過度をつける
-    background: rgba(0, 0, 0, 0.3);
-    display: none;
-    z-index: 1;
-  }
-  
-  #modalWindow {
-  // モーダルウィンドウの画面を設定(高さ・幅は調整ください)
-    width: 500px;
-    height: 200px;
-    position: absolute;
-  //トップからの場所を指定（topをいじれば高さが調整できます）
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    z-index: 2;
-    .modal-message-box {
-      width: 100%;
-  //下記heightの60pxはボタンの高さで、それを画面の大きさから引いています。
-      height: calc(100% - 60px);
-      text-align: center;
-  //flexboxで文字の配置を決める（縦方向、中央揃え）
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-    }
-  
-    #modal-close-btn {
-      width: 100%;
-      height: 60px;
-      background-color: red;
-      color: white;
-      font-size:14px;
-    }
-  
-    #delete-comformation-btn {
-      width: 100%;
-      height: 60px;
-      background-color: white;
-      border-bottom-color: white;
-      font-size:14px;
-
-    }
-  }
-  
-  .item-delete-btn {
-  //削除ボタンの非表示
-    width: 0;
-    height: 0;
-    margin: 0;
-    padding: 0;
-    border: 0;
-  }
-
-  .modal-message-box_title{
-    font-size: 16px;
-    font-weight: bold;
- 
-  }
-
-  .modal-message-box_sentence{
-    font-size: 12px;
-  }
-
-
 .modal {
   width: 100vw;
   height: 100vh;
@@ -87,7 +14,7 @@
     top: calc(50% - 200px);
     left: calc(50% - 250px);
     &__text {
-      height: 170px;
+      height: 130px;
       text-align: center;
       &__title {
         font-size: 18px;
@@ -97,6 +24,10 @@
         font-size: 15px;
         color: gray;
       }
+    }
+    .modal_show {
+      height: 170px;
+      text-align: center;
     }
     &__button {
       height: 80px;
@@ -125,6 +56,39 @@
       &__yes:hover {
         background-color: #eee;
         transition: 0.3s;
+      }
+    }
+    &__button__sell {
+      width: 100%;
+      border-top: 1px solid #c0c0c0;
+      &__new {
+        width: 100%;
+        height: 70px;
+        line-height: 70px;
+        text-align: center;
+        font-size: 15px;
+        cursor: pointer;
+        background-color: #ea352d;
+        color: #fff;
+        position: relative;
+        .modal__window__button__sell__new__button {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &__show {
+        line-height: 50px;
+        text-align: center;
+        font-size: 15px;
+        cursor: pointer;
+        color: dodgerblue;
+        position: relative;
+        .modal__window__button__sell__show__button {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }
