@@ -44,12 +44,14 @@ $(function () {
               `
     return html;
   };
+
   var error_column = function (name) {
     var html = `
               <li>${name}を入力してください</li>
               `
     return html;
   }
+
   var builderror = function (column) {
     var html = `<div class="alert"
                   <ul>
@@ -58,6 +60,7 @@ $(function () {
                 </div>`
     return html;
   };
+  
   $("#new_item").submit(function (e) {
     e.preventDefault();
     var formData = new FormData(this);
