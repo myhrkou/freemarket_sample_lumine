@@ -70,7 +70,6 @@ $(function () {
       processData: false,
       contentType: false
     }).done(function (item) {
-      alert(item.id + "," + item.name + "," + item.description + "," + item.condition + "," + item.delivery_origin + "," + item.price + "," + item.category_id);
       $(".alert").remove()
       if (item.id != null) {
         $(".new_item").append(buildHTML(item));
