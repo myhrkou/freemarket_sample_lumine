@@ -50,26 +50,30 @@ describe Item do
     end
 
     it "is invalid with a name that has more than 41 characters " do
-      item = build(:item, name: "a"*41)
+      string = Faker::String.random(length: 41)
+      item = build(:item, name: string)
       item.valid?
       expect(item.errors[:name]).to include("は40文字以内で入力してください")
     end
 
     it "is valid with a name that has less than 40 characters " do
+      string = Faker::String.random(length: 40)
       category = create(:category)
-      item = build(:item, name: "a"*40,category_id: category.id)
+      item = build(:item, name:string,category_id: category.id)
       expect(item).to be_valid
     end
 
     it "is invalid with a description that has more than 1001 characters " do
-      item = build(:item, description: "a"*1001)
+      string = Faker::String.random(length: 1001)
+      item = build(:item, description: string)
       item.valid?
       expect(item.errors[:description]).to include("は1000文字以内で入力してください")
     end
 
     it "is invalid with a description that has less than 1000 characters " do
+      string = Faker::String.random(length: 1000)
       category = create(:category)
-      item = build(:item, description: "a"*1000,category_id: category.id)
+      item = build(:item, description:string,category_id: category.id)
       expect(item).to be_valid
     end
 
