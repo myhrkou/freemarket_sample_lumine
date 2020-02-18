@@ -82,11 +82,15 @@ $(function () {
         type: "GET",
         data: { code: code_value },
         dataType: "json"
-      }).done(function (voucher) {
-        if (code_value == voucher.code) {
-          $(".pay__main__center__all__voucher__true").append(`<div class="voucher_result">クーポンコードが適用されました</div>`);
-          $(".pay__main__center__all__voucherresult").remove();
-          $(".pay__main__center__all__voucher").after(`<div class="pay__main__center__all__voucherresult">
+      }).done(function (vouchers) {
+        var realprice=$(".price").val();
+        vouchers.forEach(function (voucher) {
+          $(".voucher_result").remove();
+          if (code_value == voucher.code) {
+            alert(voucher.name);
+            $(".pay__main__center__all__voucher__true").append(`<div class="voucher_result">クーポンコードが適用されました</div>`);
+            $(".pay__main__center__all__voucherresult").remove();
+            $(".pay__main__center__all__voucher").after(`<div class="pay__main__center__all__voucherresult">
                                                         <div class="pay__main__center__all__voucherresult__title">
                                                           割引額
                                                         </div>
@@ -94,39 +98,42 @@ $(function () {
                                                           ¥${voucher.price.toLocaleString()}
                                                         </div>
                                                       </div>`)
-          var price = voucher.num - voucher.price;
-          if (price < 0) {
-            price = 0;
+          
+            var price = realprice - realprice;
+            if (price < 0) {
+              price = 0;
+            }
+            $(".pay__main__center__all__price__num").hide();
+            $(".pay__main__center__all__price__num__voucher").empty();
+            $(".pay__main__center__all__price__num__voucher").append(`¥${price.toLocaleString()}`);
+            var id = voucher.id;
+            $("#flag").val(id).change();
+            var url = location.href;
+            $.ajax({
+              url: url,
+              type: "GET",
+              data: { code: id },
+              dataType: "json"
+            }).done(function () {
+              $("voucher_id").attr("action", `/items/${id}/pay`);
+            }).fail(function () {
+              alert("failedddddd");
+            });
+          } else {
+            $(".pay__main__center__all__voucher__true").append(`<div class="voucher_result">クーポンコードが不正です</div>`);
+            $("#flag").val(0).change();
+            $("#voucher_id").attr("action", "/items/pay");
           }
-          $(".pay__main__center__all__price__num").hide();
-          $(".pay__main__center__all__price__num__voucher").empty();
-          $(".pay__main__center__all__price__num__voucher").append(`¥${price.toLocaleString()}`);
-          var id = voucher.id;
-          $("#flag").val(id).change();
-          var url = location.href;
-          $.ajax({
-            url: url,
-            type: "GET",
-            data: { code: id },
-            dataType: "json"
-          }).done(function () {
-            $("voucher_id").attr("action", `/items/${id}/pay`);
-          }).fail(function () {
-            alert("failed");
-          });
-        } else {
-          $(".pay__main__center__all__voucher__true").append(`<div class="voucher_result">クーポンコードが不正です</div>`);
-          $("#flag").val(0).change();
-          $("#voucher_id").attr("action", "/items/pay");
-        }
+        });
       }).fail(function () {
-        alert("failed");
+        alert("failedaaaaaa");
       });
     }
   });
   $("#flag").change(function () {
     var voucher_flag = document.getElementById("flag").value.toString();
     var url = location.href;
+    alert(voucher_flag);
     $.ajax({
       url: url,
       type: "GET",

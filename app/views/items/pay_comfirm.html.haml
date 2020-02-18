@@ -18,22 +18,22 @@
               -else
                 = price_yen(@item.price)
                 (税込) 着払い
-        - if @used_flag==false
-          .pay__main__center__all__voucher
-            .pay__main__center__all__voucher__false
-              %input.voucher_checkbox_false{type:"checkbox",id:"voucher_false",checked:"true"}
-              %label.voucher_false_labelクーポンを使用しない
-            .pay__main__center__all__voucher__true
-              %input.voucher_checkbox_true{type:"checkbox",id:"voucher_true"}
-              %label.voucher_true_labelクーポンを利用する
-              %input.code_box{type:"text",id:"code_box"}
-              %input.code_button{type:"button",id:"code_button",value:"適用"}
-              %input.flag{type:"hidden",id:"flag",value:0}
+        .pay__main__center__all__voucher
+          .pay__main__center__all__voucher__false
+            %input.voucher_checkbox_false{type:"checkbox",id:"voucher_false",checked:"true"}
+            %label.voucher_false_labelクーポンを使用しない
+          .pay__main__center__all__voucher__true
+            %input.voucher_checkbox_true{type:"checkbox",id:"voucher_true"}
+            %label.voucher_true_labelクーポンを利用する
+            %input.code_box{type:"text",id:"code_box"}
+            %input.code_button{type:"button",id:"code_button",value:"適用"}
+            %input.flag{type:"hidden",id:"flag",value:0}
         .pay__main__center__all__price
           %b.pay__main__center__all__price__title
             支払い金額
           %b.pay__main__center__all__price__num
             =price_yen(@item.price)
+            %input.price{type:"hidden",value:@item.price}
           %b.pay__main__center__all__price__num__voucher
         .pay__main__center__all__card
           %b.pay__main__center__all__card__title
