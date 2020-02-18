@@ -91,5 +91,36 @@
         }
       }
     }
+    &__vouchertext{
+      background-color: lightgoldenrodyellow;
+      border: 5px solid #fff;
+      height: 100%;
+      &__name{
+        height: 100px;
+      font-size: 20px;
+      color: #666666;
+      text-align: center;
+      padding-top: 40px;
+      background-color: #f3b8b5;
+      }
+      &__code{
+        height: 50px;
+        font-size: 30px;
+        color: #444444;
+        text-align: center;
+        background-color: #ec625a;
+        line-height: 50px;
+      }
+      &__close{
+        width: 30px;
+        position: absolute;
+        right: 5px;
+        top: 0;
+        font-size: 30px;
+        cursor: pointer;
+        background-color: #fff;
+        text-align: center;
+      }
+    }
   }
 }

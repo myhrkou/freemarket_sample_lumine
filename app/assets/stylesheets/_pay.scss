@@ -37,6 +37,107 @@
             }
           }
         }
+        &__voucher {
+          text-align: left;
+          margin: 20px 200px;
+          border-bottom: 2px solid #f5f5f5;
+          &__false {
+            font-size: 15px;
+            .voucher_checkbox_false {
+              position: relative;
+              transition: all 0.15s ease-out 0s;
+              margin: 0 10px 0 5px;
+              border: none;
+              outline: none;
+              appearance: none;
+              color: #fff;
+              &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 15px;
+                height: 15px;
+                background-color: #fff;
+                border: 1px solid #c0c0c0;
+                border-radius: 2px;
+              }
+              &:checked::after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 3px;
+                left: 3px;
+                width: 11px;
+                height: 11px;
+                background: dodgerblue;
+                border-radius: 1px;
+              }
+            }
+          }
+          &__true {
+            font-size: 15px;
+            margin-bottom: 10px;
+            .voucher_checkbox_true {
+              position: relative;
+              transition: all 0.15s ease-out 0s;
+              margin: 0 10px 0 5px;
+              border: none;
+              outline: none;
+              appearance: none;
+              color: #fff;
+              &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 15px;
+                height: 15px;
+                background-color: #fff;
+                border: 1px solid #c0c0c0;
+                border-radius: 2px;
+              }
+              &:checked::after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 3px;
+                left: 3px;
+                width: 11px;
+                height: 11px;
+                background: dodgerblue;
+                border-radius: 1px;
+              }
+            }
+            .voucher_result{
+              margin-left: 30px;
+              font-size: 13px;
+              color: #e9645d;
+            }
+          }
+          .code_box{
+            margin: 10px 0 10px 30px;
+            display: none;
+          }
+          .code_button{
+            display: none;
+          }
+        }
+        &__voucherresult{
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 40px;
+          margin: 10px 200px 0 200px;
+          &__title{
+            padding-top: 5px;
+            font-size: large;
+          }
+          &__price{
+            font-size: 20px;
+          }
+        }
         &__price {
           display: flex;
           justify-content: space-between;
@@ -48,6 +149,9 @@
             font-size: large;
           }
           &__num {
+            font-size: 30px;
+          }
+          &__num__voucher {
             font-size: 30px;
           }
         }
@@ -95,6 +199,11 @@
         }
         &__button {
           margin: 40px 200px;
+          &__stay{
+          }
+          &__voucher{
+            display: none;
+          }
         }
       }
     }

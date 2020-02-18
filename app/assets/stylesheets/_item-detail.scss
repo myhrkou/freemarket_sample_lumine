@@ -112,6 +112,28 @@
         width: 50%;
         padding-right: 60px;
       }
+    }&__voucher{
+      margin:30px 20px 10px 300px;
+      text-align: center;
+      display: flex;
+      color: #888;
+      &__title{
+        font-size: 15px;
+      }
+      &__price{
+        font-size: 50px;
+        color: #333333;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        &__tax{
+          font-size: 14px;
+        }
+        &__detail{
+          margin-left: 10px;
+          font-size: 16px;
+        }
+      }
     }
     &_price {
       margin: 24px 0 0;

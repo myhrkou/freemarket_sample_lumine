@@ -7,6 +7,13 @@
         出品
       .sell__button__img
         = icon('fas', 'camera',class:"camera")
+  .voucher
+    .voucher__name
+      =@voucher.name
+    .voucher__text
+      配布中!
+      %input{type: "hidden", value: @voucher.name, class: 'voucher_name' }
+      %input{type: "hidden", value: @voucher.code, class: 'voucher_code' }
   .contents
     .contents__carousel
       =image_tag src='/images/header.jpg',class:'carousel'

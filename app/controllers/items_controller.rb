@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.where.not(status: "stop").limit(15).order(id: "DESC")
+    @voucher = Voucher.find(1)
   end
 
   def new
@@ -55,7 +56,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    session[:item] = @item
+    if @item.buyer.present?
+      @buyer = User.find(@item.buyer)
+    end
+    if @item.voucher_id.present?
+      @voucher = Voucher.find(@item.voucher_id)
+    end
   end
 
   def destroy
@@ -71,23 +77,48 @@ class ItemsController < ApplicationController
   end
 
   def pay_comfirm
-    @item = session[:item]
-    @item = Item.find(@item["id"])
+    @item = Item.find(params[:id])
     Payjp.api_key = Rails.application.secrets.payjp_private_key
     customer = Payjp::Customer.retrieve(@card.customer_id)
     @default_card_information = customer.cards.retrieve(@card.card_id)
+    @voucher = Voucher.find(1)
+    @used_flag=UsedVoucherUser.where(voucher_id: @voucher.id, user_id: current_user.id).exists?
+    session[:item] = @item
+    @id = 0
+    respond_to do |format|
+      format.html
+      format.json do
+        @voucher = Voucher.find(1)
+        @item = Item.find(params[:id])
+        if (params[:flag] != nil)
+          @id = params[:flag]
+        end
+      end
+    end
   end
 
   def pay
     @item = session[:item]
+    id = @item["id"].to_s
+    @item = Item.find(id)
+    if (params[:id] != nil)
+      @voucher = Voucher.find(params[:id])
+      voucher_price = @voucher.price
+      @item.voucher_id = @voucher.id
+    else
+      voucher_price = 0
+    end
+    amount = @item["price"].to_i - voucher_price
     Payjp.api_key = Rails.application.secrets.payjp_private_key
     Payjp::Charge.create(
-      amount: @item["price"].to_i,
+      amount: amount,
       customer: @card.customer_id,
       currency: "jpy",
     )
-    id = @item["id"].to_s
-    @item = Item.find(id)
+    if (params[:id] != nil)
+      @used_voucher_user = UsedVoucherUser.new(voucher_id: @voucher.id, user_id: current_user.id)
+    end
+    @used_voucher_user.save
     @item.complete!
     @item.buyer = current_user.id
     @item.updated_at = Time.now
