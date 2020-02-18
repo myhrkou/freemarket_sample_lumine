@@ -1,0 +1,26 @@
+.html{
+  .voucher{
+    width: 250px;
+    height: 250px;
+    background-color: lightgoldenrodyellow;
+    border: 5px solid #fff;
+    position: fixed;
+    left: -500px;
+    bottom: 5px;
+    z-index: 2;
+    &__name{ 
+      width: 100%;
+      font-size: 30px;
+      color: #fff;
+      text-align: center;
+      margin-top: 90px;
+      background-color: #ee574f;
+    }
+    &__text{
+      font-size: 20px;
+      color: #fff;
+      text-align: center;
+      background-color: #ee574f;
+    }
+  }
+}

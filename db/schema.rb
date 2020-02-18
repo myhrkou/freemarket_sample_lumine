@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200214085114) do
+ActiveRecord::Schema.define(version: 20200218044640) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "zip",        null: false
@@ -55,8 +55,10 @@ ActiveRecord::Schema.define(version: 20200214085114) do
     t.integer  "status",                               default: 0
     t.integer  "buyer"
     t.integer  "category_id"
+    t.integer  "voucher_id"
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
+    t.index ["voucher_id"], name: "index_items_on_voucher_id", using: :btree
   end
 
   create_table "items_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -74,6 +76,15 @@ ActiveRecord::Schema.define(version: 20200214085114) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sns_credentials_on_user_id", using: :btree
+  end
+
+  create_table "used_voucher_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "voucher_id", null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_used_voucher_users_on_user_id", using: :btree
+    t.index ["voucher_id"], name: "index_used_voucher_users_on_voucher_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -97,10 +108,21 @@ ActiveRecord::Schema.define(version: 20200214085114) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "vouchers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.string   "code",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "price"
+  end
+
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
+  add_foreign_key "items", "vouchers"
   add_foreign_key "items_images", "items"
   add_foreign_key "sns_credentials", "users"
+  add_foreign_key "used_voucher_users", "users"
+  add_foreign_key "used_voucher_users", "vouchers"
 end

@@ -41,11 +41,14 @@ Rails.application.routes.draw do
   resources :items do
     collection do
       get :all
-      post "pay", to: "items#pay"
-      get :pay_comfirm
       get "stop"
       get "exhibition"
+      post "pay", to: "items#pay"
       get :search
+    end
+    member do
+      get :pay_comfirm
+      post "pay", to: "items#pay"
     end
   end
   resources :categories do
