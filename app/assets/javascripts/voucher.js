@@ -87,12 +87,11 @@ $(function () {
         vouchers.forEach(function (voucher) {
           $(".voucher_result").remove();
           if (code_value == voucher.code) {
-            alert(voucher.name);
             $(".pay__main__center__all__voucher__true").append(`<div class="voucher_result">クーポンコードが適用されました</div>`);
             $(".pay__main__center__all__voucherresult").remove();
             $(".pay__main__center__all__voucher").after(`<div class="pay__main__center__all__voucherresult">
                                                         <div class="pay__main__center__all__voucherresult__title">
-                                                          割引額
+                                                          ${voucher.name}
                                                         </div>
                                                         <div class="pay__main__center__all__voucherresult__price">
                                                           ¥${voucher.price.toLocaleString()}
@@ -133,7 +132,6 @@ $(function () {
   $("#flag").change(function () {
     var voucher_flag = document.getElementById("flag").value.toString();
     var url = location.href;
-    alert(voucher_flag);
     $.ajax({
       url: url,
       type: "GET",
