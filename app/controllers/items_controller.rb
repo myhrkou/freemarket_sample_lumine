@@ -64,9 +64,9 @@ class ItemsController < ApplicationController
     if @item.buyer.present?
       @buyer = User.find(@item.buyer)
     end
-    # if @item.voucher_id.present?
-    #   @voucher = Voucher.find(@item.voucher_id)
-    # end
+    if @item.voucher_id.present?
+      @voucher = Voucher.find(@item.voucher_id)
+    end
   end
 
   def destroy
