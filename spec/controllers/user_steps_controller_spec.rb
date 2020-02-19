@@ -89,6 +89,7 @@ describe UserStepsController do
       session[:address] = user_params[:address_attributes]
       post :create, params: { user: user_params }
       change { User.count }.by(1)
+      expect(response).to be_successful
     end
   end
 

@@ -43,7 +43,7 @@
               .show-detail_complete_left_buyinfo_element_img
                 = icon('fas', 'user',class:"user")
               .show-detail_complete_left_buyinfo_element_name
-                コースケ
+                =@buyer.nickname
               .show-detail_complete_left_buyinfo_element_arrow
                 = icon('fas', 'angle-right',class:"angle")
         .show-detail_complete_right
@@ -110,15 +110,32 @@
                   %th 発送日の目安
                   %td 
                     =@item.delivery_date 
-        .show-detail_element_price
-          .show-detail_element_price_yen
+        -if(@item.status=="complete" && @item.buyer==current_user.id && @voucher.present?)
+          .show-detail_element__voucher
             =price_yen(@item.price)
-          .show-detail_element_price_intax
-            .show-detail_element_price_intax_text
+            　-　
+            =price_yen(@voucher.price)
+            (
+            =@voucher.name
+            )
+            　=　
+            =price_yen(@item.price-@voucher.price)
+          .show-detail_element__voucher__price
+            =price_yen(@item.price-@voucher.price)
+            .show-detail_element__voucher__price__tax
               （税込）
-          .show-detail_element_price_detail
-            .show-detail_element_price_detail_text
+            .show-detail_element__voucher__price__detail
               =@item.delivery_charge_detail
+        -else
+          .show-detail_element_price
+            .show-detail_element_price_yen
+              =price_yen(@item.price)
+            .show-detail_element_price_intax
+              .show-detail_element_price_intax_text
+                （税込）
+            .show-detail_element_price_detail
+              .show-detail_element_price_detail_text
+                =@item.delivery_charge_detail
         .show-detail_element_description
           =@item.description
       .show-detail_botton
@@ -151,13 +168,13 @@
               =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
           -elsif (@item.status=="complete" && @item.user_id !=current_user.id)
             .show-detail_botton_soldout
-              売り切れました
+              売り切れました            
           -else
-            =link_to pay_comfirm_items_path(@item.id) do
+            =link_to  pay_comfirm_item_path(@item.id) do
               .show-detail_botton_buy
                 購入画面に進む
         -else
-          =link_to pay_comfirm_items_path(@item.id) do
+          =link_to pay_comfirm_item_path(@item.id) do
             .show-detail_botton_buy
               購入画面に進む 
     .show-detail_comment
