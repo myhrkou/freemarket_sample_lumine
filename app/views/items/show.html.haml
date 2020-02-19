@@ -175,8 +175,7 @@
         %h4 ＜コメント一覧＞
         - if @comments
           - @comments.each_with_index do |comment,num|
-            .show-detail_comment_all_one-person
-              %div{data:{id:"data-index:#{num}"}}
+            .show-detail_comment_all_one-person{data:{"index":num}}
               -if (comment.user.id == @item.user.id)
                 .show-detail_comment_all_one-person_img
                   -if current_user.image.present?
