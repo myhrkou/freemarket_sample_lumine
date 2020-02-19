@@ -136,7 +136,6 @@ $(function () {
   $("#flag").change(function () {
     var voucher_flag = document.getElementById("flag").value.toString();
     var url = location.href;
-    alert(voucher_flag + "!");
     $.ajax({
       url: url,
       type: "GET",
