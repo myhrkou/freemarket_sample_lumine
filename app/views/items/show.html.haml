@@ -177,7 +177,7 @@
           - @comments.each_with_index do |comment,num|
             .show-detail_comment_all_one-person
               %div{data:{id:"data-index:#{num}"}}
-              -if (comment.user.nickname == @item.user.nickname)
+              -if (comment.user.id == @item.user.id)
                 .show-detail_comment_all_one-person_img
                   -if current_user.image.present?
                     = image_tag src=current_user.image,class:"comment-userface"
