@@ -24,6 +24,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address
   belongs_to :card, optional: true
   has_many :sns_credentials
+  has_many :comments
 
   mount_uploader :image, ImageUploader
 

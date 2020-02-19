@@ -16,7 +16,7 @@
             -if current_user.image.present?
               = image_tag src=current_user.image,class:"userface"
             -else
-              = image_tag src="/images/usericon.png",class:"userface"    
+              = image_tag src="/images/usericon.png",class:"userface"
           .contents-mypage__right__top__user__name
             =current_user.nickname
           .contents-mypage__right__top__user__count

@@ -58,6 +58,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    session[:item] = @item
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
     if @item.buyer.present?
       @buyer = User.find(@item.buyer)
     end

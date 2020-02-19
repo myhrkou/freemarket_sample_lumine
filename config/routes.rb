@@ -50,6 +50,7 @@ Rails.application.routes.draw do
       get :pay_comfirm
       post "pay", to: "items#pay"
     end
+    resources :comments, only: :create
   end
   resources :categories do
     collection do

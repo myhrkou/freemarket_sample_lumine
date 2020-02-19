@@ -177,6 +177,53 @@
           =link_to pay_comfirm_item_path(@item.id) do
             .show-detail_botton_buy
               購入画面に進む 
+    .show-detail_comment
+      .show-detail_comment_rule
+        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      .show-detail_comment_text
+        - if current_user
+          = form_for @comment,url: item_comments_path(@item.id) do |f|
+            = f.text_area :comment, cols:"10",rows: "2",class:"input_comment"
+            = f.submit "コメントする",class:"send_comment"
+        - else
+          %strong
+            %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+      .show-detail_comment_all
+        %h4 ＜コメント一覧＞
+        - if @comments
+          - @comments.each_with_index do |comment,num|
+            .show-detail_comment_all_one-person{data:{"index":num}}
+              -if (comment.user.id == @item.user.id)
+                .show-detail_comment_all_one-person_img
+                  -if current_user.image.present?
+                    = image_tag src=current_user.image,class:"comment-userface"
+                  -else
+                    = image_tag src="/images/usericon.png",class:"comment-userface"
+                  .seller 
+                    出品者
+                .show-detail_comment_all_one-person_elemnts
+                  .show-detail_comment_all_one-person_elemnts_profile
+                    = comment.user.nickname
+                  .show-detail_comment_all_one-person_elemnts_text
+                    .show-detail_comment_all_one-person_elemnts_text_right
+                      = comment.comment
+                    .show-detail_comment_all_one-person_elemnts_text_time
+                      = "#{comment.created_at.strftime("%Y-%m-%d %H:%M")}投稿"
+              -else
+                .show-detail_comment_all_one-person_elemnts
+                  .show-detail_comment_all_one-person_elemnts_profile
+                    .show-detail_comment_all_one-person_elemnts_profile_nickname-right
+                      = comment.user.nickname
+                  .show-detail_comment_all_one-person_elemnts_text-left
+                    .show-detail_comment_all_one-person_elemnts_text_left
+                      = comment.comment
+                    .show-detail_comment_all_one-person_elemnts_text_time
+                      = "#{comment.created_at.strftime("%Y-%m-%d %H:%M")}投稿"
+                .show-detail_comment_all_one-person_img
+                  -if current_user.image.present?
+                    = image_tag src=current_user.image,class:"comment-userface"
+                  -else
+                    = image_tag src="/images/usericon.png",class:"comment-userface"
   .footer
     = render '/shared/footer'
   .modal

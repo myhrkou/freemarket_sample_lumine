@@ -109,6 +109,7 @@
           height: 160px;
         }
       }
+
       &_right {
         width: 50%;
         padding-right: 60px;
@@ -177,6 +178,11 @@
     padding-top: 8px;
     padding-bottom: 8px;
     height: 100%;
+    &_buy{
+      &:hover{
+        opacity: 0.8;
+      }
+    }
     &_edit {
       background-color: #e7291f;
       margin: 0 auto;
@@ -184,6 +190,9 @@
       height: 60px;
       line-height: 60px;
       font-size: 24px;
+      &:hover{
+        opacity: 0.8;
+      }
       &_text {
         color: white;
         text-align: center;
@@ -216,6 +225,77 @@
       line-height: 60px;
       font-size: 24px;
       cursor: pointer;
+    }
+  }
+
+  &_comment{
+    background-color: #fff;
+    margin: 0 auto;
+    padding:24px;
+    height: 100%;
+    margin-top:8px;
+    &_rule{
+      padding: 8px;
+      background-color: rgb(255,246,222);
+      font-size: 14px;
+    }
+    &_all{
+      &_one-person{
+        display: flex;
+        justify-content: flex-start;
+        margin:15px;
+        &_img{
+          height:100px;
+        }
+        &_elemnts{
+          width:100%;
+          position: relative;
+          font-size: 14px;
+          margin: 10px;
+          &_profile{
+            height:20%;
+            width:100%;
+            &_nickname-right{
+              text-align: right;
+            }
+          }
+          &_text{
+            position: relative;
+            height:80%;
+            margin: 1px;
+            background-color: #dcdcdc;
+            border-radius: 5px;
+            padding: 10px;
+            &_right{
+              &::before{
+                border-style: solid;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent lightgrey transparent transparent;
+                content: "";
+                position: absolute;
+                top: 20%; left: -8px;
+              }
+            }
+            &_left{
+              &::before{
+                border-style: solid;
+                border-width: 10px 0 10px 10px;
+                border-color: transparent transparent transparent #fbf0e6;;
+                content: "";
+                position: absolute;
+                top: 20%; right: -8px;
+              }
+            }
+            &_time{
+            position:absolute;
+            bottom:0;
+            font-size: 10px;
+            text-align: center;
+            width: 100%;
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -292,7 +372,6 @@ td {
 .img_carusel {
   width: 400px;
   height: 400px;
-
   object-fit: cover;
 }
 
@@ -321,14 +400,49 @@ td {
   }
 }
 
-.show-detail_botton_edit:hover {
-  opacity: 0.8;
+.seller{
+  background-color: rgb(170,170,170);
+  color: #fff;
+  text-align: center;
+  font-size:12px;
 }
 
-.show-detail_botton_edit:hover {
-  opacity: 0.8;
+.comment-userface{
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  font-size: 60px;
+  background-color: #c0c0c0;
 }
 
-.show-detail_botton_buy:hover {
-  opacity: 0.8;
+.input_comment{
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  height: 100px;
+  border:1px solid #ccc;
+}
+
+.send_comment{
+  width: 100%;
+  margin-top: 8px;
+  font-size:24px;
+  height:60px;
+  background-color: rgb(170,170,170);
+  color: white;
+  text-align: center;
+  line-height: 60px;
+}
+
+.show-detail_comment_all_one-person_elemnts_text-left{
+  background-color: #fbf0e6;
+  position: relative;
+  height:80%;
+  margin: 1px;
+  border-radius: 5px;
+  padding: 10px;
 }
