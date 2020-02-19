@@ -2,10 +2,12 @@ class CommentsController < ApplicationController
   def create
     comment=Comment.new(comment_params)
     if comment.save
+      @item.transaction do 
+        @item = comment.item
+        @item.status = "trans"
+        @item.save
+      end
       redirect_to item_path(comment.item.id)
-      @item = comment.item
-      @item.status = "trans"
-      @item.save
     else
       redirect_to root_path
     end
