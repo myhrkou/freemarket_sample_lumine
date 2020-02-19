@@ -1,8 +1,12 @@
 class CommentsController < ApplicationController
   def create
     comment = Comment.create(comment_params)
-    redirect_to "/items/#{comment.item.id}"
-    @item = Item.find(comment.item.id)
+    if comment.save
+      redirect_to item_path(comment.item.id)
+    else
+      redirect_to root_path
+    end
+    @item = comment.item
     @item.status = "trans"
     @item.save
   end
