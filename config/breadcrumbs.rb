@@ -61,6 +61,11 @@ crumb :purchased do
   parent :mypage
 end
 
+crumb :voucher do
+  link "クーポン",voucher_mypages_path
+  parent :mypage
+end
+
 crumb :items do |item|
   if  ( item.status=="complete" && item.user_id==current_user.id )
     link "取引画面", item_path
