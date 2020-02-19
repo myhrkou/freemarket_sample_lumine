@@ -41,7 +41,6 @@ Rails.application.routes.draw do
   end
   resources :items do
     collection do
-      get :all
       get "stop"
       get "exhibition"
       post "pay", to: "items#pay"
