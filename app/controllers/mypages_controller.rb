@@ -34,6 +34,12 @@ class MypagesController < ApplicationController
     @bought_items = Item.where(buyer: current_user.id).order(id: "DESC").page(params[:page]).per(10)
   end
 
+  def voucher
+    @used_vouchers = UsedVoucherUser.where(user_id: current_user)
+    @used_vouchers_mat = @used_vouchers.map { |record| record.voucher_id }
+    @vouchers = Voucher.where.not(id: @used_vouchers_mat)
+  end
+
   private
 
   def set_card

@@ -1,0 +1,25 @@
+.html
+  .hader
+    = render "shared/header"
+  .sell
+    = render "shared/sell"
+  .pan
+    - breadcrumb :voucher
+    =render 'layouts/breadcrumbs'
+  .contents-mypage
+    .contents-mypage__left
+      = render "mypages/left"
+    .contents-mypage__right
+      .contents-mypage__right__voucher
+        .contents-mypage__right__voucher__title
+          クーポン
+        .contents-mypage__right__voucher__items
+          -if @vouchers.present?
+            -@vouchers.each do |voucher|
+              .contents-mypage__right__voucher__items__item
+                .contents-mypage__right__voucher__items__item__left
+                  .contents-mypage__right__voucher__items__item__left__detail
+                    .contents-mypage__right__voucher__items__item__left__detail__name
+                      =voucher.name
+                    .contents-mypage__right__voucher__items__item__left__detail__price
+                      =price_yen(voucher.price)

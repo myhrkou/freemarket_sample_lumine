@@ -81,8 +81,9 @@ class ItemsController < ApplicationController
     Payjp.api_key = Rails.application.secrets.payjp_private_key
     customer = Payjp::Customer.retrieve(@card.customer_id)
     @default_card_information = customer.cards.retrieve(@card.card_id)
-    @voucher = Voucher.find(1)
-    @used_flag=UsedVoucherUser.where(voucher_id: @voucher.id, user_id: current_user.id).exists?
+    @used_vouchers = UsedVoucherUser.where(user_id: current_user)
+    @used_vouchers_mat = @used_vouchers.map { |record| record.voucher_id }
+    @vouchers = Voucher.where.not(id: @used_vouchers_mat)
     session[:item] = @item
     @id = 0
     respond_to do |format|
@@ -109,6 +110,9 @@ class ItemsController < ApplicationController
       voucher_price = 0
     end
     amount = @item["price"].to_i - voucher_price
+    if amount < 50
+      amount = 50
+    end
     Payjp.api_key = Rails.application.secrets.payjp_private_key
     Payjp::Charge.create(
       amount: amount,
@@ -117,8 +121,8 @@ class ItemsController < ApplicationController
     )
     if (params[:id] != nil)
       @used_voucher_user = UsedVoucherUser.new(voucher_id: @voucher.id, user_id: current_user.id)
+      @used_voucher_user.save
     end
-    @used_voucher_user.save
     @item.complete!
     @item.buyer = current_user.id
     @item.updated_at = Time.now
