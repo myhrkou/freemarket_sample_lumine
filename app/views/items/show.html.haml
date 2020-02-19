@@ -175,7 +175,7 @@
         %h4 ＜コメント一覧＞
         - if @comments
           - @comments.each_with_index do |comment,num|
-            .show-detail_comment_all_one-person{"data-index":num}
+            .show-detail_comment_all_one-person{id:"data-index:#{num}"}
               -if (comment.user.nickname == @item.user.nickname)
                 .show-detail_comment_all_one-person_img
                   -if current_user.image.present?
@@ -197,7 +197,7 @@
                   .show-detail_comment_all_one-person_elemnts_profile
                     .show-detail_comment_all_one-person_elemnts_profile_nickname-right
                       = comment.user.nickname
-                  .show-detail_comment_all_one-person_elemnts_text
+                  .show-detail_comment_all_one-person_elemnts_text-left
                     .show-detail_comment_all_one-person_elemnts_text_left
                       = comment.comment
                     .show-detail_comment_all_one-person_elemnts_text_time

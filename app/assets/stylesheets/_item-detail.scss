@@ -367,7 +367,7 @@ td {
 .show-detail_comment_all_one-person_elemnts_text_left:before {
   border-style: solid;
   border-width: 10px 0 10px 10px;
-  border-color: transparent transparent transparent lightgrey;
+  border-color: transparent transparent transparent #fbf0e6;;
   content: "";
   position: absolute;
   top: 20%; right: -8px;
@@ -395,7 +395,6 @@ td {
   font-size: 16px;
   height: 100px;
   border:1px solid #ccc;
-
 }
 
 .send_comment{
@@ -407,4 +406,13 @@ td {
   color: white;
   text-align: center;
   line-height: 60px;
+}
+
+.show-detail_comment_all_one-person_elemnts_text-left{
+  background-color: #fbf0e6;
+  position: relative;
+  height:80%;
+  margin: 1px;
+  border-radius: 5px;
+  padding: 10px;
 }
