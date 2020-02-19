@@ -362,7 +362,7 @@
                   background-color: #c0c0c0;
                   border-radius: 2px;
                 }
-                &__stop{
+                &__stop {
                   width: fit-content;
                   padding: 1px 4px;
                   color: #fff;
@@ -416,6 +416,55 @@
           text-align: center;
           line-height: 40px;
           font-size: large;
+        }
+      }
+    }
+    &__voucher {
+      &__title {
+        height: 80px;
+        padding-left: 20px;
+        background-color: #f5f5f5;
+        line-height: 80px;
+        font-weight: bolder;
+      }
+      &__tab {
+        height: 80px;
+        line-height: 80px;
+        display: flex;
+        background-color: #dddddd;
+        &__button {
+          text-align: center;
+        }
+      }
+      &__items {
+        background-color: #fff;
+        &__item {
+          border-bottom: 1px solid #f5f5f5;
+          padding: 20px;
+          &__left {
+            &__detail {
+              margin-left: 20px;
+              display: flex;
+              justify-content: space-between;
+              &__name {
+                color: #707070;
+                font-size: 14px;
+              }
+              &__price {
+                color: #707070;
+                font-size: 17px;
+                margin-right: 40px;
+                color: #505050;
+              }
+            }
+            &__icon {
+              .angle_l {
+                font-size: 25px;
+                color: #606060;
+                margin-top: 15px;
+              }
+            }
+          }
         }
       }
     }
