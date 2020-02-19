@@ -59,7 +59,7 @@ $(function () {
       $(".code_box").show();
       $(".code_button").show();
       $(".voucher_result").remove();
-    } else if(document.getElementById("voucher_true").checked==false) {
+    } else {
       document.getElementById("voucher_false").checked = true;
       $(".code_box").hide();
       $(".code_button").hide();
@@ -136,7 +136,7 @@ $(function () {
   $("#flag").change(function () {
     var voucher_flag = document.getElementById("flag").value.toString();
     var url = location.href;
-    alert(voucher_flag+"!");
+    alert(voucher_flag + "!");
     $.ajax({
       url: url,
       type: "GET",
