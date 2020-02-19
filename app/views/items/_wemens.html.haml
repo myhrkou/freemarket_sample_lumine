@@ -1,0 +1,18 @@
+-if @womens.present?
+  -@womens.each do |item|
+    %li.contents__all__item
+      =link_to item_path(item) do
+        .contents__all__item__image
+          -if item.status=="complete"
+            .contents__all__item__image__sold
+            .contents__all__item__image__text
+              SOLD
+          = image_tag item.items_images[0].image_url.url,class: 'example'
+          .contents__all__item__image__price
+            =price_yen(item.price)
+        .contents__all__item__name
+          =item.name
+-else
+  .contents__all__empty
+    =image_tag "/images/logo_gray.svg",class:"empty_logo"
+    現在商品がございません

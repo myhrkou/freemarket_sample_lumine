@@ -7,18 +7,48 @@
         出品
       .sell__button__img
         = icon('fas', 'camera',class:"camera")
+  .voucher
+    .voucher__name
+      =@voucher.name
+    .voucher__text
+      配布中!
+      %input{type: "hidden", value: @voucher.name, class: 'voucher_name' }
+      %input{type: "hidden", value: @voucher.code, class: 'voucher_code' }
   .contents
     .contents__carousel
       =image_tag src='/images/header.jpg',class:'carousel'
     .contents__title
-      全てのアイテム
+      %b人気のカテゴリー
+      .contents__title__category
+        =link_to category_root_categories_path(1),class:"contents__category__womens" do
+          レディース
+        =link_to category_root_categories_path(2),class:"contents__category__mens" do
+          メンズ
+        =link_to category_root_categories_path(3),class:"contents__category__kids" do
+          子供
     .contents__new
       .contents__new__title
-        新着アイテム
-      =link_to all_items_path,class:"contents__new__more" do
+        %bレディース新着アイテム
+      =link_to category_root_categories_path(1),class:"contents__new__more" do
         もっと見る
         =icon('fas', 'angle-right')
     %ul.contents__all
-      = render 'item'
+      = render 'wemens'
+    .contents__new
+      .contents__new__title
+        %bメンズ新着アイテム
+      =link_to category_root_categories_path(2),class:"contents__new__more" do
+        もっと見る
+        =icon('fas', 'angle-right')
+    %ul.contents__all
+      = render 'mens'
+    .contents__new
+      .contents__new__title
+        %bキッズ新着アイテム
+      =link_to category_root_categories_path(3),class:"contents__new__more" do
+        もっと見る
+        =icon('fas', 'angle-right')
+    %ul.contents__all
+      = render 'kids'
   .footer
     = render "shared/footer"

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get :complete
       get :negotiate
       get :purchased
+      get :voucher
     end
   end
   resources :users do
@@ -40,12 +41,14 @@ Rails.application.routes.draw do
   end
   resources :items do
     collection do
-      get :all
-      post "pay", to: "items#pay"
-      get :pay_comfirm
       get "stop"
       get "exhibition"
+      post "pay", to: "items#pay"
       get :search
+    end
+    member do
+      get :pay_comfirm
+      post "pay", to: "items#pay"
     end
     resources :comments, only: :create
   end

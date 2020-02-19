@@ -87,43 +87,68 @@
       text-align: center;
       word-wrap: break-word;
       line-height: 1.4;
-      padding-top: 24px;
+      padding: 25px 0 15px 0;
+      font-weight: bold;
     }
     &_main {
       display: flex;
       justify-content: space-between;
       margin: 16px 0 0;
       &_left {
-        width: 300px;
-        height: 380px;
+        width: 400px;
+        height: 480px;
         background-color: #f5f5f5;
         margin-right: 40px;
         margin-left: 40px;
         &_img {
-          width: 300px;
-          height: 300px;
+          width: 400px;
+          height: 400px;
         }
         &_choice {
-          width: 300px;
-          height: 60px;
+          width: 400px;
+          height: 160px;
         }
       }
       &_right {
         width: 50%;
         padding-right: 60px;
       }
+    }&__voucher{
+      margin:30px 20px 10px 300px;
+      text-align: center;
+      display: flex;
+      color: #888;
+      &__title{
+        font-size: 15px;
+      }
+      &__price{
+        font-size: 50px;
+        color: #333333;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        &__tax{
+          font-size: 14px;
+        }
+        &__detail{
+          margin-left: 10px;
+          font-size: 16px;
+        }
+      }
     }
     &_price {
-      margin: 24px 0 0;
+      margin: 40px 0 0;
       text-align: center;
       display: flex;
       justify-content: center;
+      align-items: baseline;
+      color: #222222;
       &_yen {
-        font-size: 50px;
+        font-size: 55px;
+        font-weight: 600;
         margin-right: 16px;
       }
       &_intax {
-        vertical-align: bottom;
         &_text {
           font-size: 14px;
           line-height: 58px;
@@ -131,8 +156,6 @@
       }
       &_detail {
         font-size: 16px;
-        vertical-align: bottom;
-
         &_text {
           font-size: 16px;
           line-height: 58px;
@@ -140,10 +163,11 @@
       }
     }
     &_description {
-      padding: 32px 0 0;
-      font-size: 18px;
+      padding: 32px 0;
+      font-size: 23px;
       line-height: 1.5;
       margin-left: 40px;
+      color: #333333;
     }
   }
   &_botton {
@@ -154,7 +178,7 @@
     padding-bottom: 8px;
     height: 100%;
     &_edit {
-      background-color: red;
+      background-color: #e7291f;
       margin: 0 auto;
       width: 90%;
       height: 60px;
@@ -167,8 +191,9 @@
     }
     &_or {
       text-align: center;
-      height: 20px;
-      line-height: 20px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 20px;
     }
     &_stop {
       background-color: #f5f5f5;
@@ -277,8 +302,14 @@ th {
   color: white;
 }
 
-.show-detail_complete_left_title table {
-  background-color: #fff;
+th{
+  background-color: #fafafa;
+  padding: 19px 10px;
+  color: #444444;
+}
+
+td{
+  color: #444444;
 }
 
 .checkmark {
@@ -306,8 +337,8 @@ td {
 }
 
 .img_carusel {
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   object-fit: cover;
 }
 

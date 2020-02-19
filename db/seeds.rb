@@ -23,3 +23,5 @@ men_tops.children.create([{name:"Tシャツ/カットソー(半袖/袖なし)"},
 men_jacket.children.create([{name:"テーラードジャケット"}, {name:"ノーカラージャケット"}, {name:"Gジャン/デニムジャケット"},{name:"その他"}])
 child_tops.children.create([{name:"Tシャツ/カットソー(半袖/袖なし)"}, {name:"Tシャツ/カットソー(七分/長袖)"},{name:"その他"}])
 child_jacket.children.create([{name:"テーラードジャケット"}, {name:"ノーカラージャケット"}, {name:"Gジャン/デニムジャケット"},{name:"その他"}])
+
+Voucher.create(name:"1000円クーポン",code:"lumine0000")
