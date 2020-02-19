@@ -56,6 +56,8 @@ class ItemsController < ApplicationController
 
   def show
     session[:item] = @item
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def destroy

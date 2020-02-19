@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :category
   has_many :items_images, dependent: :destroy
+  has_many :comments
   validates :name, presence: true, length: { maximum: 40 }
   validates :description, presence: true, length: { maximum: 1000 }
   validates :condition, :delivery_charge_detail, :delivery_date, :price, presence: true

@@ -47,6 +47,7 @@ Rails.application.routes.draw do
       get "exhibition"
       get :search
     end
+    resources :comments, only: :create
   end
   resources :categories do
     collection do
