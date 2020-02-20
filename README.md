@@ -19,6 +19,7 @@
 - has_many :items
 - has_one :address
 - has_many :comments
+- has_many :used_voucher_users
 
 ## addressテーブル
 |Column|Type|Options|
@@ -80,12 +81,17 @@
 |name|string||
 |code|string||
 |price|integer||
+### Association
+- has_many :used_voucher_users
 
 ## used_voucher_usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false,foreign_key: true|
 |voucher_id|integer|null: false,foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :voucher
 
 ## commentsテーブル
 |Column|Type|Options|
