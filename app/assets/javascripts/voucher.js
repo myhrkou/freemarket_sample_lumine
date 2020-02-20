@@ -117,12 +117,13 @@ $(function () {
         dataType: "json"
       }).done(function (vouchers) {
         var realprice = $(".price").val();
-        vouchers.some(function (voucher) {
-          $(".voucher_result").remove();
-          if (code_value == voucher.code) {
-            $(".pay__main__center__all__voucherresult").remove();
-            $(".pay__main__center__all__voucher__true").append(`<div class="voucher_result">クーポンコードが適用されました</div>`);
-            $(".pay__main__center__all__voucher").after(`<div class="pay__main__center__all__voucherresult">
+        if (vouchers.length != 0) {
+          vouchers.some(function (voucher) {
+            $(".voucher_result").remove();
+            if (code_value == voucher.code) {
+              $(".pay__main__center__all__voucherresult").remove();
+              $(".pay__main__center__all__voucher__true").append(`<div class="voucher_result">クーポンコードが適用されました</div>`);
+              $(".pay__main__center__all__voucher").after(`<div class="pay__main__center__all__voucherresult">
                                                         <div class="pay__main__center__all__voucherresult__title">
                                                           ${voucher.name}
                                                         </div>
@@ -130,46 +131,54 @@ $(function () {
                                                           ¥${voucher.price.toLocaleString()}
                                                         </div>
                                                       </div>`)
-            var price = realprice - voucher.price;
-            if (price < 0) {
-              price = 0;
-            }
-            $(".pay__main__center__all__price__num").hide();
-            $(".pay__main__center__all__price__num__voucher").empty();
-            $(".pay__main__center__all__price__num__voucher").append(`¥${price.toLocaleString()}`);
-            var id = voucher.id;
-            $("voucher_id").attr("action", `/items/${id}/pay`);
-            var url = location.href;
-            $.ajax({
-              url: url,
-              type: "GET",
-              data: { code: id },
-              dataType: "json"
-            }).done(function () {
-              pre_price = document.getElementById("price").value
-              document.getElementById("price").value = price;
-              $("#flag").val(id).change();
-              $("voucher_id").attr("action", `/items/${id}/pay`);
-              $("#code_button").prop("disabled", true);
-              if(document.getElementById("price").value==0){
-                $("#point_button").prop("disabled", true);
+              var price = realprice - voucher.price;
+              if (price < 0) {
+                price = 0;
               }
-              $("#voucher_false").hide();
-              $(".voucher_false_label").hide();
-              $(".reload_button").show();
-            }).fail(function () {
-              alert("failedddddd");
-            });
-            return true;
-          } else {
-            $(".pay__main__center__all__voucherresult").remove();
-            $(".pay__main__center__all__price__num").show();
-            $(".pay__main__center__all__price__num__voucher").empty();
-            $(".pay__main__center__all__voucher__true").append(`<div class="voucher_result">クーポンコードが不正です</div>`);
-            $("#flag").val(0).change();
-            $("#voucher_id").attr("action", "/items/pay");
-          }
-        });
+              $(".pay__main__center__all__price__num").hide();
+              $(".pay__main__center__all__price__num__voucher").empty();
+              $(".pay__main__center__all__price__num__voucher").append(`¥${price.toLocaleString()}`);
+              var id = voucher.id;
+              $("voucher_id").attr("action", `/items/${id}/pay`);
+              var url = location.href;
+              $.ajax({
+                url: url,
+                type: "GET",
+                data: { code: id },
+                dataType: "json"
+              }).done(function () {
+                pre_price = document.getElementById("price").value
+                document.getElementById("price").value = price;
+                $("#flag").val(id).change();
+                $("voucher_id").attr("action", `/items/${id}/pay`);
+                $("#code_button").prop("disabled", true);
+                if (document.getElementById("price").value == 0) {
+                  $("#point_button").prop("disabled", true);
+                }
+                $("#voucher_false").hide();
+                $(".voucher_false_label").hide();
+                $(".reload_button").show();
+              }).fail(function () {
+                alert("failedddddd");
+              });
+              return true;
+            } else {
+              $(".pay__main__center__all__voucherresult").remove();
+              $(".pay__main__center__all__price__num").show();
+              $(".pay__main__center__all__price__num__voucher").empty();
+              $(".pay__main__center__all__voucher__true").append(`<div class="voucher_result">クーポンコードが不正です</div>`);
+              $("#flag").val(0).change();
+              $("#voucher_id").attr("action", "/items/pay");
+            }
+          });
+        } else {
+          $(".pay__main__center__all__voucherresult").remove();
+          $(".pay__main__center__all__price__num").show();
+          $(".pay__main__center__all__price__num__voucher").empty();
+          $(".pay__main__center__all__voucher__true").append(`<div class="voucher_result">クーポンコードが不正です</div>`);
+          $("#flag").val(0).change();
+          $("#voucher_id").attr("action", "/items/pay");
+        }
       }).fail(function () {
         alert("failedaaaaaa");
       });
@@ -236,7 +245,7 @@ $(function () {
             pre_price = document.getElementById("price").value
             document.getElementById("price").value = price;
             $("#point_button").prop("disabled", true);
-            if(document.getElementById("price").value==0){
+            if (document.getElementById("price").value == 0) {
               $("#code_button").prop("disabled", true);
             }
             $("#point_false").hide();

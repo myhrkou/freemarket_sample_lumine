@@ -95,7 +95,6 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        @voucher = Voucher.find(1)
         @item = Item.find(params[:id])
         if (params[:flag] != nil)
           @id = params[:flag]
