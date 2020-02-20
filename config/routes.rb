@@ -41,9 +41,9 @@ Rails.application.routes.draw do
   end
   resources :items do
     collection do
+      post "pay", to: "items#pay"
       get "stop"
       get "exhibition"
-      post "pay", to: "items#pay"
       get :search
     end
     member do

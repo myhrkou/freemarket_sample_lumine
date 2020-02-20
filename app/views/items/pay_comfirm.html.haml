@@ -28,12 +28,26 @@
             %input.code_box{type:"text",id:"code_box"}
             %input.code_button{type:"button",id:"code_button",value:"適用"}
             %input.flag{type:"hidden",id:"flag",value:0}
+        .pay__main__center__all__point
+          .pay__main__center__all__point__false
+            %input.point_checkbox_false{type:"checkbox",id:"point_false",checked:"true"}
+            %label.point_false_labelポイントを使用しない
+          .pay__main__center__all__point__true
+            %input.point_checkbox_true{type:"checkbox",id:"point_true"}
+            %label.point_true_labelポイントを利用する
+            　　残高
+            %b=current_user.point.to_s(:delimited)
+            P
+            %input.point_field{type:"number",min:"1",max:@sales,id:"point_field"}
+            %input.point_button{type:"button",id:"point_button",value:"適用"}
+        .pay__main__center__all__reload
+          %input.reload_button{type:"button",id:"reload_button",value:"クーポンとポイントを再設定する",onClick:"window.location.reload();"}
         .pay__main__center__all__price
           %b.pay__main__center__all__price__title
             支払い金額
           %b.pay__main__center__all__price__num
             =price_yen(@item.price)
-            %input.price{type:"hidden",value:@item.price}
+            %input.price{type:"hidden",value:@item.price,id:"price"}
           %b.pay__main__center__all__price__num__voucher
         .pay__main__center__all__card
           %b.pay__main__center__all__card__title

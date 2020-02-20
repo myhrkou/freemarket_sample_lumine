@@ -82,6 +82,11 @@ class ItemsController < ApplicationController
   end
 
   def pay_comfirm
+    @items = Item.where(user_id: current_user.id).where(status: :complete)
+    @sales = 0
+    @items.each do |item|
+      @sales += item.price
+    end
     @item = Item.find(params[:id])
     Payjp.api_key = Rails.application.secrets.payjp_private_key
     customer = Payjp::Customer.retrieve(@card.customer_id)
@@ -91,6 +96,7 @@ class ItemsController < ApplicationController
     @vouchers = Voucher.where.not(id: @used_vouchers_mat)
     session[:item] = @item
     @id = 0
+    session[:point] = 0
     respond_to do |format|
       format.html
       format.json do
@@ -99,6 +105,7 @@ class ItemsController < ApplicationController
         if (params[:flag] != nil)
           @id = params[:flag]
         end
+        session[:point] = params[:point]
       end
     end
   end
@@ -107,6 +114,7 @@ class ItemsController < ApplicationController
     @item = session[:item]
     id = @item["id"].to_s
     @item = Item.find(id)
+    point = session[:point].to_i
     if (params[:id] != nil)
       @voucher = Voucher.find(params[:id])
       voucher_price = @voucher.price
@@ -114,7 +122,12 @@ class ItemsController < ApplicationController
     else
       voucher_price = 0
     end
-    amount = @item["price"].to_i - voucher_price
+    @seller = User.find(@item.user_id)
+    @seller.point = @seller.point + @item.price
+    @seller.save
+    current_user.point = current_user.point - point
+    current_user.save
+    amount = @item.price - voucher_price - point
     if amount < 50
       amount = 50
     end
