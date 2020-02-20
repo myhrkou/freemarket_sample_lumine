@@ -38,7 +38,7 @@
             　　残高
             %b=current_user.point.to_s(:delimited)
             P
-            %input.point_field{type:"number",min:"1",max:@sales,id:"point_field"}
+            %input.point_field{type:"number",min:"1",max:current_user.point,id:"point_field"}
             %input.point_button{type:"button",id:"point_button",value:"適用"}
         .pay__main__center__all__reload
           %input.reload_button{type:"button",id:"reload_button",value:"クーポンとポイントを再設定する",onClick:"window.location.reload();"}
