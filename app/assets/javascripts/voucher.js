@@ -72,6 +72,39 @@ $(function () {
     }
   });
 
+  $("#point_false").change(function () {
+    if (document.getElementById("point_false").checked) {
+      document.getElementById("point_true").checked = false;
+      $(".point_field").hide();
+      $(".point_button").hide();
+      $(".pay__main__center__all__pointresult").remove();
+      $(".pay__main__center__all__price__num").show();
+      $(".pay__main__center__all__price__num__voucher").empty();
+      $(".point_result").remove();
+    } else {
+      document.getElementById("point_true").checked = true;
+      $(".point_field").show();
+      $(".point_button").show();
+      $(".point_result").remove();
+    }
+  });
+  $("#point_true").change(function () {
+    if (document.getElementById("point_true").checked) {
+      document.getElementById("point_false").checked = false;
+      $(".point_field").show();
+      $(".point_button").show();
+      $(".point_result").remove();
+    } else {
+      document.getElementById("point_false").checked = true;
+      $(".point_field").hide();
+      $(".point_button").hide();
+      $(".pay__main__center__all__pointresult").remove();
+      $(".pay__main__center__all__price__num").show();
+      $(".pay__main__center__all__price__num__voucher").empty();
+      $(".point_result").remove();
+    }
+  });
+
   $("#code_button").click(function () {
     $(".voucher_result").remove();
     var url = location.href;
@@ -113,8 +146,17 @@ $(function () {
               data: { code: id },
               dataType: "json"
             }).done(function () {
+              pre_price = document.getElementById("price").value
+              document.getElementById("price").value = price;
               $("#flag").val(id).change();
               $("voucher_id").attr("action", `/items/${id}/pay`);
+              $("#code_button").prop("disabled", true);
+              if(document.getElementById("price").value==0){
+                $("#point_button").prop("disabled", true);
+              }
+              $("#voucher_false").hide();
+              $(".voucher_false_label").hide();
+              $(".reload_button").show();
             }).fail(function () {
               alert("failedddddd");
             });
@@ -150,5 +192,68 @@ $(function () {
     }).fail(function () {
       alert("failed");
     });
+  });
+
+  $("#point_button").click(function () {
+    $(".point_result").remove();
+    var url = location.href;
+    var point_value = document.getElementById("point_field").value;
+    if (point_value != "") {
+      $.ajax({
+        url: url,
+        type: "GET",
+        data: { code: point_value },
+        dataType: "json"
+      }).done(function () {
+        var realprice = $(".price").val();
+        var point_max = $("#point_field").attr("max");
+        $(".point_result").remove();
+        if (parseInt(point_max) >= parseInt(point_value)) {
+          $(".pay__main__center__all__pointresult").remove();
+          $(".pay__main__center__all__point__true").append(`<div class="point_result">ポイントが適用されました</div>`);
+          $(".pay__main__center__all__point").after(`<div class="pay__main__center__all__pointresult">
+                                                        <div class="pay__main__center__all__pointresult__title">
+                                                          ポイント
+                                                        </div>
+                                                        <div class="pay__main__center__all__pointresult__price">
+                                                          ${point_value.toLocaleString()} P
+                                                        </div>
+                                                      </div>`)
+          var price = parseInt(realprice) - parseInt(point_value);
+          if (price < 0) {
+            price = 0;
+          }
+          $(".pay__main__center__all__price__num").hide();
+          $(".pay__main__center__all__price__num__voucher").empty();
+          $(".pay__main__center__all__price__num__voucher").append(`¥${price.toLocaleString()}`);
+          var url = location.href;
+          $.ajax({
+            url: url,
+            type: "GET",
+            data: { point: point_value },
+            dataType: "json"
+          }).done(function () {
+            pre_price = document.getElementById("price").value
+            document.getElementById("price").value = price;
+            $("#point_button").prop("disabled", true);
+            if(document.getElementById("price").value==0){
+              $("#code_button").prop("disabled", true);
+            }
+            $("#point_false").hide();
+            $(".point_false_label").hide();
+            $(".reload_button").show();
+          }).fail(function () {
+            alert("failedddddd");
+          });
+        } else {
+          $(".pay__main__center__all__pointresult").remove();
+          $(".pay__main__center__all__price__num").show();
+          $(".pay__main__center__all__price__num__voucher").empty();
+          $(".pay__main__center__all__point__true").append(`<div class="point_result">ポイントが適用されませんでした</div>`);
+        }
+      }).fail(function () {
+        alert("failedaaaaaa");
+      });
+    }
   });
 });

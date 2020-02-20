@@ -4,7 +4,7 @@
   .sell
     = render "shared/sell"
   .pan
-    - breadcrumb :sales
+    - breadcrumb :point
     =render 'layouts/breadcrumbs'
   .contents-mypage
     .contents-mypage__left
@@ -12,21 +12,13 @@
     .contents-mypage__right
       .contents-mypage__right__voucher
         .contents-mypage__right__voucher__title
-          売り上げ
+          ポイント
         .contents-mypage__right__voucher__items
           .contents-mypage__right__voucher__items__item
             .contents-mypage__right__voucher__items__item__left
               .contents-mypage__right__voucher__items__item__left__detail
                 .contents-mypage__right__voucher__items__item__left__detail__name
-                  現在の売上
+                  ポイント
                 .contents-mypage__right__voucher__items__item__left__detail__price
-                  =price_yen(@sales)
-          =link_to complete_mypages_path do
-            .contents-mypage__right__voucher__items.sales
-              .contents-mypage__right__voucher__items__item
-                .contents-mypage__right__voucher__items__item__left
-                  .contents-mypage__right__voucher__items__item__left__detail
-                    .contents-mypage__right__voucher__items__item__left__detail__name
-                      過去の売上履歴
-                    .contents-mypage__right__voucher__items__item__left__detail__icon
-                      = icon('fas', 'angle-right',class:"angle_l")
+                  =current_user.point.to_s(:delimited)
+                  P
