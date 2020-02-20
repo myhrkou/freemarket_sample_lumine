@@ -138,6 +138,7 @@ class ItemsController < ApplicationController
     end
     @item.complete!
     @item.buyer = current_user.id
+    @item.used_point = point
     @item.updated_at = Time.now
     if @item.save
       redirect_to root_path

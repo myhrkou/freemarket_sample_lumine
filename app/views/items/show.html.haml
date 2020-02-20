@@ -110,7 +110,28 @@
                   %th 発送日の目安
                   %td 
                     =@item.delivery_date 
-        -if(@item.status=="complete" && @item.buyer==current_user.id && @voucher.present?)
+        -if(@item.status=="complete" && @item.buyer==current_user.id && @item.used_point != 0 && @voucher.present?)
+          .show-detail_element__voucher
+            =price_yen(@item.price)
+            　-　
+            =price_yen(@voucher.price)
+            (
+            =@voucher.name
+            )
+            　-　
+            =price_yen(@item.used_point)
+            (
+            ポイント
+            )
+            　=　
+            =price_yen(@item.price-@item.used_point-@voucher.price)
+          .show-detail_element__voucher__price
+            =price_yen(@item.price-@item.used_point-@voucher.price)
+            .show-detail_element__voucher__price__tax
+              （税込）
+            .show-detail_element__voucher__price__detail
+              =@item.delivery_charge_detail
+        -elsif(@item.status=="complete" && @item.buyer==current_user.id && @voucher.present?)
           .show-detail_element__voucher
             =price_yen(@item.price)
             　-　
@@ -122,6 +143,22 @@
             =price_yen(@item.price-@voucher.price)
           .show-detail_element__voucher__price
             =price_yen(@item.price-@voucher.price)
+            .show-detail_element__voucher__price__tax
+              （税込）
+            .show-detail_element__voucher__price__detail
+              =@item.delivery_charge_detail
+        -elsif(@item.status=="complete" && @item.buyer==current_user.id && @item.used_point != 0)
+          .show-detail_element__voucher
+            =price_yen(@item.price)
+            　-　
+            =price_yen(@item.used_point)
+            (
+            ポイント
+            )
+            　=　
+            =price_yen(@item.price-@item.used_point)
+          .show-detail_element__voucher__price
+            =price_yen(@item.price-@item.used_point)
             .show-detail_element__voucher__price__tax
               （税込）
             .show-detail_element__voucher__price__detail
