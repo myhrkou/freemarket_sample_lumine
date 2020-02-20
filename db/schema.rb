@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200219094314) do
+ActiveRecord::Schema.define(version: 20200220102504) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "zip",        null: false
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20200219094314) do
     t.integer  "buyer"
     t.integer  "category_id"
     t.integer  "voucher_id"
+    t.integer  "used_point"
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
     t.index ["voucher_id"], name: "index_items_on_voucher_id", using: :btree
