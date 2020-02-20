@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
     @womens = Item.where(category_id: 10..16).where.not(status: "stop").limit(10).order(id: "DESC")
     @mens = Item.where(category_id: 17..23).where.not(status: "stop").limit(10).order(id: "DESC")
     @kids = Item.where(category_id: 24..30).where.not(status: "stop").limit(10).order(id: "DESC")
+    @voucher = Voucher.find(1)
   end
 
   def new
