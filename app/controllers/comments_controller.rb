@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def create
     comment=Comment.new(comment_params)
     if comment.save
-      @item.transaction do 
+      Item.transaction do 
         @item = comment.item
         @item.status = "trans"
         @item.save
