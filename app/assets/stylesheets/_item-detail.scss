@@ -254,7 +254,7 @@
           font-size: 14px;
           margin: 10px;
           &_profile{
-            height:20%;
+            height:20px;
             width:100%;
             &_nickname-right{
               text-align: right;
@@ -267,6 +267,7 @@
             background-color: #dcdcdc;
             border-radius: 5px;
             padding: 10px;
+            font-size: 17px;
             &_right{
               &::before{
                 border-style: solid;
@@ -446,4 +447,5 @@ td {
   margin: 1px;
   border-radius: 5px;
   padding: 10px;
+  font-size: 17px;
 }
