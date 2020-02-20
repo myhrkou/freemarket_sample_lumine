@@ -1,0 +1,45 @@
+.carousel_top_img{
+  height:300px;
+  margin:0 auto;
+}
+
+.contents_carousel{
+  height:300px;
+}
+
+.prev-arrow{
+  position: absolute;
+  top:100px;
+  left: 0;
+  z-index:1;
+  background-color: transparent;
+  height:100px;
+  width: 100px;
+  border:0;
+  font-size: 24px;
+  opacity: 0.5;
+}
+
+.next-arrow{
+  position: absolute;
+  right: 0;
+  top:100px;
+  background-color: transparent;
+  height:100px;
+  width: 100px;
+  border:0;
+  font-size: 24px;
+  opacity: 0.5;
+}
+
+.prev-arrow:before {
+  font-family: "Font Awesome 5 Free";
+  content: '\f053';
+  font-weight: 900;
+}
+
+.next-arrow:before {
+  font-family: "Font Awesome 5 Free";
+  content: '\f054';
+  font-weight: 900;
+}
