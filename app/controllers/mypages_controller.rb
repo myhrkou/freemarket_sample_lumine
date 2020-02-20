@@ -14,7 +14,7 @@ class MypagesController < ApplicationController
   end
 
   def exhibition
-    @exhibitions = Item.where(status: [:exhibition,:stop]).where(user_id: current_user.id).order(id: "DESC").page(params[:page]).per(10)
+    @exhibitions = Item.where(status: [:exhibition, :stop]).where(user_id: current_user.id).order(id: "DESC").page(params[:page]).per(10)
   end
 
   def trans
@@ -27,7 +27,7 @@ class MypagesController < ApplicationController
 
   def negotiate
     # 「コメント入力した商品」に変更
-    @negotiate_items=Item.where(status: :trans).where(buyer: current_user.id).order(id: "DESC").page(params[:page]).per(10)
+    @negotiate_items = Item.where(status: :trans).where(buyer: current_user.id).order(id: "DESC").page(params[:page]).per(10)
   end
 
   def purchased
@@ -38,6 +38,14 @@ class MypagesController < ApplicationController
     @used_vouchers = UsedVoucherUser.where(user_id: current_user)
     @used_vouchers_mat = @used_vouchers.map { |record| record.voucher_id }
     @vouchers = Voucher.where.not(id: @used_vouchers_mat)
+  end
+
+  def sales
+    @items=Item.where(user_id:current_user.id).where(status: :complete)
+    @sales=0
+    @items.each do |item|
+      @sales+=item.price
+    end
   end
 
   private
