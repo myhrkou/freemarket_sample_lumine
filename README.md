@@ -13,7 +13,7 @@
 |phone_number|string||
 |image|string||
 |content|string||
-|point|string||
+|point|integer||
 ### Association
 - belongs_to :card
 - has_many :items
@@ -79,7 +79,7 @@
 |------|----|-------|
 |name|string||
 |code|string||
-|price|string||
+|price|integer||
 
 ## used_voucher_usersテーブル
 |Column|Type|Options|
