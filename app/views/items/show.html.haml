@@ -193,14 +193,15 @@
         - if @comments
           - @comments.each_with_index do |comment,num|
             .show-detail_comment_all_one-person{data:{"index":num}}
-              -if (comment.user.id == @item.user.id)
+              -if comment.user.id!=current_user.id
                 .show-detail_comment_all_one-person_img
-                  -if current_user.image.present?
-                    = image_tag src=current_user.image,class:"comment-userface"
+                  -if comment.user.image.present?
+                    = image_tag src=comment.user.image,class:"comment-userface"
                   -else
                     = image_tag src="/images/usericon.png",class:"comment-userface"
-                  .seller 
-                    出品者
+                  -if @item.user.id==comment.user.id
+                    .seller 
+                      出品者
                 .show-detail_comment_all_one-person_elemnts
                   .show-detail_comment_all_one-person_elemnts_profile
                     = comment.user.nickname
@@ -224,6 +225,9 @@
                     = image_tag src=current_user.image,class:"comment-userface"
                   -else
                     = image_tag src="/images/usericon.png",class:"comment-userface"
+                  -if @item.user.id==current_user.id
+                    .seller 
+                      出品者
   .footer
     = render '/shared/footer'
   .modal
