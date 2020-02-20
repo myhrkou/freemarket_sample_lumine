@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get :negotiate
       get :purchased
       get :voucher
+      get :sales
     end
   end
   resources :users do
