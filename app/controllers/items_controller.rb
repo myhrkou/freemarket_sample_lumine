@@ -82,7 +82,6 @@ class ItemsController < ApplicationController
   end
 
   def pay_comfirm
-    @items = Item.where(user_id: current_user.id).where(status: :complete)
     @item = Item.find(params[:id])
     Payjp.api_key = Rails.application.secrets.payjp_private_key
     customer = Payjp::Customer.retrieve(@card.customer_id)
