@@ -243,11 +243,12 @@
       &_one-person{
         display: flex;
         justify-content: flex-start;
-        margin:15px;
+        margin:25px 15px;
         &_img{
           height:100px;
         }
         &_elemnts{
+          height: 100px;
           width:100%;
           position: relative;
           font-size: 14px;
