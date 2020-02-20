@@ -83,10 +83,6 @@ class ItemsController < ApplicationController
 
   def pay_comfirm
     @items = Item.where(user_id: current_user.id).where(status: :complete)
-    @sales = 0
-    @items.each do |item|
-      @sales += item.price
-    end
     @item = Item.find(params[:id])
     Payjp.api_key = Rails.application.secrets.payjp_private_key
     customer = Payjp::Customer.retrieve(@card.customer_id)
