@@ -11,10 +11,14 @@
 |yomi_last_name|string|null: false|
 |birth_day|date|null: false|
 |phone_number|string||
+|image|string||
+|content|string||
+|point|string||
 ### Association
 - belongs_to :card
 - has_many :items
 - has_one :address
+- has_many :comments
 
 ## addressテーブル
 |Column|Type|Options|
@@ -53,6 +57,7 @@
 - belongs_to :user
 - belongs_to :category
 - has_many :items_images
+- has_many :comments
 
 ## items_imagesテーブル
 |Column|Type|Options|
@@ -68,3 +73,26 @@
 |name|string|ancestory|
 ### Association
 - has_many :items
+
+## vouchersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string||
+|code|string||
+|price|string||
+
+## used_voucher_usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false,foreign_key: true|
+|voucher_id|integer|null: false,foreign_key: true|
+
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|comment|string|null:false|
+|user_id|integer|null: false,foreign_key: true|
+|item_id|integer|null: false,foreign_key: true|
+### Association
+- belongs_to :item
+- belongs_to :user
