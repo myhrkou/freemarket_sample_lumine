@@ -3,7 +3,6 @@ $(function () {
     autoplay:true,
     autoplaySpeed:7000,
     dots:true,
-    // arrows:false,
     dots:false,
     speed:500,
     prevArrow: '<button class="slide-arrow prev-arrow"></button>',
@@ -25,5 +24,3 @@ $(function () {
     asNavFor: '.slick1',
   });
 });
-
-
