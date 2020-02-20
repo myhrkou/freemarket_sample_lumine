@@ -9,14 +9,22 @@
         = icon('fas', 'camera',class:"camera")
   .voucher
     .voucher__name
-      =@voucher.name
+      -# =@voucher.name
     .voucher__text
       配布中!
-      %input{type: "hidden", value: @voucher.name, class: 'voucher_name' }
-      %input{type: "hidden", value: @voucher.code, class: 'voucher_code' }
+      -# %input{type: "hidden", value: @voucher.name, class: 'voucher_name' }
+      -# %input{type: "hidden", value: @voucher.code, class: 'voucher_code' }
   .contents
-    .contents__carousel
-      =image_tag src='/images/header.jpg',class:'carousel'
+    .contents_carousel
+      %ul.carousel
+        %li
+          = image_tag src="/images/lumine.png"
+        %li
+          = image_tag src="/images/logo_red.svg"
+        %li
+          = image_tag src="/images/i_lumine.jpg"
+        %li
+          = image_tag src="/images/logo_red.svg"
     .contents__title
       %b人気のカテゴリー
       .contents__title__category

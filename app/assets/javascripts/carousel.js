@@ -1,4 +1,14 @@
 $(function () {
+  $('.carousel').slick({
+    autoplay:true,
+    autoplaySpeed:7000,
+    dots:true,
+    // arrows:false,
+    dots:false,
+    speed:500,
+    prevArrow: '<button class="slide-arrow prev-arrow"></button>',
+    nextArrow: '<button class="slide-arrow next-arrow"></button>'
+  });
   $('.slick1').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -13,7 +23,6 @@ $(function () {
     centerMode: true,
     centerPadding: 80,
     asNavFor: '.slick1',
-    
   });
 });
 
