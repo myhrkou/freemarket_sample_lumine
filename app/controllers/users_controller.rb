@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_card, only: [:profile, :edit, :update]
   before_action :set_category
-  before_action :set_ransack, only: [:profile, :edit]
+  before_action :set_ransack
 
   def index
   end
