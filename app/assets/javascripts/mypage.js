@@ -1,24 +1,20 @@
-$(function () {
-  $(".contents-mypage__left__lists__mypagelist__tag").on("click", function () {
-    $(".mypagetitle").removeClass("mypagetitle");
-    $(this).addClass("mypagetitle");
+$(function()  { 
+  let tabs1 = $(".menu_item1");
+  let tabs2 = $(".menu_item2");
+
+  $('.menu_item1').on('click', function(){
+    $(".menu_item1").removeClass("active");
+    $(this).addClass("active");
+    const index = tabs1.index(this);
+    $(".content").removeClass("show");
+    $(".content").eq(index).addClass("show");
   });
 
-  $(".contents-mypage__right__exhibition__tab__button").click(function(){
-    $(".contents-mypage__right__exhibition__tab__button").removeClass(".active1");
-    $(this).addClass(".active1");
+  $('.menu_item2').on('click', function(){
+    $(".menu_item2").removeClass("active");
+    $(this).addClass("active");
+    const index = tabs2.index(this);
+    $(".content2").removeClass("show2");
+    $(".content2").eq(index).addClass("show2");
   });
-
-// function buildhtml(){
-//   var html=`<img src=current_user.image class="userface">`;
-//   return html;
-// };
-
-  // $(".profile_image").on("change",function(){
-  //   alert("aa");
-  //   // $(".userface").removeAttr("src");
-  //   // $(".userface").attr('src','current_user.image.url');
-  //   $(".userface").remove();
-  //   $(".profile_image").append(buildhtml);
-  // });
 });
