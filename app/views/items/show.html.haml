@@ -174,7 +174,7 @@
               .show-detail_element_price_detail_text
                 =@item.delivery_charge_detail
         .show-detail_element_description
-          =@item.description
+          =simple_format(@item.description)
       .show-detail_botton
         -if user_signed_in?
           -if ( @item.status=="exhibition" && @item.user_id==current_user.id )
