@@ -77,10 +77,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def all
-    @items = Item.where.not(status: "stop").order(id: "DESC").page(params[:page]).per(15)
-  end
-
   def pay_comfirm
     @item = Item.find(params[:id])
     Payjp.api_key = Rails.application.secrets.payjp_private_key

@@ -7,11 +7,11 @@ class CategoriesController < ApplicationController
 
   def category_root
     @category_ids = Category.find(params[:format]).indirect_ids
-    @items=[]
+    @items = []
     @category_ids.each do |category_id|
-      @item_box=Item.where.not(status: "stop").where(category_id: category_id)
+      @item_box = Item.where.not(status: "stop").where(category_id: category_id)
       @item_box.each do |item|
-        @items<<item
+        @items << item
       end
     end
     @category = @categories[params[:format].to_i - 1]
@@ -19,11 +19,11 @@ class CategoriesController < ApplicationController
 
   def category_child
     @category_ids = Category.find(params[:format]).child_ids
-    @items=[]
+    @items = []
     @category_ids.each do |category_id|
-      @item_box=Item.where.not(status: "stop").where(category_id: category_id)
+      @item_box = Item.where.not(status: "stop").where(category_id: category_id)
       @item_box.each do |item|
-        @items<<item
+        @items << item
       end
     end
     @category = @categories[params[:format].to_i - 1]
