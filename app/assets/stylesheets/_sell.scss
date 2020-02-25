@@ -137,10 +137,19 @@
 #item_description{
   width:100%;
   margin: 8px,0,0;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  color: #404040;
+  background: #fff;
 }
 
-#item_condition,#item_delivery_charge_detail,#item_delivery_origin,#item_delivery_date{
+#item_condition,#item_delivery_charge_detail,#item_delivery_origin,#item_delivery_date,#item_delivery_origin_id,#item_name{
   width: 400px;
+  background: #fff;
+  height: 40px;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  color: #404040;
 }
 
 #item_price{
@@ -155,13 +164,18 @@
 }
 
 .form_sell{
-  margin: 40px 0 0;
   background-color: red;
   border: 1px solid red;
   color: white;
-  width: 100%;
+  width:45%;
+  margin:24px 0 0 ;
   line-height: 48px;
   font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  &:hover{
+    background-color: rgb(230, 15, 15);
+  }
 }
 
 .form_edit{
@@ -233,6 +247,11 @@
 
 .select-default{
   width: 100%;
+  background: #fff;
+  height: 40px;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  color: #404040;
 }
 
 .cansel_edit{
@@ -255,6 +274,7 @@
   border: 1px solid #aaa;
   height:50px;
   line-height: 50px;
+  border-radius: 4px;
 }
 
 .cansel_edit:hover{
