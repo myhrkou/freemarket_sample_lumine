@@ -1,4 +1,4 @@
-# freemarket_sample_lumine
+# DB設計
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
