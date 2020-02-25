@@ -68,7 +68,7 @@
 ### Association
 - belongs_to :item
 
-## categorysテーブル
+## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|ancestory|
