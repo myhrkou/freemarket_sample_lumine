@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200220102504) do
+ActiveRecord::Schema.define(version: 20200225044946) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "zip",        null: false
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20200220102504) do
     t.datetime "updated_at",                          null: false
     t.string   "image"
     t.string   "content"
-    t.integer  "point"
+    t.integer  "point",                  default: 0
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
