@@ -113,7 +113,7 @@ class ItemsController < ApplicationController
       voucher_price = 0
     end
     @seller = User.find(@item.user_id)
-    @seller.point = @seller.point + @item.price
+    @seller.point = @seller.point + @item.price * 0.9
     @seller.save
     current_user.point = current_user.point - point
     current_user.save

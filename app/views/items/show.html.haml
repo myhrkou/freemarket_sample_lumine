@@ -59,6 +59,7 @@
               このたびはメルカリのご利用ありがとうございました
           .show-detail_complete_right_delete.modal_button
             この商品を削除する
+            =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
     -else
       .show-detail_element
         .show-detail_element_title
