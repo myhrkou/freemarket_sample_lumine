@@ -20,9 +20,9 @@
     .login__main__email
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .login__main__email__address
-          = f.email_field :email, autofocus: true, autocomplete: "email",class:"login_textfield",place_holder:"メールアドレス"
+          = f.email_field :email, autofocus: true, autocomplete: "email",class:"login_textfield",placeholder:"メールアドレス"
         .login__main__email__password
-          = f.password_field :password, autocomplete: "current-password",class:"login_textfield",place_holder:"パスワード"
+          = f.password_field :password, autocomplete: "current-password",class:"login_textfield",placeholder:"パスワード"
         .login__main__email__button
           = f.submit "ログイン",class:"login_button"
   = render 'users/footer'
