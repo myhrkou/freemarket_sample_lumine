@@ -30,7 +30,7 @@ class Item < ApplicationRecord
       mat = mat.map(&:to_s)
       return mat
     else
-      return q[:category_id_in]
+      return ""
     end
   end
 end

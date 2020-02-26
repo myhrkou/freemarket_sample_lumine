@@ -163,6 +163,7 @@ class ItemsController < ApplicationController
   end
 
   def search
+    binding.pry
     respond_to do |format|
       format.html
       format.json do
