@@ -114,4 +114,8 @@ $(function () {
       alert("failed");
     });
   });
+
+  $("#voucher_id").submit(function(){
+    $(".modal").fadeIn();
+  });
 });

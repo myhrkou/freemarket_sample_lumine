@@ -136,7 +136,6 @@ class ItemsController < ApplicationController
     @item.used_point = point
     @item.updated_at = Time.now
     if @item.save
-      redirect_to root_path
     else
       redirect_to pay_comfirm_items_path
     end

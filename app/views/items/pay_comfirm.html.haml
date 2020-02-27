@@ -79,3 +79,20 @@
           =form_tag pay_items_path,method: :post ,id:"voucher_id"do
             =submit_tag "購入する",class:"login_button"
   =render 'users/footer'
+  .modal
+    .modal__window
+      .modal__window__text.modal_pay
+        .modal__window__text__title
+          %b購入が完了しました！
+        .modal__window__text__detail
+          %br
+          購入が完了しました。
+          出品者の発送通知をお待ちください。
+          %br
+      .modal__window__button__pay
+        =link_to item_path(@item.id),class:"modal__window__button__pay__show" do
+          .modal__window__button__pay__show
+            取引ページに移動する
+        =link_to root_path,class:"modal__window__button__pay__top" do
+          .modal__window__button__pay__top
+            トップページへ

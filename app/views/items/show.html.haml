@@ -204,9 +204,12 @@
             .show-detail_botton_delete.modal_button.modal_button
               この商品を削除
               =link_to "" ,item_path(@item),method: :delete,id:"delete_button"
-          -elsif (@item.status=="complete" && @item.user_id !=current_user.id)
+          -elsif (@item.status=="complete" && @item.user_id !=current_user.id && @item.buyer !=current_user.id)
             .show-detail_botton_soldout
-              売り切れました            
+              売り切れました
+          -elsif (@item.status=="complete" && @item.user_id !=current_user.id && @item.buyer ==current_user.id)
+            .show-detail_botton_soldout
+              購入しました
           -else
             =link_to  pay_comfirm_item_path(@item.id) do
               .show-detail_botton_buy
