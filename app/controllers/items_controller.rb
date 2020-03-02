@@ -193,10 +193,14 @@ class ItemsController < ApplicationController
       params[:q][:category_id_in] = params[:q][:category_id_in].to_i
       if (params[:q][:category_id_in].between?(1, 3))
         @parent_id = params[:q][:category_id_in].to_i
+        @parent = Category.find(@parent_id)
+        @children = @parent.children
       elsif (params[:q][:category_id_in].between?(4, 9))
         @parent_id = Category.find(params[:q][:category_id_in]).parent_id
         @child_id = params[:q][:category_id_in]
+        @child = Category.find(@child_id)
         @children = Category.find(@child_id).siblings
+        @grand_children = @child.children
       elsif (params[:q][:category_id_in].between?(10, 30))
         @parent_id = Category.find(params[:q][:category_id_in]).root_id
         @child_id = Category.find(params[:q][:category_id_in]).parent_id
