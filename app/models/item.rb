@@ -29,6 +29,8 @@ class Item < ApplicationRecord
       mat = Category.find(q[:category_id_in]).child_ids
       mat = mat.map(&:to_s)
       return mat
+    elsif int_mat.between?(10,30)
+      return int_mat.to_s
     else
       return ""
     end

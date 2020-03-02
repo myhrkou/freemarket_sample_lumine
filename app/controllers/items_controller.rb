@@ -207,9 +207,9 @@ class ItemsController < ApplicationController
     end
     if params[:q] != nil
       params[:q][:category_id_in] = Item.select_category(params[:q])
-      if params[:q][:name_cont_all] != nil
+      if params[:q][:name_cont_any] != nil
         @keyword = params[:q][:name_cont_any]
-        params[:q][:name_cont_all] = params[:q][:name_cont_all].split(/[\p{blank}\s]+/)
+        params[:q][:name_cont_any] = params[:q][:name_cont_any].split(/[\p{blank}\s]+/)
       end
     end
     @search = Item.ransack(params[:q])
