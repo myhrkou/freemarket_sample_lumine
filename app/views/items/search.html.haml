@@ -26,9 +26,9 @@
           .contents__searchscreen__left__form__category
             =f.collection_select :category_id_in, @parents, :id, :name,{include_blank: 'すべて',selected: @parent_id}, {class: "select-default", id: "parent-form"}
             -if(@children.present?)
-              =f.select :category_id, options_for_select(@children.map{|c|[c[:name], c[:id], {'data-sample'=>c[:id]}]}, @child_id),{}, {class: "select-default", id: "parent-form2"}
+              =f.select :category_id, options_for_select(@children.map{|c|[c[:name], c[:id], {'data-sample'=>c[:id]}]}, @child_id),{include_blank: 'すべて'}, {class: "select-default", id: "parent-form2"}
             -if(@grand_children.present?)
-              =f.select :category_id, options_for_select(@grand_children.map{|c|[c[:name], c[:id], {'data-sample'=>c[:id]}]}, @grand_child_id),{},{class: "select-default", id: "parent-form3"}
+              =f.select :category_id, options_for_select(@grand_children.map{|c|[c[:name], c[:id], {'data-sample'=>c[:id]}]}, @grand_child_id),{include_blank: 'すべて'},{class: "select-default", id: "parent-form3"}
           .contents__searchscreen__left__form__label
             =icon "fas","coins",class:"search_icon"
             価格
