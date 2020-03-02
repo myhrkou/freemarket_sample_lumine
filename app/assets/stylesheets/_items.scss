@@ -620,7 +620,7 @@
             }
           }
           .contents__all__item:hover {
-            width: 165px;
+            width: 166px;
             border-color: 2px solid rgb(0, 149, 238);
           }
           .contents__all__item:hover .example {
@@ -1053,8 +1053,8 @@
 }
 
 .contents__all__item:hover .example {
-  width: calc((100vw - 610px) * 0.175 - 4px);
-  height: calc((100vw - 610px) * 0.175 - 4px);
+  width: calc((100vw - 610px) * 0.175 - 5px);
+  height: calc((100vw - 610px) * 0.175 - 5px);
   object-fit: cover;
 }
 
