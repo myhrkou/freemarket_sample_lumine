@@ -19,8 +19,8 @@ $(function () {
     slidesToScroll: 1,
     arrows:false,
     focusOnSelect: true,
-    centerMode: true,
-    centerPadding: 80,
+    // centerMode: true,
+    centerPadding: '30px',
     asNavFor: '.slick1',
   });
 });

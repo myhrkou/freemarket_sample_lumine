@@ -106,7 +106,8 @@
         }
         &_choice {
           width: 300px;
-          height: 160px;
+          height: 100px;
+          background-color: #eee;
         }
       }
 
@@ -362,8 +363,8 @@ td {
 }
 
 .img_choice {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
 }
 
@@ -383,11 +384,7 @@ td {
 
 .slick-slide .slick-cloned {
   opacity: 1;
-  width: 80px;
-}
-
-.slick-cloned{
-  width: 80px;
+  width: 100px;
 }
 
 .img-element {
@@ -396,7 +393,7 @@ td {
 
 .slick2 {
   .slick-active {
-    opacity: 0.4;
+    // opacity: 0.4;
   }
   .slick-center {
     opacity: 1;
